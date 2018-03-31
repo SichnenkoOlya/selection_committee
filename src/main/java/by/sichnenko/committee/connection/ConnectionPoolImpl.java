@@ -1,4 +1,4 @@
-package by.sichnenko.committee.connection.pool;
+package by.sichnenko.committee.connection;
 
 import by.sichnenko.committee.exception.ConnectionPoolException;
 import by.sichnenko.committee.util.ResourceManager;
@@ -8,8 +8,8 @@ import org.apache.logging.log4j.Logger;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.BlockingQueue;
+import java.util.ArrayDeque;
+import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -26,17 +26,21 @@ public class ConnectionPoolImpl implements ConnectionPool {
     private final String USER;
     private final String PASSWORD;
     private final int POOL_SIZE;
-    private BlockingQueue<ProxyConnection> availableConnections;
-    private BlockingQueue<ProxyConnection> usedConnections;
+    private LinkedBlockingQueue<ProxyConnection> availableConnections;
+    private ArrayDeque<ProxyConnection> usedConnections;//
 
     private ConnectionPoolImpl() {
-        DRIVER_NAME = ResourceManager.readProperty("driver_name", DB_FILE_PROPERTIES_NAME);
-        URL = ResourceManager.readProperty("url", DB_FILE_PROPERTIES_NAME);
-        USER = ResourceManager.readProperty("user", DB_FILE_PROPERTIES_NAME);
-        PASSWORD = ResourceManager.readProperty("password", DB_FILE_PROPERTIES_NAME);
+        DRIVER_NAME = ResourceManager.readProperty("db_driver_name", DB_FILE_PROPERTIES_NAME);///В отдельный класс
+        URL = ResourceManager.readProperty("db_url", DB_FILE_PROPERTIES_NAME);
+        USER = ResourceManager.readProperty("db_user", DB_FILE_PROPERTIES_NAME);
+        PASSWORD = ResourceManager.readProperty("db_password", DB_FILE_PROPERTIES_NAME);
         ///???
-        POOL_SIZE = Integer.parseInt(ResourceManager.readProperty("pool_size", DB_FILE_PROPERTIES_NAME));
-
+        POOL_SIZE = Integer.parseInt(ResourceManager.readProperty("db_pool_size", DB_FILE_PROPERTIES_NAME));
+        try {
+            initConnectionPool();
+        } catch (ConnectionPoolException e) {
+            e.printStackTrace();
+        }
     }
 
     public static ConnectionPool getInstance() {
@@ -58,27 +62,39 @@ public class ConnectionPoolImpl implements ConnectionPool {
     public void initConnectionPool() throws ConnectionPoolException {
         try {
             Class.forName(DRIVER_NAME);
-            usedConnections = new ArrayBlockingQueue<>(POOL_SIZE);
-            availableConnections = new ArrayBlockingQueue<>(POOL_SIZE);
+            usedConnections = new ArrayDeque<>(POOL_SIZE);
+            availableConnections = new LinkedBlockingQueue<>(POOL_SIZE);
             for (int i = 0; i < POOL_SIZE; i++) {
                 Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
                 ProxyConnection proxyConnection = new ProxyConnection(connection);
                 availableConnections.offer(proxyConnection);
             }
+            ///Проверка сколько создалось
         } catch (SQLException e) {
             throw new ConnectionPoolException("2", e);
 
         } catch (ClassNotFoundException e) {
-            throw new ConnectionPoolException("1", e);
+            throw new RuntimeException("1", e);///RunTime
         }
     }
 
     @Override
     public void disposeConnectionPool() throws ConnectionPoolException {
         try {
-            closeConnectionsQueue(availableConnections);
+            ProxyConnection proxyConnection;
+            for (int i = 0; i < POOL_SIZE; i++) {
+                proxyConnection = availableConnections.take();
+                if (proxyConnection != null) {
+                    if (!proxyConnection.getAutoCommit()) {
+                        proxyConnection.commit();
+                    }
+                    proxyConnection.realClose();
+                }
+            }
         } catch (SQLException e) {
             throw new ConnectionPoolException(e);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 
@@ -87,7 +103,7 @@ public class ConnectionPoolImpl implements ConnectionPool {
         ProxyConnection connection;
         try {
             connection = availableConnections.take();
-            usedConnections.put(connection);
+            usedConnections.push(connection);
             return connection;
         } catch (InterruptedException e) {
             throw new ConnectionPoolException("1", e);
@@ -95,7 +111,7 @@ public class ConnectionPoolImpl implements ConnectionPool {
     }
 
     @Override
-    public void returnConnection(ProxyConnection connection) throws ConnectionPoolException {
+    public void returnConnection(ProxyConnection connection) {
         if (connection != null) {
             if (usedConnections.remove(connection)) {
                 availableConnections.offer(connection);
@@ -106,18 +122,5 @@ public class ConnectionPoolImpl implements ConnectionPool {
     @Override
     protected Object clone() throws CloneNotSupportedException {
         throw new CloneNotSupportedException("Invalid action");
-    }
-
-    private void closeConnectionsQueue(BlockingQueue<ProxyConnection> queue) throws SQLException {
-        Connection connection;
-        for (int i = 0; i < POOL_SIZE; i++) {
-            connection = queue.poll();
-            if (connection != null) {
-                if (!connection.getAutoCommit()) {
-                    connection.commit();
-                }
-                connection.close();
-            }
-        }
     }
 }

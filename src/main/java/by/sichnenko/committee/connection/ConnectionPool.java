@@ -1,8 +1,6 @@
-package by.sichnenko.committee.connection.pool;
+package by.sichnenko.committee.connection;
 
 import by.sichnenko.committee.exception.ConnectionPoolException;
-
-import java.sql.Connection;
 
 public interface ConnectionPool {
     void initConnectionPool() throws ConnectionPoolException;
@@ -11,5 +9,5 @@ public interface ConnectionPool {
 
     ProxyConnection takeConnection() throws ConnectionPoolException;
 
-    void returnConnection(ProxyConnection con) throws ConnectionPoolException;
+    void returnConnection(ProxyConnection connection);
 }
