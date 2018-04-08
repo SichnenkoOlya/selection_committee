@@ -2,17 +2,20 @@ package by.sichnenko.committee.command.impl;
 
 import by.sichnenko.committee.command.ActionCommand;
 import by.sichnenko.committee.constant.RequestNameConstant;
+import by.sichnenko.committee.content.SessionRequestContent;
 import by.sichnenko.committee.type.RouterType;
 import by.sichnenko.committee.util.Router;
+import by.sichnenko.committee.validator.GeneralValidator;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 public class ChangeLocale implements ActionCommand {
     @Override
-    public Router execute(HttpServletRequest request) {
-        HttpSession session = request.getSession();
-        session.setAttribute(RequestNameConstant.LOCALE, request.getParameter(RequestNameConstant.LOCALE));
-        return new Router(RouterType.REDIRECT, defineLastPage(request));
+    public Router execute(SessionRequestContent sessionRequestContent) {
+        String[] localeParameters = sessionRequestContent.getRequestParameters().get(RequestNameConstant.LOCALE);
+        if (GeneralValidator.isVarExist(localeParameters)) {
+            String locale = sessionRequestContent.getRequestParameters().get(RequestNameConstant.LOCALE)[0];
+            sessionRequestContent.getSessionAttributes().put(RequestNameConstant.LOCALE, locale);
+        }
+        return new Router(RouterType.REDIRECT, defineLastPage(sessionRequestContent));
     }
 }

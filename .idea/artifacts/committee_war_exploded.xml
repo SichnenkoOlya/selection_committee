@@ -1,13 +1,22 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="committee:war exploded">
-    <output-path>$PROJECT_DIR$/out/artifacts/committee_war_exploded</output-path>
+    <output-path>$PROJECT_DIR$/classes/artifacts/committee_war_exploded</output-path>
     <root id="root">
-      <element id="javaee-facet-resources" facet="committee/web/Web" />
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="committee" />
         </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-core:2.10.0" />
+          <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-api:2.10.0" />
+          <element id="library" level="project" name="Maven: javax.mail:javax.mail-api:1.6.1" />
+          <element id="library" level="project" name="Maven: javax.activation:activation:1.1" />
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:8.0.9-rc" />
+          <element id="library" level="project" name="Maven: jstl:jstl:1.2" />
+        </element>
       </element>
+      <element id="javaee-facet-resources" facet="committee/web/Web" />
+      <element id="javaee-facet-resources" facet="committee/web/Web2" />
     </root>
   </artifact>
 </component>

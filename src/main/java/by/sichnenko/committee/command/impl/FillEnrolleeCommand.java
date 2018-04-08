@@ -1,6 +1,7 @@
 package by.sichnenko.committee.command.impl;
 
 import by.sichnenko.committee.command.ActionCommand;
+import by.sichnenko.committee.content.SessionRequestContent;
 import by.sichnenko.committee.exception.ServiceException;
 import by.sichnenko.committee.model.User;
 import by.sichnenko.committee.service.EnrolleeService;
@@ -21,8 +22,8 @@ public class FillEnrolleeCommand implements ActionCommand {
     //Если пришёл post, то redirect
     //ajax
     @Override
-    public Router execute(HttpServletRequest request) {
-        String name = request.getParameter(NAME);
+    public Router execute(SessionRequestContent sessionRequestContent) {
+      /*  String name = request.getParameter(NAME);
         String surname = request.getParameter(SURNAME);
         String patronymic = request.getParameter(PATRONYMIC);
         String phoneNumber = request.getParameter(PHONE_NUMBER);
@@ -50,7 +51,7 @@ public class FillEnrolleeCommand implements ActionCommand {
 //            session.setAttribute(NAME, authentificatedUser.getLogin());
 //            session.setAttribute(ROLE, authentificatedUser.getRole().toString().toLowerCase());
 //            return MAIN_PAGE;
-//        }
+//        }*/
         return new Router(RouterType.REDIRECT, MAIN_PAGE);
     }
 }
