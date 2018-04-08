@@ -8,6 +8,8 @@
 <%@ page isErrorPage="true" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <html><title>Error Page</title>
+<h2><a href="${pageContext.request.contextPath}/index.jsp">Back on main page</a>
+</h2>
 <body>
 Request from ${pageContext.errorData.requestURI} is failed
 <br/>

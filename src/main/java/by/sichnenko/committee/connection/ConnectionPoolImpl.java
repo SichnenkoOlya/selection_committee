@@ -25,17 +25,22 @@ public class ConnectionPoolImpl implements ConnectionPool {
     private final String URL;
     private final String USER;
     private final String PASSWORD;
-    private final int POOL_SIZE;
+    private int POOL_SIZE;
+    private final static int DEFAULT_POOL_SIZE =12;
     private LinkedBlockingQueue<ProxyConnection> availableConnections;
     private ArrayDeque<ProxyConnection> usedConnections;//
 
     private ConnectionPoolImpl() {
-        DRIVER_NAME = ResourceManager.readProperty("db_driver_name", DB_FILE_PROPERTIES_NAME);///В отдельный класс
+        DRIVER_NAME = ResourceManager.readProperty("db_driver_name", DB_FILE_PROPERTIES_NAME);
         URL = ResourceManager.readProperty("db_url", DB_FILE_PROPERTIES_NAME);
         USER = ResourceManager.readProperty("db_user", DB_FILE_PROPERTIES_NAME);
         PASSWORD = ResourceManager.readProperty("db_password", DB_FILE_PROPERTIES_NAME);
-        ///???
-        POOL_SIZE = Integer.parseInt(ResourceManager.readProperty("db_pool_size", DB_FILE_PROPERTIES_NAME));
+        try {
+            POOL_SIZE = Integer.parseInt(ResourceManager.readProperty("db_pool_size", DB_FILE_PROPERTIES_NAME));
+        }
+        catch(NumberFormatException ex){
+            POOL_SIZE=DEFAULT_POOL_SIZE;
+        }
         try {
             initConnectionPool();
         } catch (ConnectionPoolException e) {
@@ -71,10 +76,10 @@ public class ConnectionPoolImpl implements ConnectionPool {
             }
             ///Проверка сколько создалось
         } catch (SQLException e) {
-            throw new ConnectionPoolException("2", e);
+            throw new ConnectionPoolException("Error creating connection", e);
 
         } catch (ClassNotFoundException e) {
-            throw new RuntimeException("1", e);///RunTime
+            throw new RuntimeException("Class not found", e);///RunTime
         }
     }
 

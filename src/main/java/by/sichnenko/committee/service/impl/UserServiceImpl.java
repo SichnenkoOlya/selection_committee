@@ -1,49 +1,81 @@
 package by.sichnenko.committee.service.impl;
 
-import by.sichnenko.committee.exception.RepositoryException;
-import by.sichnenko.committee.exception.ServiceException;
+import by.sichnenko.committee.connection.ConnectionPoolImpl;
+import by.sichnenko.committee.connection.ProxyConnection;
+import by.sichnenko.committee.dao.impl.UserDAO;
+import by.sichnenko.committee.exception.*;
+import by.sichnenko.committee.model.RoleType;
 import by.sichnenko.committee.model.User;
-import by.sichnenko.committee.repository.impl.UserRepositoryImpl;
 import by.sichnenko.committee.service.UserService;
-import by.sichnenko.committee.specification.user.FindUserByLoginSpecification;
+import by.sichnenko.committee.util.MD5Generator;
 import by.sichnenko.committee.validator.UserValidator;
 
-import java.util.List;
 
 public class UserServiceImpl implements UserService {
-    private static UserRepositoryImpl userRepository = new UserRepositoryImpl();
 
     @Override
-    public User authentification(User user) {
+    public User signIn(String login, String password) throws ServiceException {
+        ProxyConnection connection = null;
+        UserDAO userDAO = null;
         try {
-            List<User> userList = userRepository.query(new FindUserByLoginSpecification(user.getLogin()));
-            if (userList.size() == 1) {
-                User findUser = userList.get(0);
-                if (findUser.getHashPassword().equals(user.getHashPassword())) {
-                    return findUser;
-                } else {
-                    System.out.println("wrong password");
+            connection = ConnectionPoolImpl.getInstance().takeConnection();
+            userDAO = new UserDAO(connection);
+
+            User user = userDAO.findUserByLogin(login);
+            if (user != null) {
+                try {
+                    if (user.getHashPassword().equals(MD5Generator.generateHash(password))) {
+                        return user;
+                    } else {
+                        throw new ServiceException("Wrong password");
+                    }
+                } catch (TechnicalException e) {
+                    throw new ServiceException("Sorry, technical error", e);
                 }
             } else {
-                System.out.println("wrong count");
+                throw new ServiceException("Login failed. Incorrect login");
             }
-        } catch (RepositoryException e) {
-            e.printStackTrace();
+        } catch (ConnectionPoolException e) {
+            throw new ServiceException("Sorry, technical error", e);
+        } catch (DAOException e) {
+            throw new ServiceException("Sorry, technical error", e);
+        } finally {
+            if (userDAO != null) {
+                userDAO.closeConnection(connection);
+            }
         }
-        return null;
     }
 
     @Override
-    public User registration(User user) throws ServiceException {
+    public User signUp(String login, String password, String email) throws ServiceException {
+        ProxyConnection connection = null;
+        UserDAO userDAO = null;
         try {
-            if (UserValidator.validateName(user.getLogin())) {
-                userRepository.add(user);
+            connection = ConnectionPoolImpl.getInstance().takeConnection();
+            userDAO = new UserDAO(connection);
+
+            if (UserValidator.validateName(login)) {
+                User user = new User();
+                user.setLogin(login);
+                user.setHashPassword(MD5Generator.generateHash(password));
+                user.setEmail(email);
+                user.setRole(RoleType.USER);
+                userDAO.create(user);
+                return user;
             } else {
                 throw new ServiceException("Invalid name");
             }
-        } catch (RepositoryException e) {
-            e.printStackTrace();
+        }  catch (TechnicalException e) {
+            throw new ServiceException("Technical exception", e);
+        } catch (ConnectionPoolException e) {
+            throw new ServiceException("Invalid name", e);
+        } catch (DAOException e) {
+            throw new ServiceException("Invalid name", e);
         }
-        return null;
+        finally {
+            if (userDAO != null) {
+                userDAO.closeConnection(connection);
+            }
+        }
     }
 }

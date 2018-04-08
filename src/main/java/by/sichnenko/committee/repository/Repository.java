@@ -1,8 +1,8 @@
 package by.sichnenko.committee.repository;
 
 import by.sichnenko.committee.exception.RepositoryException;
+import by.sichnenko.committee.specification.Specification;
 
-import java.util.Comparator;
 import java.util.List;
 
 public interface Repository<T> {
@@ -12,5 +12,5 @@ public interface Repository<T> {
 
     boolean remove(T item) throws RepositoryException;
 
-    List<T> query(Specification<T> specification) throws RepositoryException;
+    List<T> query(Specification specification) throws RepositoryException;
 }
