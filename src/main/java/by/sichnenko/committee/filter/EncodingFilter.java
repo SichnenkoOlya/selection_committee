@@ -7,14 +7,14 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 @WebFilter(filterName = "encodingFilter",
-        urlPatterns = {"/"},
+        urlPatterns = {"/*"},
         initParams = {
                 @WebInitParam(name = "encoding", value = "UTF-8", description = "Encoding Param"),
                 @WebInitParam(name = "contentType", value = "text/html", description = "Content type Param") })
+
 public class EncodingFilter implements Filter {
     private String code;
     private String contentType;
-
 
     public void init(FilterConfig fConfig) throws ServletException {
         code = fConfig.getInitParameter("encoding");

@@ -1,11 +1,11 @@
 package by.sichnenko.committee.service;
 
+import by.sichnenko.committee.controller.SessionRequestContent;
 import by.sichnenko.committee.exception.ServiceException;
 import by.sichnenko.committee.model.Enrollee;
-import by.sichnenko.committee.model.User;
+
+import java.util.List;
 
 public interface EnrolleeService {
-    Enrollee fillEnrollee(String name, String surname, String patronymic,
-                          String faculty, String city, String country, String phoneNumber) throws ServiceException;
-
+    Enrollee fillEnrollee(SessionRequestContent sessionRequestContent) throws ServiceException;
 }

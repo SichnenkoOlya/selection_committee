@@ -26,7 +26,7 @@ public class ConnectionPoolImpl implements ConnectionPool {
     private final String USER;
     private final String PASSWORD;
     private int POOL_SIZE;
-    private final static int DEFAULT_POOL_SIZE =12;
+    private final static int DEFAULT_POOL_SIZE = 12;
     private LinkedBlockingQueue<ProxyConnection> availableConnections;
     private ArrayDeque<ProxyConnection> usedConnections;//
 
@@ -37,9 +37,8 @@ public class ConnectionPoolImpl implements ConnectionPool {
         PASSWORD = ResourceManager.readProperty("db_password", DB_FILE_PROPERTIES_NAME);
         try {
             POOL_SIZE = Integer.parseInt(ResourceManager.readProperty("db_pool_size", DB_FILE_PROPERTIES_NAME));
-        }
-        catch(NumberFormatException ex){
-            POOL_SIZE=DEFAULT_POOL_SIZE;
+        } catch (NumberFormatException ex) {
+            POOL_SIZE = DEFAULT_POOL_SIZE;
         }
         try {
             initConnectionPool();
@@ -99,20 +98,20 @@ public class ConnectionPoolImpl implements ConnectionPool {
         } catch (SQLException e) {
             throw new ConnectionPoolException(e);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            throw new ConnectionPoolException(e);
         }
     }
 
     @Override
-    public ProxyConnection takeConnection() throws ConnectionPoolException {
-        ProxyConnection connection;
+    public ProxyConnection takeConnection() {
+        ProxyConnection connection = null;
         try {
             connection = availableConnections.take();
             usedConnections.push(connection);
-            return connection;
         } catch (InterruptedException e) {
-            throw new ConnectionPoolException("1", e);
+            LOGGER.error(e);
         }
+        return connection;
     }
 
     @Override

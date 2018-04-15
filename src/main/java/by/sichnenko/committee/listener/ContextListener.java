@@ -2,7 +2,6 @@ package by.sichnenko.committee.listener;
 
 import by.sichnenko.committee.connection.ConnectionPoolImpl;
 import by.sichnenko.committee.exception.ConnectionPoolException;
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

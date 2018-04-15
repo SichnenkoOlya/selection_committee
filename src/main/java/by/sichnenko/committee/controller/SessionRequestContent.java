@@ -1,4 +1,4 @@
-package by.sichnenko.committee.content;
+package by.sichnenko.committee.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Enumeration;
@@ -11,7 +11,7 @@ public class SessionRequestContent {
     private String contextPath;
     private String realPath;
 
-    public SessionRequestContent(){
+    public SessionRequestContent() {
         requestAttributes = new HashMap<>();
         requestParameters = new HashMap<>();
         sessionAttributes = new HashMap<>();
@@ -29,7 +29,6 @@ public class SessionRequestContent {
         return sessionAttributes;
     }
 
-
     public String getContextPath() {
         return contextPath;
     }
@@ -37,8 +36,8 @@ public class SessionRequestContent {
     public String getRealPath() {
         return realPath;
     }
-    
-    public void extractValues(HttpServletRequest request) {
+
+    void extractValues(HttpServletRequest request) {
         Enumeration<String> attributteNames = request.getAttributeNames();
         Enumeration<String> parameterNames = request.getParameterNames();
         Enumeration<String> sessionAttrNameibutteNames = request.getSession().getAttributeNames();
@@ -61,7 +60,7 @@ public class SessionRequestContent {
     }
 
 
-    public void insertAttributes(HttpServletRequest request) {
+    void insertAttributes(HttpServletRequest request) {
         Enumeration<String> sessionAttrNameibutteNames = request.getSession().getAttributeNames();
         Enumeration<String> attributteNames = request.getAttributeNames();
 

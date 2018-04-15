@@ -9,11 +9,12 @@ public class RequestNameConstant {
     public static final String LAST_PAGE = "lastPage";
     public static final String LOCALE = "locale";
     public static final String LOGIN = "login";
-    public static final String NAME = "userName";
+    public static final String NAME = "name";
     public static final String PASSWORD = "password";
     public static final String PATRONYMIC = "patronymic";
-    public static final String PHONE_NUMBER = "phone";
+    public static final String PHONE_NUMBER = "phoneNumber";
     public static final String ROLE = "role";
     public static final String SURNAME = "surname";
+    public static final String PASSPORT = "passport";
 
 }

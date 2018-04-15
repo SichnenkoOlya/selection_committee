@@ -7,7 +7,7 @@ public interface ConnectionPool {
 
     void disposeConnectionPool() throws ConnectionPoolException;
 
-    ProxyConnection takeConnection() throws ConnectionPoolException;
+    ProxyConnection takeConnection();
 
     void returnConnection(ProxyConnection connection);
 }
