@@ -17,6 +17,7 @@ import by.sichnenko.committee.model.Faculty;
 import by.sichnenko.committee.model.User;
 import by.sichnenko.committee.service.EnrolleeService;
 import by.sichnenko.committee.service.UserService;
+import by.sichnenko.committee.validator.EnrolleeValidator;
 import by.sichnenko.committee.validator.GeneralValidator;
 import by.sichnenko.committee.validator.UserValidator;
 
@@ -51,7 +52,7 @@ public class EnrolleeServiceImpl implements EnrolleeService {
 
             User user = userDAO.findUserByLogin(login);
 
-            if (UserValidator.validateName(login)) {
+            if (EnrolleeValidator.validateName(login)) {
                 Enrollee enrollee = new Enrollee();
                 enrollee.setName(name[0]);
                 enrollee.setSurname(surname[0]);
@@ -111,16 +112,15 @@ public class EnrolleeServiceImpl implements EnrolleeService {
     }
 
     @Override
-    public Enrollee findEnrolleeByUserId(SessionRequestContent sessionRequestContent) throws ServiceException {
-        String[] login = sessionRequestContent.getRequestParameters().get(LOGIN);
+    public Enrollee findEnrolleeByUser(String login) throws ServiceException {
 
         if (!GeneralValidator.isVarExist(login)) {
-            sessionRequestContent.getRequestAttributes().put(GeneralConstant.INCORRECT_DATA, true);
+            //sessionRequestContent.getRequestAttributes().put(GeneralConstant.INCORRECT_DATA, true);
             throw new ServiceException("Incorrect data");
         }
         try {
             UserDAO userDAO=new UserDAOImpl();
-            User user=userDAO.findUserByLogin(login[0]);
+            User user=userDAO.findUserByLogin(login);
             EnrolleeDAO enrolleeDAO = new EnrolleeDAOImpl();
             return enrolleeDAO.findEnrolleeByUserId(user.getUserId());
         } catch (DAOException e) {

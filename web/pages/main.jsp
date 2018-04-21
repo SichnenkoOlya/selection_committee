@@ -16,13 +16,13 @@
 <fmt:message key="label.description" var="descriptionTxt"/>
 <fmt:message key="label.change_password" var="changePasswordTxt"/>
 <body>
-<c:set var="lastPage" value="pages/main.jsp" scope="session"/>
 
 <br>
 
-${pageContext.request.contextPath}
-${pageContext.request.getRealPath("")}
 <br>
+<c:if test="${requestScope.containsKey('errorLoadingFaculties')}">
+    errorLoadingFaculties
+</c:if>
 
 <form action="${pageContext.request.contextPath}/uploadController" method="post" enctype="multipart/form-data">
     <input type="hidden" name="command" value="LOAD_FACULTY_IMAGE"/>
@@ -59,6 +59,9 @@ ${pageContext.request.getRealPath("")}
         <input type="hidden" name="command" value="SHOW_ENROLLEE_FILL_PAGE"/>
         <input type="submit" name="commit" value="${myProfileTxt}">
     </form>
+
+    <a href="${pageContext.request.contextPath}/pages/edit_profile.jsp">Редактировать</a>
+
 
 </c:if>
 

@@ -8,14 +8,14 @@ import by.sichnenko.committee.service.impl.EnrolleeServiceImpl;
 import by.sichnenko.committee.type.RouterType;
 import by.sichnenko.committee.util.Router;
 
-public class ChangeEnrolleeStatus implements ActionCommand {
+public class ChangeAllEnrolleeStatusCommand implements ActionCommand {
     @Override
     public Router execute(SessionRequestContent sessionRequestContent) {
         EnrolleeService enrolleeService = new EnrolleeServiceImpl();
         try {
-            enrolleeService.changeStatus(sessionRequestContent);
+            enrolleeService.changeAllEnrolleesStatus(sessionRequestContent);
         } catch (ServiceException e) {
-            return new Router(RouterType.REDIRECT, defineLastPage(sessionRequestContent));
+            return new Router(RouterType.FORWARD, defineLastPage(sessionRequestContent));
         }
         return new Router(RouterType.REDIRECT, defineLastPage(sessionRequestContent));
     }

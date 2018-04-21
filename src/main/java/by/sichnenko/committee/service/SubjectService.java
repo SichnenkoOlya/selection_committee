@@ -7,5 +7,5 @@ import by.sichnenko.committee.model.Subject;
 import java.util.List;
 
 public interface SubjectService {
-    List<Subject> findAllSubjects(SessionRequestContent sessionRequestContent) throws ServiceException;
+    List<Subject> findAllSubjects() throws ServiceException;
 }

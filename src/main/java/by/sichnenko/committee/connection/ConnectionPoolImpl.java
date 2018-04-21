@@ -62,8 +62,8 @@ public class ConnectionPoolImpl implements ConnectionPool {
         return instance;
     }
 
-    @Override
-    public void initConnectionPool() throws ConnectionPoolException {
+
+     private void initConnectionPool() throws ConnectionPoolException {
         try {
             Class.forName(DRIVER_NAME);
             usedConnections = new ArrayDeque<>(POOL_SIZE);

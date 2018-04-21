@@ -7,8 +7,7 @@ import by.sichnenko.committee.type.RouterType;
 import by.sichnenko.committee.util.Router;
 import by.sichnenko.committee.validator.GeneralValidator;
 
-
-public class ChangeLocale implements ActionCommand {
+public class ChangeLocaleCommand implements ActionCommand {
     @Override
     public Router execute(SessionRequestContent sessionRequestContent) {
         String[] localeParameters = sessionRequestContent.getRequestParameters().get(RequestNameConstant.LOCALE);

@@ -14,7 +14,6 @@
 <fmt:message key="label.country" var="countryTxt"/>
 
 <body>
-<c:set var="lastPage" value="pages/admin/add_country.jsp" scope="session" />
 
 <h1>
     <label>

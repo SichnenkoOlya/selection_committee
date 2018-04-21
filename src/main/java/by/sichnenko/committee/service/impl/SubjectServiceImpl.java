@@ -14,7 +14,7 @@ import java.util.List;
 
 public class SubjectServiceImpl implements SubjectService {
     @Override
-    public List<Subject> findAllSubjects(SessionRequestContent sessionRequestContent) throws ServiceException {
+    public List<Subject> findAllSubjects() throws ServiceException {
         SubjectDAO subjectDAO;
         try {
             subjectDAO = new SubjectDAOImpl();

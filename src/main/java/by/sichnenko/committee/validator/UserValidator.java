@@ -57,15 +57,4 @@ public class UserValidator {
         return matcher.matches();
     }
 
-    /**
-     * Check that param email is correct phone
-     *
-     * @param phone string check for valid phone
-     * @return true if string is correct phone, else return false
-     */
-    public static boolean validatePhoneNumber(String phone) {
-        Pattern pattern = Pattern.compile(PHONE_REGEX);
-        Matcher matcher = pattern.matcher(phone);
-        return matcher.matches();
-    }
 }

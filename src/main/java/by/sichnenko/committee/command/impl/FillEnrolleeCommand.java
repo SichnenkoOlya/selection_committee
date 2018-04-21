@@ -9,35 +9,20 @@ import by.sichnenko.committee.service.impl.EnrolleeServiceImpl;
 import by.sichnenko.committee.type.RouterType;
 import by.sichnenko.committee.util.Router;
 
+import static by.sichnenko.committee.constant.PageNameConstant.FILL_ENROLLEE_PAGE;
 import static by.sichnenko.committee.constant.PageNameConstant.MAIN_PAGE;
-import static by.sichnenko.committee.constant.RequestNameConstant.NAME;
+import static by.sichnenko.committee.constant.RequestNameConstant.ENROLLEE;
 
 public class FillEnrolleeCommand implements ActionCommand {
-    //Если пришёл post, то redirect
-    //ajax
     @Override
     public Router execute(SessionRequestContent sessionRequestContent) {
         EnrolleeService enrolleeService = new EnrolleeServiceImpl();
         try {
             Enrollee enrollee = enrolleeService.fillEnrollee(sessionRequestContent);
+            sessionRequestContent.getSessionAttributes().put(ENROLLEE,enrollee);
         } catch (ServiceException e) {
-            return new Router(RouterType.REDIRECT, MAIN_PAGE);
+            return new Router(RouterType.FORWARD, FILL_ENROLLEE_PAGE);
         }
-
-//        UserService userService = new UserServiceImpl();
-//        User authentificatedUser;
-//        try {
-//            //authentificatedUser = userService.signIn(login, password);
-//        } catch (ServiceException e) {
-//            //???
-//            return ERROR_PAGE;
-//        }
-//        if (authentificatedUser != null) {
-//            HttpSession session = request.getSession();
-//            session.setAttribute(NAME, authentificatedUser.getLogin());
-//            session.setAttribute(ROLE, authentificatedUser.getRole().toString().toLowerCase());
-//            return MAIN_PAGE;
-//        }
         return new Router(RouterType.REDIRECT, MAIN_PAGE);
     }
 }

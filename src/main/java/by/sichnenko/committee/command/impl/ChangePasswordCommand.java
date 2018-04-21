@@ -15,9 +15,8 @@ public class ChangePasswordCommand implements ActionCommand {
         try {
             userService.changeUserPassword(sessionRequestContent);
         } catch (ServiceException e) {
-            return new Router(RouterType.REDIRECT, defineLastPage(sessionRequestContent));
+            return new Router(RouterType.FORWARD, defineLastPage(sessionRequestContent));
         }
-
         return new Router(RouterType.REDIRECT, defineLastPage(sessionRequestContent));
     }
 }

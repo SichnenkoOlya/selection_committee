@@ -14,7 +14,6 @@ public class Faculty {
     private String description;
     private List<Subject> subjects;
 
-
     public long getFacultyId() {
         return facultyId;
     }

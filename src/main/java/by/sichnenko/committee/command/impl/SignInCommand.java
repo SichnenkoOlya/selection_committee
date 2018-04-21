@@ -9,15 +9,12 @@ import by.sichnenko.committee.service.UserService;
 import by.sichnenko.committee.service.impl.UserServiceImpl;
 import by.sichnenko.committee.type.RouterType;
 import by.sichnenko.committee.util.Router;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import java.util.Set;
 
 import static by.sichnenko.committee.constant.PageNameConstant.*;
 import static by.sichnenko.committee.constant.RequestNameConstant.LOGIN;
-import static by.sichnenko.committee.constant.RequestNameConstant.NAME;
 import static by.sichnenko.committee.constant.RequestNameConstant.ROLE;
+import static by.sichnenko.committee.constant.RequestNameConstant.USER;
 
 public class SignInCommand implements ActionCommand {
     @Override
@@ -35,7 +32,7 @@ public class SignInCommand implements ActionCommand {
             return new Router(RouterType.REDIRECT, MAIN_PAGE);
         }
         if (authentificatedUser != null) {
-            sessionRequestContent.getSessionAttributes().put("user", authentificatedUser);
+            sessionRequestContent.getSessionAttributes().put(USER, authentificatedUser);
             sessionRequestContent.getSessionAttributes().put(LOGIN, authentificatedUser.getLogin());
             sessionRequestContent.getSessionAttributes().put(ROLE, authentificatedUser.getRole());
             return new Router(RouterType.REDIRECT, MAIN_PAGE);

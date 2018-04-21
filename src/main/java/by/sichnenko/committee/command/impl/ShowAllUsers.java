@@ -16,15 +16,14 @@ import static by.sichnenko.committee.constant.PageNameConstant.ALL_USERS_PAGE;
 public class ShowAllUsers implements ActionCommand{
     @Override
     public Router execute(SessionRequestContent sessionRequestContent) {
-        UserService userService = new UserServiceImpl();
-
-        try {
-            List<User> users = userService.findAllUsers(sessionRequestContent);
-            sessionRequestContent.getRequestAttributes().put("users", users);
-
-        } catch (ServiceException e) {
-            return new Router(RouterType.FORWARD, ALL_USERS_PAGE);
-        }
+//        UserService userService = new UserServiceImpl();
+//        try {
+//            List<User> users = userService.findAllUsers();
+//            sessionRequestContent.getRequestAttributes().put("users", users);
+//
+//        } catch (ServiceException e) {
+//            return new Router(RouterType.FORWARD, ALL_USERS_PAGE);
+//        }
         return new Router(RouterType.FORWARD, ALL_USERS_PAGE);
     }
 }

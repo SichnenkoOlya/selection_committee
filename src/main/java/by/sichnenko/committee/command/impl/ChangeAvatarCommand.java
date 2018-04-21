@@ -11,14 +11,12 @@ import by.sichnenko.committee.util.Router;
 public class ChangeAvatarCommand implements ActionCommand {
     @Override
     public Router execute(SessionRequestContent sessionRequestContent) {
-
         UserService userService = new UserServiceImpl();
         try {
             userService.changeAvatar(sessionRequestContent);
         } catch (ServiceException e) {
-            return new Router(RouterType.REDIRECT, defineLastPage(sessionRequestContent));
+            return new Router(RouterType.FORWARD, defineLastPage(sessionRequestContent));
         }
-
         return new Router(RouterType.REDIRECT, defineLastPage(sessionRequestContent));
     }
 }

@@ -3,6 +3,8 @@ package by.sichnenko.committee.constant;
 public class RequestNameConstant {
     public static final String CITY = "city";
     public static final String USER = "user";
+    public static final String COUNTRIES = "countries";
+    public static final String CITIES = "cities";
     public static final String COUNTRY = "country";
     public static final String EMAIL = "email";
     public static final String FACULTY = "faculty";
@@ -32,6 +34,12 @@ public class RequestNameConstant {
     public static final String PAID_SCORE="paidScore";
     public static final String SUBJECT_ID="idSubject";
     public static final String FACULTY_IMAGE="facultyImage";
+    public static final String FACULTIES="faculties";
+    public static final String SUBJECTS="subjects";
+    public static final String PRIVILEGES="privileges";
+
+    public static final String ENROLLEE="enrollee";
+    public static final String USERS="users";
     public static final String IMAGE="image";
     public static final String OLD_STATUS_ID="oldStatusId";
     public static final String NEW_STATUS_ID="newStatusId";

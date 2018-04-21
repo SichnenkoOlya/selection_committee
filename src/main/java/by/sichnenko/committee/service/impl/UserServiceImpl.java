@@ -11,6 +11,7 @@ import by.sichnenko.committee.model.User;
 import by.sichnenko.committee.service.UserService;
 import by.sichnenko.committee.util.ImageUploader;
 import by.sichnenko.committee.util.MD5Generator;
+import by.sichnenko.committee.validator.EnrolleeValidator;
 import by.sichnenko.committee.validator.GeneralValidator;
 import by.sichnenko.committee.validator.UserValidator;
 
@@ -68,7 +69,7 @@ public class UserServiceImpl implements UserService {
         try {
             UserDAOImpl userDAO = new UserDAOImpl();
 
-            if (UserValidator.validateName(login[0])) {
+            if (EnrolleeValidator.validateName(login[0])) {
                 User user = new User();
                 user.setLogin(login[0]);
                 user.setHashPassword(MD5Generator.generateHash(password[0]));
@@ -99,6 +100,30 @@ public class UserServiceImpl implements UserService {
             } catch (DAOException e) {
                 throw new ServiceException("Sorry, technical error", e);
             }
+        }
+    }
+
+    @Override
+    public void editUser(SessionRequestContent sessionRequestContent) throws ServiceException {
+        String[] login = sessionRequestContent.getRequestParameters().get(RequestNameConstant.LOGIN);
+        String[] email = sessionRequestContent.getRequestParameters().get(RequestNameConstant.EMAIL);
+        User user = (User) sessionRequestContent.getSessionAttributes().get(RequestNameConstant.USER);
+        if (!GeneralValidator.isVarExist(login) || !GeneralValidator.isVarExist(email)) {
+            sessionRequestContent.getRequestAttributes().put(GeneralConstant.INCORRECT_DATA, true);
+            throw new ServiceException("Incorrect data");
+        }
+        try {
+            UserDAOImpl userDAO = new UserDAOImpl();
+
+            if (EnrolleeValidator.validateName(login[0])) {
+                user.setLogin(login[0]);
+                user.setEmail(email[0]);
+                userDAO.update(user);
+            } else {
+                throw new ServiceException("Invalid name");
+            }
+        } catch (DAOException e) {
+            throw new ServiceException("Invalid name", e);
         }
     }
 
@@ -157,7 +182,7 @@ public class UserServiceImpl implements UserService {
                 Optional<String> filePath = fileUploader.loadFile(sessionRequestContent, IMAGE, DIRECTORY_USER, userId[0]);
                 if (filePath.isPresent()) {
                     UserDAO userDAO = new UserDAOImpl();
-                    userDAO.changeAvatar(Long.valueOf(userId[0]), filePath.get());
+                    userDAO.updateImagePath(Long.valueOf(userId[0]), filePath.get());
                 }
             } catch (DAOException e) {
                 throw new ServiceException("Sorry, technical error", e);
@@ -166,7 +191,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> findAllUsers(SessionRequestContent sessionRequestContent) throws ServiceException {
+    public List<User> findAllUsers() throws ServiceException {
         UserDAO userDAO;
         try {
             userDAO = new UserDAOImpl();
@@ -177,11 +202,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findUser(SessionRequestContent sessionRequestContent) throws ServiceException {
-        String[] login = sessionRequestContent.getRequestParameters().get(RequestNameConstant.LOGIN);
+    public User findUser(String login) throws ServiceException {
+        //String[] login = sessionRequestContent.getRequestParameters().get(RequestNameConstant.LOGIN);
+       //Проверка
         try {
             UserDAOImpl userDAO = new UserDAOImpl();
-            return userDAO.findUserByLogin(login[0]);
+            return userDAO.findUserByLogin(login);
 
         } catch (DAOException e) {
             throw new ServiceException("Invalid name", e);

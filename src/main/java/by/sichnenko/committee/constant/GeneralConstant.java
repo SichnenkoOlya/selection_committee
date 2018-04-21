@@ -6,4 +6,5 @@ public class GeneralConstant {
     public static final String IMAGE_DIRECTORY="images";
     public static final String DIRECTORY_FACULTY="faculty";
     public static final String DIRECTORY_USER="user";
+
 }

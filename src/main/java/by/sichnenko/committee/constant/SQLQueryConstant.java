@@ -2,17 +2,17 @@ package by.sichnenko.committee.constant;
 
 public class SQLQueryConstant {
 
-    public static final String UPDATE_USER = "UPDATE user SET login=?, hash_password=?, role=?, email=? WHERE id=?";
+    public static final String UPDATE_USER = "UPDATE user SET login=?, hash_password=?, role=?, email=?, is_blocked=?, image_path=? WHERE id=?";
     public static final String UPDATE_USER_AVATER = "UPDATE user SET image_path=? WHERE id=?";
     public static final String UPDATE_USER_ROLE = "UPDATE user SET role=? WHERE id=?";
     public static final String UPDATE_All_ENROLLEE_STATUS = "UPDATE enrollee SET enrollee.status_id=? WHERE enrollee.status_id=?";
     public static final String UPDATE_ENROLLEE_STATUS = "UPDATE enrollee SET enrollee.status_id=? WHERE enrollee.id=?";
-    public static final String UPDATE_USER_LOCK = "UPDATE user SET isBlocked=? WHERE id=?";
+    public static final String UPDATE_USER_LOCK = "UPDATE user SET is_blocked=? WHERE id=?";
     public static final String UPDATE_USER_PASSWORD= "UPDATE user SET hash_password=? WHERE id=?";
     public static final String CREATE_USER = "INSERT INTO user(login, hash_password, role, email) VALUES  (?, ?, ?, ?)";
-    public static final String SELECT_USER_BY_LOGIN = "SELECT id, login, hash_password, role, email, isBlocked, image_path FROM user WHERE login=?";
-    public static final String SELECT_ALL_USERS = "SELECT id, login, hash_password, role, email,isBlocked, image_path FROM user";
-    public static final String SELECT_ALL_USERS_BY_STATUS = "SELECT user.id, user.login, user.hash_password, user.role, user.email, user.isBlocked FROM user " +
+    public static final String SELECT_USER_BY_LOGIN = "SELECT id, login, hash_password, role, email, is_blocked, image_path FROM user WHERE login=?";
+    public static final String SELECT_ALL_USERS = "SELECT id, login, hash_password, role, email,is_blocked, image_path FROM user";
+    public static final String SELECT_ALL_USERS_BY_STATUS = "SELECT user.id, user.login, user.hash_password, user.role, user.email, user.is_blocked FROM user " +
             "INNER JOIN enrollee ON enrollee.user_id=user.id WHERE enrollee.status_id=?";
 
     public static final String CREATE_ENROLLEE = "INSERT INTO enrollee (name, surname, patronymic, phone_number, faculty_id," +

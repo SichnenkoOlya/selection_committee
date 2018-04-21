@@ -10,12 +10,11 @@ import by.sichnenko.committee.util.Router;
 
 import static by.sichnenko.committee.constant.PageNameConstant.MAIN_PAGE;
 
-public class LoadImageFaculty implements ActionCommand {
+public class LoadImageFacultyCommand implements ActionCommand {
     @Override
     public Router execute(SessionRequestContent sessionRequestContent) {
         FacultyService facultyService =new FacultyServiceImpl();
         try {
-
             facultyService.loadImage(sessionRequestContent);
         } catch (ServiceException e) {
             return new Router(RouterType.REDIRECT, MAIN_PAGE);

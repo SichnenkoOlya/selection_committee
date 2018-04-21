@@ -21,7 +21,7 @@ import java.util.List;
 
 public class CityServiceImpl implements CityService {
     @Override
-    public List<City> findAllCities(SessionRequestContent sessionRequestContent) throws ServiceException {
+    public List<City> findAllCities() throws ServiceException {
         CityDAO cityDAO;
         try {
             cityDAO = new CityDAOImpl();

@@ -10,14 +10,14 @@ public interface UserDAO extends DAO<User> {
 
     User findUserByLogin(String login) throws DAOException;
 
+    List<User> findAllUsersByStatus(Long statusId) throws DAOException;
+
     void updateRole(Long userId, RoleType newRole) throws DAOException;
 
     void updateLock(Long userId, Boolean newLock) throws DAOException;
 
     void updatePassword(Long userId, String newPassword) throws DAOException;
 
-    List<User> findAllUsersByStatus(Long statusId) throws DAOException;
-
-    void changeAvatar(Long userId, String imagePath) throws DAOException;
+    void updateImagePath(Long userId, String imagePath) throws DAOException;
 }
 

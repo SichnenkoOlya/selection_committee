@@ -16,15 +16,15 @@ import static by.sichnenko.committee.constant.PageNameConstant.MAIN_PAGE;
 public class ShowFacultiesCommand implements ActionCommand {
     @Override
     public Router execute(SessionRequestContent sessionRequestContent) {
-        FacultyService facultyService = new FacultyServiceImpl();
-
-        try {
-            List<Faculty> faculties = facultyService.findAllFaculties(sessionRequestContent);
-            sessionRequestContent.getRequestAttributes().put("faculties", faculties);
-
-        } catch (ServiceException e) {
-            return new Router(RouterType.FORWARD, MAIN_PAGE);
-        }
+//        FacultyService facultyService = new FacultyServiceImpl();
+//
+//        try {
+//            List<Faculty> faculties = facultyService.findAllFaculties();
+//            sessionRequestContent.getRequestAttributes().put("faculties", faculties);
+//
+//        } catch (ServiceException e) {
+//            return new Router(RouterType.FORWARD, MAIN_PAGE);
+//        }
         return new Router(RouterType.FORWARD, MAIN_PAGE);
     }
 }

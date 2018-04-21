@@ -6,7 +6,7 @@ import javax.servlet.jsp.tagext.TagSupport;
 public class NullElement  extends TagSupport {
     private Object element;
 
-    public void setTest(Object element) {
+    public void setElement(Object element) {
         this.element = element;
     }
 

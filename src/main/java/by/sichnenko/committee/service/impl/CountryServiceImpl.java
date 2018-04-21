@@ -12,7 +12,7 @@ import java.util.List;
 
 public class CountryServiceImpl implements CountryService {
     @Override
-    public List<Country> findAllCountries(SessionRequestContent sessionRequestContent) throws ServiceException {
+    public List<Country> findAllCountries() throws ServiceException {
         CountryDAO countryDAO;
         try {
             countryDAO = new CountryDAOImpl();

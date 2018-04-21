@@ -17,11 +17,9 @@ import static by.sichnenko.committee.constant.PageNameConstant.*;
 public class SignUpCommand implements ActionCommand {
     @Override
     public Router execute(SessionRequestContent sessionRequestContent) {
-
         UserService userService = new UserServiceImpl();
-        User newUser;
         try {
-            newUser = userService.signUp(sessionRequestContent);
+            User newUser = userService.signUp(sessionRequestContent);
             return new Router(RouterType.REDIRECT, MAIN_PAGE);
         } catch (ServiceException e) {
             //???

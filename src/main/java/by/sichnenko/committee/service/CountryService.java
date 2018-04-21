@@ -7,5 +7,5 @@ import by.sichnenko.committee.model.Country;
 import java.util.List;
 
 public interface CountryService {
-    List<Country> findAllCountries(SessionRequestContent sessionRequestContent) throws ServiceException;
+    List<Country> findAllCountries() throws ServiceException;
 }

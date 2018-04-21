@@ -16,7 +16,7 @@ public final class SQLFieldConstant {
         public static final String HASH_PASSWORD = "hash_password";
         public static final String EMAIL = "email";
         public static final String ROLE = "role";
-        public static final String LOCK = "isBlocked";
+        public static final String LOCK = "is_blocked";
         public static final String IMAGE_PATH = "image_path";
     }
 

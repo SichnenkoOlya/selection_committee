@@ -12,12 +12,11 @@ public class CommandProvider {
     CommandProvider() {
         commands.put(EMAIL_SEND, new SendEmail());
         commands.put(MAIN, new ShowMainPageCommand());
-        commands.put(FILE_LOAD, new LoadFile());
         commands.put(SIGN_IN, new SignInCommand());
         commands.put(SIGN_UP, new SignUpCommand());
         commands.put(SIGN_OUT, new SignOutCommand());
         commands.put(FILL_ENROLLEE, new FillEnrolleeCommand());
-        commands.put(CHANGE_LOCALE, new ChangeLocale());
+        commands.put(CHANGE_LOCALE, new ChangeLocaleCommand());
         commands.put(SHOW_ENROLLEE_FILL_PAGE, new ShowEnrolleeFillPage());
         commands.put(SHOW_ALL_USERS, new ShowAllUsers());
         commands.put(SHOW_DETAIL_USER, new ShowDetailUserPage());
@@ -30,11 +29,11 @@ public class CommandProvider {
         commands.put(SHOW_ADD_FACULTY_PAGE, new ShowAddFacultyPage());
         commands.put(ADD_NEW_FACULTY, new AddNewFacultyCommand());
         commands.put(FIND_CITIES_BY_COUNTRY_ID, new FindCitiesByCountryCommand());
-        commands.put(LOAD_FILE, new LoadFile());
-        commands.put(LOAD_FACULTY_IMAGE, new LoadImageFaculty());
-        commands.put(CHANGE_ALL_ENROLLEE_STATUS, new ChangeAllEnrolleeStatus());
-        commands.put(CHANGE_ENROLLEE_STATUS, new ChangeEnrolleeStatus());
+        commands.put(LOAD_FACULTY_IMAGE, new LoadImageFacultyCommand());
+        commands.put(CHANGE_ALL_ENROLLEE_STATUS, new ChangeAllEnrolleeStatusCommand());
+        commands.put(CHANGE_ENROLLEE_STATUS, new ChangeEnrolleeStatusCommand());
         commands.put(CHANGE_AVATAR, new ChangeAvatarCommand());
+        commands.put(EDIT_USER_PROFILE, new EditUserProfileCommand());
 
     }
 

@@ -17,31 +17,31 @@ import static by.sichnenko.committee.constant.PageNameConstant.FILL_ENROLLEE_PAG
 public class ShowEnrolleeFillPage implements ActionCommand {
     @Override
     public Router execute(SessionRequestContent sessionRequestContent) {
-        CountryService countryService = new CountryServiceImpl();
-        PrivilegeService privilegeService = new PrivilegeServiceImpl();
-        SubjectService subjectService = new SubjectServiceImpl();
-        FacultyService facultyService = new FacultyServiceImpl();
-        CityService cityService = new CityServiceImpl();
-
-        try {
-            List<Country> countries = countryService.findAllCountries(sessionRequestContent);
-            sessionRequestContent.getRequestAttributes().put("countries", countries);
-
-            List<Subject> subjects = subjectService.findAllSubjects(sessionRequestContent);
-            sessionRequestContent.getRequestAttributes().put("subjects", subjects);
-
-            List<Privilege> privileges = privilegeService.findAllPrivileges(sessionRequestContent);
-            sessionRequestContent.getRequestAttributes().put("privileges", privileges);
-
-            List<Faculty> faculties = facultyService.findAllFaculties(sessionRequestContent);
-            sessionRequestContent.getRequestAttributes().put("faculties", faculties);
-
-            List<City> cities = cityService.findAllCities(sessionRequestContent);
-            sessionRequestContent.getRequestAttributes().put("cities", cities);
-
-        } catch (ServiceException e) {
-            return new Router(RouterType.FORWARD, FILL_ENROLLEE_PAGE);
-        }
+//        CountryService countryService = new CountryServiceImpl();
+//        PrivilegeService privilegeService = new PrivilegeServiceImpl();
+//        SubjectService subjectService = new SubjectServiceImpl();
+//        FacultyService facultyService = new FacultyServiceImpl();
+//        CityService cityService = new CityServiceImpl();
+//
+//        try {
+//            List<Country> countries = countryService.findAllCountries(sessionRequestContent);
+//            sessionRequestContent.getRequestAttributes().put("countries", countries);
+//
+//            List<Subject> subjects = subjectService.findAllSubjects();
+//            sessionRequestContent.getRequestAttributes().put("subjects", subjects);
+//
+//            List<Privilege> privileges = privilegeService.findAllPrivileges(sessionRequestContent);
+//            sessionRequestContent.getRequestAttributes().put("privileges", privileges);
+//
+//            List<Faculty> faculties = facultyService.findAllFaculties();
+//            sessionRequestContent.getRequestAttributes().put("faculties", faculties);
+//
+//            List<City> cities = cityService.findAllCities(sessionRequestContent);
+//            sessionRequestContent.getRequestAttributes().put("cities", cities);
+//
+//        } catch (ServiceException e) {
+//            return new Router(RouterType.FORWARD, FILL_ENROLLEE_PAGE);
+//        }
         return new Router(RouterType.FORWARD, FILL_ENROLLEE_PAGE);
     }
 }

@@ -15,12 +15,22 @@ public class GeneralValidator {
     }
 
     /**
+     * Validate that string is not empty or null
+     *
+     * @param stringVar checked string
+     * @return true if string is not null or empty, else return false
+     */
+    public static boolean isVarExist(String stringVar) {
+        return stringVar != null && !stringVar.trim().isEmpty();
+    }
+
+    /**
      * Validate that string is positive number
      *
      * @param stringVar checked string
      * @return true if string is positive number, else return false
      */
-    public boolean isPositiveNumber(String stringVar) {
+    public static boolean isPositiveNumber(String stringVar) {
         boolean isPositiveNumber;
         try {
             if (stringVar != null) {
@@ -43,7 +53,7 @@ public class GeneralValidator {
      * @return true if string is valid image extension, else return false
      * @see ImageExtensionType
      */
-    public boolean isImageExtensionValid(String extension) {
+    public static boolean isImageExtensionValid(String extension) {
         boolean isValid = true;
 
         if (extension != null) {

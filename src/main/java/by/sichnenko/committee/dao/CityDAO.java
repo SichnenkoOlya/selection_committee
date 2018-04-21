@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface CityDAO extends DAO<City> {
     City findCityByName(String name) throws DAOException;
+
     List<City> findCitiesByCountryId(Long countryId) throws DAOException;
 }

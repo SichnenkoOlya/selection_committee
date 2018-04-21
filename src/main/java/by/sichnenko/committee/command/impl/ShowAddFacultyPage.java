@@ -17,13 +17,13 @@ import static by.sichnenko.committee.constant.PageNameConstant.MAIN_PAGE;
 public class ShowAddFacultyPage implements ActionCommand {
     @Override
     public Router execute(SessionRequestContent sessionRequestContent) {
-        SubjectService subjectService = new SubjectServiceImpl();
-        try {
-            List<Subject> subjects = subjectService.findAllSubjects(sessionRequestContent);
-            sessionRequestContent.getRequestAttributes().put("subjects", subjects);
-        } catch (ServiceException e) {
-            return new Router(RouterType.FORWARD, MAIN_PAGE);
-        }
+//        SubjectService subjectService = new SubjectServiceImpl();
+//        try {
+//            List<Subject> subjects = subjectService.findAllSubjects();
+//            sessionRequestContent.getRequestAttributes().put("subjects", subjects);
+//        } catch (ServiceException e) {
+//            return new Router(RouterType.FORWARD, MAIN_PAGE);
+//        }
         return new Router(RouterType.FORWARD, ADD_FACULTY_PAGE);
     }
 }

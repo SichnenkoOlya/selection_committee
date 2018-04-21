@@ -23,7 +23,7 @@ import static by.sichnenko.committee.constant.RequestNameConstant.IMAGE;
 
 public class FacultyServiceImpl implements FacultyService {
     @Override
-    public List<Faculty> findAllFaculties(SessionRequestContent sessionRequestContent) throws ServiceException {
+    public List<Faculty> findAllFaculties() throws ServiceException {
         FacultyDAO facultyDAO;
         try {
             facultyDAO = new FacultyDAOImpl();
@@ -34,16 +34,15 @@ public class FacultyServiceImpl implements FacultyService {
     }
 
     @Override
-    public Faculty findFacultyById(SessionRequestContent sessionRequestContent) throws ServiceException {
+    public Faculty findFacultyById(String facultyId) throws ServiceException {
         FacultyDAO facultyDAO;
         SubjectDAO subjectDAO;
-        String[] facultyId = sessionRequestContent.getRequestParameters().get(RequestNameConstant.FACULTY_ID);
-        if (GeneralValidator.isVarExist(facultyId)) {
+        if (GeneralValidator.isVarExist(facultyId) && GeneralValidator.isPositiveNumber(facultyId)) {
             try {
                 facultyDAO = new FacultyDAOImpl();
                 subjectDAO = new SubjectDAOImpl();
-                Faculty faculty = facultyDAO.findFacultyById(Long.valueOf(facultyId[0]));
-                faculty.setSubjects(subjectDAO.findSubjetsForFaculty(Long.valueOf(facultyId[0])));
+                Faculty faculty = facultyDAO.findFacultyById(Long.valueOf(facultyId));
+                faculty.setSubjects(subjectDAO.findSubjetsForFaculty(Long.valueOf(facultyId)));
                 return faculty;
             } catch (DAOException e) {
                 throw new ServiceException("Sorry, technical error", e);
@@ -79,8 +78,8 @@ public class FacultyServiceImpl implements FacultyService {
                 faculty.setBudjetPlaceCount(Integer.valueOf(budjetCount[0]));
                 facultyDAO.create(faculty);
                 Faculty findFaculty = facultyDAO.findFacultyByName(facultyName[0]);
-                List<Long> subjectsId=new ArrayList<>();
-                for(String subjetcId:subjects){
+                List<Long> subjectsId = new ArrayList<>();
+                for (String subjetcId : subjects) {
                     subjectsId.add(Long.valueOf(subjetcId));
                 }
 
@@ -99,16 +98,17 @@ public class FacultyServiceImpl implements FacultyService {
         String[] facultyId = sessionRequestContent.getRequestParameters().get(RequestNameConstant.FACULTY_ID);
         if (GeneralValidator.isVarExist(facultyId)) {
             ImageUploader fileUploader = new ImageUploader();
-            Optional<String> filePath=fileUploader.loadFile(sessionRequestContent, IMAGE, DIRECTORY_FACULTY, facultyId[0]);
-            if(filePath.isPresent()){
-            FacultyDAO facultyDAO=new FacultyDAOImpl();
+            Optional<String> filePath = fileUploader.loadFile(sessionRequestContent, IMAGE, DIRECTORY_FACULTY, facultyId[0]);
+            if (filePath.isPresent()) {
+                FacultyDAO facultyDAO = new FacultyDAOImpl();
                 try {
-                    facultyDAO.upfdateImage(Long.valueOf(facultyId[0]),filePath.get());
+                    facultyDAO.upfdateImage(Long.valueOf(facultyId[0]), filePath.get());
                     return true;
                 } catch (DAOException e) {
 
                     return false;
-                }}
+                }
+            }
 
         }
         return false;

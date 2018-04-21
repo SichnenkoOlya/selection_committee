@@ -15,7 +15,7 @@ import java.util.List;
 public class PrivilegeServiceImpl implements PrivilegeService {
 
     @Override
-    public List<Privilege> findAllPrivileges(SessionRequestContent sessionRequestContent) throws ServiceException {
+    public List<Privilege> findAllPrivileges() throws ServiceException {
         PrivilegeDAO privilegeDAO;
         try {
             privilegeDAO = new PrivilegeDAOImpl();

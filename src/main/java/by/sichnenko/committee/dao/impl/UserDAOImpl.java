@@ -159,7 +159,7 @@ public class UserDAOImpl implements by.sichnenko.committee.dao.UserDAO {
     }
 
     @Override
-    public void changeAvatar(Long userId, String imagePath) throws DAOException {
+    public void updateImagePath(Long userId, String imagePath) throws DAOException {
         ProxyConnection proxyConnection = null;
         try {
             proxyConnection = ConnectionPoolImpl.getInstance().takeConnection();
@@ -207,9 +207,11 @@ public class UserDAOImpl implements by.sichnenko.committee.dao.UserDAO {
             try (PreparedStatement statement = proxyConnection.prepareStatement(SQLQueryConstant.UPDATE_USER)) {
                 statement.setString(1, user.getLogin());
                 statement.setString(2, user.getHashPassword());
-                statement.setString(3, user.getRole().toString());
+                statement.setString(3, user.getRole().name().toLowerCase());
                 statement.setString(4, user.getEmail());
-                statement.setString(5, String.valueOf(user.getUserId()));
+                statement.setBoolean(5, user.getIsBlocked());
+                statement.setString(6, user.getImagePath());
+                statement.setLong(7,user.getUserId());
                 statement.executeUpdate();
 
             } catch (SQLException e) {
