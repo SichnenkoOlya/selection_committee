@@ -17,6 +17,7 @@ public class ImageUploader {
 
     /**
      * Allow to upload file
+     *
      * @param sessionRequestContent Copy of the request
      * @param paramName             parameter of file in request
      * @param directoryName         Cirectory in which file will be load
@@ -66,6 +67,7 @@ public class ImageUploader {
 
     /**
      * Find file extension
+     *
      * @param fileName Name of file
      * @return File extension
      */
@@ -76,6 +78,7 @@ public class ImageUploader {
 
     /**
      * Find file name
+     *
      * @param part Item that was received within a multipart/form-data POST request.
      * @return Name of submitted item
      */
@@ -93,8 +96,9 @@ public class ImageUploader {
 
     /**
      * Write input stream to file
+     *
      * @param inputStream inputStream which will be written in file
-     * @param file File in which inputStream will be written
+     * @param file        File in which inputStream will be written
      * @throws IOException .
      */
     private void copyInputStreamToFile(InputStream inputStream, File file) throws IOException {
