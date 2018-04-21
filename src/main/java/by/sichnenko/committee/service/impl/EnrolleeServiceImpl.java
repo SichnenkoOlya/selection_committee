@@ -16,6 +16,7 @@ import by.sichnenko.committee.model.Enrollee;
 import by.sichnenko.committee.model.Faculty;
 import by.sichnenko.committee.model.User;
 import by.sichnenko.committee.service.EnrolleeService;
+import by.sichnenko.committee.service.UserService;
 import by.sichnenko.committee.validator.GeneralValidator;
 import by.sichnenko.committee.validator.UserValidator;
 
@@ -68,7 +69,61 @@ public class EnrolleeServiceImpl implements EnrolleeService {
             } else {
                 throw new ServiceException("Invalid name");
             }
-        }    catch (DAOException e) {
+        } catch (DAOException e) {
+            throw new ServiceException("Invalid name", e);
+        }
+    }
+
+    @Override
+    public void changeAllEnrolleesStatus(SessionRequestContent sessionRequestContent) throws ServiceException {
+        String[] oldStatusId = sessionRequestContent.getRequestParameters().get(OLD_STATUS_ID);
+        String[] newStatusId = sessionRequestContent.getRequestParameters().get(NEW_STATUS_ID);
+
+        if (!GeneralValidator.isVarExist(oldStatusId) || !GeneralValidator.isVarExist(newStatusId)) {
+            sessionRequestContent.getRequestAttributes().put(GeneralConstant.INCORRECT_DATA, true);
+            throw new ServiceException("Incorrect data");
+        }
+        try {
+            EnrolleeDAO enrolleeDAO = new EnrolleeDAOImpl();
+            enrolleeDAO.changeAllEnrolleesStatus(Long.valueOf(oldStatusId[0]), Long.valueOf(newStatusId[0]));
+        } catch (DAOException e) {
+            throw new ServiceException("Invalid name", e);
+        }
+    }
+
+    @Override
+    public void changeStatus(SessionRequestContent sessionRequestContent) throws ServiceException {
+        String[] userId = sessionRequestContent.getRequestParameters().get(USER_ID);
+        String[] newStatusId = sessionRequestContent.getRequestParameters().get(NEW_STATUS_ID);
+
+        if (!GeneralValidator.isVarExist(userId) || !GeneralValidator.isVarExist(newStatusId)) {
+            sessionRequestContent.getRequestAttributes().put(GeneralConstant.INCORRECT_DATA, true);
+            throw new ServiceException("Incorrect data");
+        }
+        try {
+            UserDAO userDAO=new UserDAOImpl();
+            EnrolleeDAO enrolleeDAO = new EnrolleeDAOImpl();
+            Enrollee enrollee=enrolleeDAO.findEnrolleeByUserId(Long.valueOf(userId[0]));
+            enrolleeDAO.changeStatus(enrollee.getEnrolleeId(), Long.valueOf(newStatusId[0]));
+        } catch (DAOException e) {
+            throw new ServiceException("Invalid name", e);
+        }
+    }
+
+    @Override
+    public Enrollee findEnrolleeByUserId(SessionRequestContent sessionRequestContent) throws ServiceException {
+        String[] login = sessionRequestContent.getRequestParameters().get(LOGIN);
+
+        if (!GeneralValidator.isVarExist(login)) {
+            sessionRequestContent.getRequestAttributes().put(GeneralConstant.INCORRECT_DATA, true);
+            throw new ServiceException("Incorrect data");
+        }
+        try {
+            UserDAO userDAO=new UserDAOImpl();
+            User user=userDAO.findUserByLogin(login[0]);
+            EnrolleeDAO enrolleeDAO = new EnrolleeDAOImpl();
+            return enrolleeDAO.findEnrolleeByUserId(user.getUserId());
+        } catch (DAOException e) {
             throw new ServiceException("Invalid name", e);
         }
     }

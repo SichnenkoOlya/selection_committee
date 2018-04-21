@@ -1,13 +1,27 @@
 package by.sichnenko.committee.controller;
 
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.Part;
+import java.io.IOException;
+import java.util.Collection;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class SessionRequestContent {
     private HashMap<String, Object> requestAttributes;
     private HashMap<String, String[]> requestParameters;
     private HashMap<String, Object> sessionAttributes;
+    private Map<String,Part> parts;
+    private ServletContext servletContext;
+    private JSONArray ajaxParameter;
+
     private String contextPath;
     private String realPath;
 
@@ -37,7 +51,7 @@ public class SessionRequestContent {
         return realPath;
     }
 
-    void extractValues(HttpServletRequest request) {
+    void extractValues(HttpServletRequest request) throws IOException, ServletException {
         Enumeration<String> attributteNames = request.getAttributeNames();
         Enumeration<String> parameterNames = request.getParameterNames();
         Enumeration<String> sessionAttrNameibutteNames = request.getSession().getAttributeNames();
@@ -52,11 +66,19 @@ public class SessionRequestContent {
             requestParameters.put(paramName, request.getParameterValues(paramName));
         }
 
-
         while (sessionAttrNameibutteNames.hasMoreElements()) {
             String sessionAttrName = sessionAttrNameibutteNames.nextElement();
             sessionAttributes.put(sessionAttrName, request.getSession().getAttribute(sessionAttrName));
         }
+        servletContext=request.getServletContext();
+        if (request.getContentType() != null && request.getContentType().toLowerCase().contains("multipart/form-data")) {
+            parts = request.getParts().stream()
+                    .collect(Collectors.toMap(Part::getName, x -> x));
+        }
+        contextPath = request.getContextPath();
+        realPath = request.getServletContext().getRealPath("");
+
+
     }
 
 
@@ -78,5 +100,29 @@ public class SessionRequestContent {
         sessionAttributes.forEach((key, value) -> request.getSession().setAttribute(key, value));
         contextPath = request.getContextPath();
         realPath = request.getServletContext().getRealPath("");
+    }
+
+    public JSONArray getAjaxParameter() {
+        return ajaxParameter;
+    }
+
+    public void setAjaxParameter(JSONArray ajaxParameter) {
+        this.ajaxParameter = ajaxParameter;
+    }
+
+    public Map<String, Part> getParts() {
+        return parts;
+    }
+
+    public void setParts(Map<String, Part> parts) {
+        this.parts = parts;
+    }
+
+    public ServletContext getServletContext() {
+        return servletContext;
+    }
+
+    public void setServletContext(ServletContext servletContext) {
+        this.servletContext = servletContext;
     }
 }

@@ -3,6 +3,9 @@ package by.sichnenko.committee.command.impl;
 import by.sichnenko.committee.command.ActionCommand;
 import by.sichnenko.committee.constant.RequestNameConstant;
 import by.sichnenko.committee.controller.SessionRequestContent;
+import by.sichnenko.committee.exception.ServiceException;
+import by.sichnenko.committee.service.UserService;
+import by.sichnenko.committee.service.impl.UserServiceImpl;
 import by.sichnenko.committee.type.RouterType;
 import by.sichnenko.committee.util.Router;
 import by.sichnenko.committee.validator.GeneralValidator;
@@ -10,12 +13,12 @@ import by.sichnenko.committee.validator.GeneralValidator;
 public class ChangeUserRoleCommand implements ActionCommand {
     @Override
     public Router execute(SessionRequestContent sessionRequestContent) {
-        String[] localeParameters = sessionRequestContent.getRequestParameters().get(RequestNameConstant.LOCALE);
-        if (GeneralValidator.isVarExist(localeParameters)) {
-            String locale = sessionRequestContent.getRequestParameters().get(RequestNameConstant.LOCALE)[0];
-            sessionRequestContent.getSessionAttributes().put(RequestNameConstant.LOCALE, locale);
+        UserService userService = new UserServiceImpl();
+        try {
+            userService.changeUserRole(sessionRequestContent);
+        } catch (ServiceException e) {
+            return new Router(RouterType.REDIRECT, defineLastPage(sessionRequestContent));
         }
         return new Router(RouterType.REDIRECT, defineLastPage(sessionRequestContent));
-
     }
 }

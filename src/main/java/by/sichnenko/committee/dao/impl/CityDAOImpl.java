@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CityDAOImpl implements CityDAO {
+public class  CityDAOImpl implements CityDAO {
     @Override
     public List<City> findAll() throws DAOException {
         ProxyConnection connection = null;
@@ -27,6 +27,7 @@ public class CityDAOImpl implements CityDAO {
                     City city = new City();
                     city.setCityId(resultSet.getLong(SQLFieldConstant.ID));
                     city.setName(resultSet.getString(SQLFieldConstant.NAME));
+                    city.setCountryId(resultSet.getLong(SQLFieldConstant.City.COUNTRY_ID));
                     cities.add(city);
                 }
                 return cities;
@@ -64,6 +65,32 @@ public class CityDAOImpl implements CityDAO {
                     city.setCountryId(resultSet.getLong(SQLFieldConstant.City.COUNTRY_ID));
                 }
                 return city;
+            } catch (SQLException e) {
+                throw new DAOException("Find city error ", e);
+            }
+        } finally {
+            closeConnection(connection);
+        }
+    }
+
+    @Override
+    public List<City> findCitiesByCountryId(Long countryId) throws DAOException {
+        ProxyConnection connection = null;
+        try {
+            connection = ConnectionPoolImpl.getInstance().takeConnection();
+
+            try (PreparedStatement preparedStatement = connection.prepareStatement(SQLQueryConstant.SELECT_CITY_BY_COUNTRY_ID)) {
+                preparedStatement.setLong(1, countryId);
+                ResultSet resultSet = preparedStatement.executeQuery();
+                List<City> cities=new ArrayList<>();
+                while (resultSet.next()) {
+                    City city = new City();
+                    city.setCityId(resultSet.getLong(SQLFieldConstant.ID));
+                    city.setName(resultSet.getString(SQLFieldConstant.NAME));
+                    city.setCountryId(resultSet.getLong(SQLFieldConstant.City.COUNTRY_ID));
+                    cities.add(city);
+                }
+                return cities;
             } catch (SQLException e) {
                 throw new DAOException("Find city error ", e);
             }

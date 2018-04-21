@@ -16,7 +16,7 @@ import java.util.List;
 
 public class EnrolleeDAOImpl implements EnrolleeDAO {
     @Override
-    public List<by.sichnenko.committee.model.Enrollee> findAll() throws DAOException {
+    public List<Enrollee> findAll() throws DAOException {
         ProxyConnection connection = null;
         try {
             connection = ConnectionPoolImpl.getInstance().takeConnection();
@@ -99,4 +99,73 @@ public class EnrolleeDAOImpl implements EnrolleeDAO {
             closeConnection(proxyConnection);
         }
     }
+
+    @Override
+    public void changeAllEnrolleesStatus(Long oldStatusId, Long newStatusId) throws DAOException {
+        ProxyConnection proxyConnection = null;
+        try {
+            proxyConnection = ConnectionPoolImpl.getInstance().takeConnection();
+
+            try (PreparedStatement statement = proxyConnection.prepareStatement(SQLQueryConstant.UPDATE_All_ENROLLEE_STATUS)) {
+                statement.setLong(1, newStatusId);
+                statement.setLong(2, oldStatusId);
+                statement.executeUpdate();
+
+            } catch (SQLException e) {
+                throw new DAOException("Update enrollee error ", e);
+            }
+        } finally {
+            closeConnection(proxyConnection);
+        }
+    }
+
+    @Override
+    public void changeStatus(Long enrolleeId, Long newStatusId) throws DAOException {
+        ProxyConnection proxyConnection = null;
+        try {
+            proxyConnection = ConnectionPoolImpl.getInstance().takeConnection();
+
+            try (PreparedStatement statement = proxyConnection.prepareStatement(SQLQueryConstant.UPDATE_ENROLLEE_STATUS)) {
+                statement.setLong(1, newStatusId);
+                statement.setLong(2, enrolleeId);
+                statement.executeUpdate();
+
+            } catch (SQLException e) {
+                throw new DAOException("Update enrollee status error ", e);
+            }
+        } finally {
+            closeConnection(proxyConnection);
+        }
+    }
+
+    @Override
+    public Enrollee findEnrolleeByUserId(Long userId) throws DAOException {
+        ProxyConnection connection = null;
+        try {
+            connection = ConnectionPoolImpl.getInstance().takeConnection();
+            try (PreparedStatement preparedStatement = connection.prepareStatement(SQLQueryConstant.SELECT_ENROLLEE_BY_USER_ID)) {
+                preparedStatement.setLong(1,userId);
+                ResultSet resultSet = preparedStatement.executeQuery();
+                Enrollee enrollee = null;
+                if (resultSet.next()) {
+                    enrollee = new by.sichnenko.committee.model.Enrollee();
+                    enrollee.setEnrolleeId(resultSet.getLong(SQLFieldConstant.Enrollee.ID));
+                    enrollee.setName(resultSet.getString(SQLFieldConstant.Enrollee.NAME));
+                    enrollee.setSurname(resultSet.getString(SQLFieldConstant.Enrollee.SURNAME));
+                    enrollee.setPatronymic(resultSet.getString(SQLFieldConstant.Enrollee.PATRONYMIC));
+                    enrollee.setPhoneNumber(resultSet.getString(SQLFieldConstant.Enrollee.PHONE_NUMBER));
+                    enrollee.setFacultyId(resultSet.getLong(SQLFieldConstant.Enrollee.FACULTY_ID));
+                    enrollee.setCityId(resultSet.getLong(SQLFieldConstant.Enrollee.CITY_ID));
+                    enrollee.setStatusId(resultSet.getLong(SQLFieldConstant.Enrollee.STATUS_ID));
+                    enrollee.setUserId(resultSet.getLong(SQLFieldConstant.Enrollee.USER_ID));
+                }
+                return enrollee;
+            } catch (SQLException e) {
+                throw new DAOException("Find enrollees error ", e);
+            }
+        } finally {
+            closeConnection(connection);
+        }
+    }
+
 }

@@ -9,5 +9,5 @@ import java.util.List;
 
 public interface CityService {
     List<City> findAllCities(SessionRequestContent sessionRequestContent) throws ServiceException;
-
+    List<City> findCitiesByCountryId(SessionRequestContent sessionRequestContent) throws ServiceException;
 }

@@ -8,7 +8,8 @@ public class User {
     private String hashPassword;
     private RoleType role;
     private String email;
-    private boolean isLocked;
+    private boolean isBlocked;
+    private String imagePath;
 
     public String getEmail() {
         return email;
@@ -50,12 +51,12 @@ public class User {
         this.userId = userId;
     }
 
-    public boolean getIsLocked() {
-        return isLocked;
+    public boolean getIsBlocked() {
+        return isBlocked;
     }
 
-    public void setIsLocked(boolean locked) {
-        isLocked = locked;
+    public void setIsBlocked(boolean locked) {
+        isBlocked = locked;
     }
 
     @Override
@@ -91,4 +92,11 @@ public class User {
                 '}';
     }
 
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
 }

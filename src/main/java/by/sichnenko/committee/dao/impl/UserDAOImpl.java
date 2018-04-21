@@ -6,6 +6,7 @@ import by.sichnenko.committee.constant.SQLFieldConstant;
 import by.sichnenko.committee.constant.SQLQueryConstant;
 import by.sichnenko.committee.exception.DAOException;
 import by.sichnenko.committee.model.RoleType;
+import by.sichnenko.committee.model.Status;
 import by.sichnenko.committee.model.User;
 
 import java.sql.PreparedStatement;
@@ -31,7 +32,9 @@ public class UserDAOImpl implements by.sichnenko.committee.dao.UserDAO {
                     user.setRole(RoleType.valueOf(resultSet.getString(SQLFieldConstant.User.ROLE).toUpperCase()));
                     user.setEmail(resultSet.getString(SQLFieldConstant.User.EMAIL));
                     user.setLogin(resultSet.getString(SQLFieldConstant.User.LOGIN));
+                    user.setIsBlocked(resultSet.getBoolean(SQLFieldConstant.User.LOCK));
                     user.setHashPassword(resultSet.getString(SQLFieldConstant.User.HASH_PASSWORD));
+                    user.setImagePath(resultSet.getString(SQLFieldConstant.User.IMAGE_PATH));
                 }
                 return user;
             } catch (SQLException e) {
@@ -43,13 +46,14 @@ public class UserDAOImpl implements by.sichnenko.committee.dao.UserDAO {
     }
 
     @Override
-    public void updateRole(User user) throws DAOException {
+    public void updateRole(Long userId, RoleType newRole) throws DAOException {
         ProxyConnection connection = null;
         try {
             connection = ConnectionPoolImpl.getInstance().takeConnection();
 
             try (PreparedStatement statement = connection.prepareStatement(SQLQueryConstant.UPDATE_USER_ROLE)) {
-                statement.setString(1, user.getRole().name().toLowerCase());
+                statement.setString(1, newRole.name().toLowerCase());
+                statement.setLong(2, userId);
                 statement.executeUpdate();
             } catch (SQLException e) {
                 throw new DAOException("Update user error ", e);
@@ -60,13 +64,33 @@ public class UserDAOImpl implements by.sichnenko.committee.dao.UserDAO {
     }
 
     @Override
-    public void updateLock(User user) throws DAOException {
+    public void updateLock(Long userId, Boolean newLock) throws DAOException {
         ProxyConnection connection = null;
         try {
             connection = ConnectionPoolImpl.getInstance().takeConnection();
 
             try (PreparedStatement statement = connection.prepareStatement(SQLQueryConstant.UPDATE_USER_LOCK)) {
-                statement.setBoolean(1, user.getIsLocked());
+                statement.setBoolean(1, newLock);
+                statement.setLong(2, userId);
+                statement.executeUpdate();
+
+            } catch (SQLException e) {
+                throw new DAOException("Update user error ", e);
+            }
+        } finally {
+            closeConnection(connection);
+        }
+    }
+
+    @Override
+    public void updatePassword(Long userId, String newPassword) throws DAOException {
+        ProxyConnection connection = null;
+        try {
+            connection = ConnectionPoolImpl.getInstance().takeConnection();
+
+            try (PreparedStatement statement = connection.prepareStatement(SQLQueryConstant.UPDATE_USER_PASSWORD)) {
+                statement.setString(1, newPassword);
+                statement.setLong(2, userId);
                 statement.executeUpdate();
 
             } catch (SQLException e) {
@@ -83,6 +107,7 @@ public class UserDAOImpl implements by.sichnenko.committee.dao.UserDAO {
         try {
             connection = ConnectionPoolImpl.getInstance().takeConnection();
             try (PreparedStatement preparedStatement = connection.prepareStatement(SQLQueryConstant.SELECT_ALL_USERS)) {
+
                 ResultSet resultSet = preparedStatement.executeQuery();
                 List<User> userList = new ArrayList<>();
                 while (resultSet.next()) {
@@ -92,6 +117,8 @@ public class UserDAOImpl implements by.sichnenko.committee.dao.UserDAO {
                     user.setEmail(resultSet.getString(SQLFieldConstant.User.EMAIL));
                     user.setLogin(resultSet.getString(SQLFieldConstant.User.LOGIN));
                     user.setHashPassword(resultSet.getString(SQLFieldConstant.User.HASH_PASSWORD));
+                    user.setIsBlocked(resultSet.getBoolean(SQLFieldConstant.User.LOCK));
+                    user.setImagePath(resultSet.getString(SQLFieldConstant.User.IMAGE_PATH));
                     userList.add(user);
                 }
                 return userList;
@@ -100,6 +127,53 @@ public class UserDAOImpl implements by.sichnenko.committee.dao.UserDAO {
             }
         } finally {
             closeConnection(connection);
+        }
+    }
+
+    @Override
+    public List<User> findAllUsersByStatus(Long statusId) throws DAOException {
+        ProxyConnection connection = null;
+        try {
+            connection = ConnectionPoolImpl.getInstance().takeConnection();
+            try (PreparedStatement preparedStatement = connection.prepareStatement(SQLQueryConstant.SELECT_ALL_USERS_BY_STATUS)) {
+                preparedStatement.setLong(1, statusId);
+                ResultSet resultSet = preparedStatement.executeQuery();
+                List<User> userList = new ArrayList<>();
+                while (resultSet.next()) {
+                    User user = new User();
+                    user.setUserId(resultSet.getInt(SQLFieldConstant.User.ID));
+                    user.setRole(RoleType.valueOf(resultSet.getString(SQLFieldConstant.User.ROLE).toUpperCase()));
+                    user.setEmail(resultSet.getString(SQLFieldConstant.User.EMAIL));
+                    user.setLogin(resultSet.getString(SQLFieldConstant.User.LOGIN));
+                    user.setHashPassword(resultSet.getString(SQLFieldConstant.User.HASH_PASSWORD));
+                    user.setIsBlocked(resultSet.getBoolean(SQLFieldConstant.User.LOCK));
+                    userList.add(user);
+                }
+                return userList;
+            } catch (SQLException e) {
+                throw new DAOException("Find user error ", e);
+            }
+        } finally {
+            closeConnection(connection);
+        }
+    }
+
+    @Override
+    public void changeAvatar(Long userId, String imagePath) throws DAOException {
+        ProxyConnection proxyConnection = null;
+        try {
+            proxyConnection = ConnectionPoolImpl.getInstance().takeConnection();
+
+            try (PreparedStatement statement = proxyConnection.prepareStatement(SQLQueryConstant.UPDATE_USER_AVATER)) {
+                statement.setString(1, imagePath);
+                statement.setLong(2, userId);
+                statement.executeUpdate();
+
+            } catch (SQLException e) {
+                throw new DAOException("Update user error ", e);
+            }
+        } finally {
+            closeConnection(proxyConnection);
         }
     }
 

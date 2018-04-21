@@ -1,6 +1,6 @@
 package by.sichnenko.committee.command;
 
-import by.sichnenko.committee.command.impl.Main;
+import by.sichnenko.committee.command.impl.ShowMainPageCommand;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -11,7 +11,7 @@ public class ActionFactory {
     public ActionCommand defineCommand(HttpServletRequest request) {
         String action = request.getParameter(REQUEST_PARAMETER);
         if (action == null || action.isEmpty()) {
-            return new Main();
+            return new ShowMainPageCommand();
         }
         return PROVIDER.getCommand(action);
     }

@@ -32,12 +32,11 @@ public class ContextListener implements ServletContextListener {
                 Driver driver = drivers.nextElement();
                 DriverManager.deregisterDriver(driver);
             }
-
         } catch (SQLException e) {
             LOGGER.error("Can't deregister driver", e);
 
         } catch (ConnectionPoolException e) {
-            LOGGER.error("Destroy pool error", e);
+            LOGGER.error("Destroy connection pool error", e);
         }
     }
 }

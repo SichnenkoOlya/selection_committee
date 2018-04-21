@@ -6,11 +6,11 @@ import javax.servlet.annotation.WebInitParam;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
-@WebFilter(filterName = "encodingFilter",
+@WebFilter(filterName = "EncodingFilter",
         urlPatterns = {"/*"},
         initParams = {
                 @WebInitParam(name = "encoding", value = "UTF-8", description = "Encoding Param"),
-                @WebInitParam(name = "contentType", value = "text/html", description = "Content type Param") })
+                @WebInitParam(name = "contentType", value = "text/html", description = "Content type Param")})
 
 public class EncodingFilter implements Filter {
     private String code;

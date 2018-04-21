@@ -12,6 +12,8 @@
     <title>$Title$</title>
 </head>
 <body>
-<jsp:forward page="/pages/main.jsp"/>
+<jsp:forward page="/mainController">
+    <jsp:param name="command" value="MAIN"/>
+</jsp:forward>
 </body>
 </html>

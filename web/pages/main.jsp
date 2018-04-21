@@ -1,3 +1,4 @@
+<%@ taglib prefix="ctg" uri="http://sichnenko.by/pages/" %>
 <%--
   Created by IntelliJ IDEA.
   User: lenovo
@@ -10,9 +11,25 @@
 <fmt:message key="label.sign_in" var="signInTxt"/>
 <fmt:message key="label.sign_out" var="signOutTxt"/>
 <fmt:message key="label.my_profile" var="myProfileTxt"/>
-
+<fmt:message key="label.faculties" var="facultiesTxt"/>
+<fmt:message key="label.facultyName" var="facultyNameTxt"/>
+<fmt:message key="label.description" var="descriptionTxt"/>
+<fmt:message key="label.change_password" var="changePasswordTxt"/>
 <body>
-<c:set var="lastPage" value="pages/main.jsp" scope="session" />
+<c:set var="lastPage" value="pages/main.jsp" scope="session"/>
+
+<br>
+
+${pageContext.request.contextPath}
+${pageContext.request.getRealPath("")}
+<br>
+
+<form action="${pageContext.request.contextPath}/uploadController" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="command" value="LOAD_FACULTY_IMAGE"/>
+    <input type="hidden" name="facultyId" value="1"/>
+    <input type="file" name="image" />
+    <input type="submit" />
+</form>
 
 <form action="${pageContext.request.contextPath}/mainController" method="post">
     <input type="hidden" name="command" value="SHOW_ENROLLEE_FILL_PAGE"/>
@@ -26,6 +43,15 @@
     <form action="${pageContext.request.contextPath}/mainController" method="post">
         <input type="hidden" name="command" value="SIGN_OUT"/>
         <input type="submit" name="commit" value="${signOutTxt}">
+    </form>
+    <br>
+
+    <br>
+    <form action="${pageContext.request.contextPath}/uploadController" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="command" value="CHANGE_AVATAR"/>
+        <input type="hidden" name="userId" value="${user.userId}"/>
+        <input type="file" name="image" />
+        <input type="submit" />
     </form>
     <br>
 
@@ -45,5 +71,33 @@
     <input type="hidden" name="command" value="SHOW_ALL_USERS"/>
     <input type="submit" name="commit" value="Users">
 </form>
+
+<form action="${pageContext.request.contextPath}/mainController" method="post">
+    <input type="hidden" name="command" value="SHOW_CHANGE_PASSWORD_PAGE"/>
+    <input type="submit" name="commit" value="${changePasswordTxt}">
+</form>
+<ctg:admin role="${role}">
+<form action="${pageContext.request.contextPath}/mainController" method="post">
+    <input type="hidden" name="command" value="SHOW_ADD_FACULTY_PAGE"/>
+    <input type="submit" name="commit" value="Add new faculty">
+</form>
+</ctg:admin>
+<table border="1">
+    <caption>${facultiesTxt}</caption>
+    <tr>
+        <th>${facultyNameTxt}</th>
+        <th>${descriptionTxt}</th>
+    </tr>
+    <c:forEach var="faculty" items="${faculties}">
+        <tr>
+                <%--<td> <a href="${pageContext.request.contextPath}/mainController?command=SHOW_DETAIL_USER&login=${user.login}">${user.login}</a></td>--%>
+            <td>
+                <a href="${pageContext.request.contextPath}/mainController?command=SHOW_DETAIL_FACULTY&facultyId=${faculty.facultyId}">${faculty.name}</a>
+            </td>
+
+            <td><img src="${faculty.imagePath}" height="100" width="100"><br>${faculty.description}</td>
+        </tr>
+    </c:forEach>
+</table>
 
 <%@include file="/pages/partial/footer.jsp" %>

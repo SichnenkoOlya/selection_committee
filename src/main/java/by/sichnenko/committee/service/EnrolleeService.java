@@ -8,4 +8,9 @@ import java.util.List;
 
 public interface EnrolleeService {
     Enrollee fillEnrollee(SessionRequestContent sessionRequestContent) throws ServiceException;
+
+    void changeAllEnrolleesStatus(SessionRequestContent sessionRequestContent) throws ServiceException;
+
+    void changeStatus(SessionRequestContent sessionRequestContent) throws ServiceException;
+    Enrollee findEnrolleeByUserId(SessionRequestContent sessionRequestContent) throws ServiceException;
 }

@@ -21,6 +21,7 @@
 <html>
 <head>
     <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 </head>
 
 
@@ -28,12 +29,15 @@
     <form action="${pageContext.request.contextPath}/mainController" method="post">
         <input type="hidden" name="command" value="CHANGE_LOCALE"/>
         <input type="hidden" name="locale" value="ru"/>
-        <input type="submit" name="commit" value=${russianTxt}>
+        <select onchange="submit()">
+            <option name="locale" value="ru" >${russianTxt}</option>
+            <option name="locale" value="en" >${englishTxt}</option>
+        </select>
+        <input id="russian" type="submit" name="commit" value=${russianTxt}>
     </form>
-
     <form action="${pageContext.request.contextPath}/mainController" method="post">
         <input type="hidden" name="command" value="CHANGE_LOCALE"/>
         <input type="hidden" name="locale" value="en"/>
-        <input type="submit" name="commit" value=${englishTxt}>
+        <input id="english" type="submit" name="commit" value=${englishTxt}>
     </form>
 </header>

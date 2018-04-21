@@ -11,7 +11,7 @@ public class CommandProvider {
 
     CommandProvider() {
         commands.put(EMAIL_SEND, new SendEmail());
-        commands.put(MAIN, new Main());
+        commands.put(MAIN, new ShowMainPageCommand());
         commands.put(FILE_LOAD, new LoadFile());
         commands.put(SIGN_IN, new SignInCommand());
         commands.put(SIGN_UP, new SignUpCommand());
@@ -21,6 +21,21 @@ public class CommandProvider {
         commands.put(SHOW_ENROLLEE_FILL_PAGE, new ShowEnrolleeFillPage());
         commands.put(SHOW_ALL_USERS, new ShowAllUsers());
         commands.put(SHOW_DETAIL_USER, new ShowDetailUserPage());
+        commands.put(CHANGE_USER_LOCK, new ChangeUserLockCommand());
+        commands.put(CHANGE_USER_ROLE, new ChangeUserRoleCommand());
+        commands.put(SHOW_USERS_BY_STATUS, new ShowUsersWirhStatus());
+        commands.put(SHOW_DETAIL_FACULTY, new ShowDetailFaculty());
+        commands.put(SHOW_CHANGE_PASSWORD_PAGE, new ShowChangePasswordPage());
+        commands.put(CHANGE_PASSWORD, new ChangePasswordCommand());
+        commands.put(SHOW_ADD_FACULTY_PAGE, new ShowAddFacultyPage());
+        commands.put(ADD_NEW_FACULTY, new AddNewFacultyCommand());
+        commands.put(FIND_CITIES_BY_COUNTRY_ID, new FindCitiesByCountryCommand());
+        commands.put(LOAD_FILE, new LoadFile());
+        commands.put(LOAD_FACULTY_IMAGE, new LoadImageFaculty());
+        commands.put(CHANGE_ALL_ENROLLEE_STATUS, new ChangeAllEnrolleeStatus());
+        commands.put(CHANGE_ENROLLEE_STATUS, new ChangeEnrolleeStatus());
+        commands.put(CHANGE_AVATAR, new ChangeAvatarCommand());
+
     }
 
      ActionCommand getCommand(String commandName) {

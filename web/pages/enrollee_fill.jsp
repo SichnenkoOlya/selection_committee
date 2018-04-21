@@ -74,17 +74,52 @@
         ${countryTxt}
     </label>
 
-    <select id="countries" name="country">
+    <select id="countries" name="country" required>
+        <option></option>
         <c:forEach var="country" items="${countries}">
             <option value="${country.countryId}">${country.name}</option>
         </c:forEach>
     </select>
     <br/>
+    <script>
+
+        $('#countries').change(function() {
+            $(this).val();
+
+            var data = {command: "FIND_CITIES_BY_COUNTRY_ID", countryId: $(this).val()};
+            if(data !== '') {
+                $.ajax({
+                    type: "POST",
+                    url: "/mainController",
+                    data: data,
+                    dataType: "json",
+                    success: function (data, textStatus, jqXHR) {
+                        $('#cities').html(createHtml(data));
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.log("Something really bad happened " + textStatus);
+
+                    },
+                    beforeSend: function (jqXHR) {
+                        $('#cities').html('');
+                    }
+                });
+            }
+        });
+
+        function createHtml(data) {
+            var html = "";
+            data.forEach(function (value) {
+                html += "<option value='" + value["cityId"] + "'>" + value["name"] + "</option>"
+            });
+            return html;
+        }
+    </script>
     <br/>
     <select id="cities" name="city">
-        <c:forEach var="city" items="${cities}">
-            <option value="${city.cityId}">${city.name}</option>
-        </c:forEach>
+        <%--<c:forEach var="city" items="${cities}">--%>
+            <%--<option value="${city.cityId}">${city.name}</option>--%>
+        <%--</c:forEach>--%>
     </select>
     <br/>
     <br/>
