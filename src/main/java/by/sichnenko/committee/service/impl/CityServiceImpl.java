@@ -21,6 +21,25 @@ import java.util.List;
 
 public class CityServiceImpl implements CityService {
     @Override
+    public void addCity(SessionRequestContent sessionRequestContent) throws ServiceException {
+        CityDAO cityDAO = new CityDAOImpl();
+        String[] cityName = sessionRequestContent.getRequestParameters().get(RequestNameConstant.CITY_NAME);
+        String[] countryId = sessionRequestContent.getRequestParameters().get(RequestNameConstant.COUNTRY_ID);
+        if (GeneralValidator.isVarExist(countryId) && GeneralValidator.isVarExist(cityName)) {
+            try {
+                City city = new City();
+                city.setCountryId(Long.valueOf(countryId[0]));
+                city.setName(cityName[0]);
+                cityDAO.create(city);
+            } catch (DAOException e) {
+                throw new ServiceException("Sorry, technical error", e);
+            }
+        }
+        throw new ServiceException("Sorry, technical error");
+    }
+
+
+    @Override
     public List<City> findAllCities() throws ServiceException {
         CityDAO cityDAO;
         try {

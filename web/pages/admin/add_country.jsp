@@ -23,7 +23,7 @@
 </h1>
 <br/>
 <form action="${pageContext.request.contextPath}/mainController" method="post">
-    <input type="hidden" name="command" value="SIGN_UP"/>
+    <input type="hidden" name="command" value="ADD_COUNTRY"/>
     <label for="countryNameInput">
         ${countryNameTxt}
     </label>

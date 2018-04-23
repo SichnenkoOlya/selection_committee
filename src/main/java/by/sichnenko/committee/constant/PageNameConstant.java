@@ -19,4 +19,7 @@ public class PageNameConstant {
     public static final String ADD_FACULTY_PAGE = "/pages/admin/add_faculty.jsp";
     public static final String DETAIL_FACULTY_PAGE = "/pages/faculty_detail.jsp";
 
+    public static final String ADD_COUNTRY_PAGE = "/pages/admin/add_country.jsp";
+    public static final String ADD_CITY_PAGE = "/pages/admin/city_detail.jsp";
+
 }

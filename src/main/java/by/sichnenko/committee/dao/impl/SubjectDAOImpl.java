@@ -63,6 +63,7 @@ public class SubjectDAOImpl implements SubjectDAO {
                     Subject subject = new Subject();
                     subject.setSubjectId(resultSet.getLong(SQLFieldConstant.ID));
                     subject.setName(resultSet.getString(SQLFieldConstant.NAME));
+                    subject.setGroupNumber(resultSet.getShort(SQLFieldConstant.Subject.GROUP_NUMBER));
                     subjects.add(subject);
                 }
                 return subjects;

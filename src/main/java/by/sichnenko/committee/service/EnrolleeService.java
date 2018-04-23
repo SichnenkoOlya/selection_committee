@@ -12,5 +12,10 @@ public interface EnrolleeService {
     void changeAllEnrolleesStatus(SessionRequestContent sessionRequestContent) throws ServiceException;
 
     void changeStatus(SessionRequestContent sessionRequestContent) throws ServiceException;
+
     Enrollee findEnrolleeByUser(String login) throws ServiceException;
+
+    List<Enrollee> findEnrolleesEnteredFacultyBudjet(SessionRequestContent sessionRequestContent) throws ServiceException;
+
+    List<Enrollee> findEnrolleesEnteredFacultyPaid(SessionRequestContent sessionRequestContent) throws ServiceException;
 }

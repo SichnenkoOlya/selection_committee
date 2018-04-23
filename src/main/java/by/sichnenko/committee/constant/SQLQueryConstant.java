@@ -1,6 +1,8 @@
 package by.sichnenko.committee.constant;
 
 public class SQLQueryConstant {
+    public static final String SELECT_ENROLLE_ENTERED_ON_FACULTY = "SELECT enrollee.id, enrollee.surname, enrollee.name, enrollee.patronymic,enrollee.phone_number, enrollee.average_certificate_score , enrollee.score_on_ct, enrollee.user_id FROM `enrollee` INNER JOIN faculty ON enrollee.faculty_id=faculty.id WHERE enrollee.faculty_id=? ORDER BY (enrollee.average_certificate_score + enrollee.score_on_ct) DESC LIMIT ?,?";
+
 
     public static final String UPDATE_USER = "UPDATE user SET login=?, hash_password=?, role=?, email=?, is_blocked=?, image_path=? WHERE id=?";
     public static final String UPDATE_USER_AVATER = "UPDATE user SET image_path=? WHERE id=?";
@@ -33,6 +35,8 @@ public class SQLQueryConstant {
 
     public static final String SELECT_ALL_COUNTRIES = "SELECT id, name FROM country";
     public static final String SELECT_ALL_CITIES = "SELECT id, name, country_id FROM city";
+    public static final String CREATE_CITY = "INSERT INTO city (name, country_id) VALUES (?,?)";
+    public static final String CREATE_COUNTRY = "INSERT INTO country (name) VALUES (?)";
 
     public static final String SELECT_ALL_FACULTIES = "SELECT id, name, image_path,description FROM faculty";
     public static final String UPDATE_FACULTY_IMAGE = "UPDATE faculty SET image_path=? WHERE id=?";
@@ -41,7 +45,7 @@ public class SQLQueryConstant {
 
     public static final String SELECT_ALL_PRIVILEGES = "SELECT id, name FROM privilege";
     public static final String SELECT_ALL_SUBJECTS = "SELECT id, name FROM subject";
-    public static final String SELECT_SUBJECTS_FOR_FACULTY = "SELECT subject.id, subject.name FROM subject INNER JOIN faculty_has_subject " +
+    public static final String SELECT_SUBJECTS_FOR_FACULTY = "SELECT subject.id, subject.name, subject.group_number FROM subject INNER JOIN faculty_has_subject " +
             "ON faculty_has_subject.subject_id=subject.id WHERE faculty_has_subject.faculty_id=?";
 
     public static final String INSERT_SUBJECTS_FOR_FACULTY = "INSERT INTO" +

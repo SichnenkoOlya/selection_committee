@@ -27,6 +27,8 @@ public final class SQLFieldConstant {
         public static final String PATRONYMIC = "patronymic";
         public static final String PHONE_NUMBER = "phone_number";
         public static final String FACULTY_ID = "faculty_id";
+        public static final String AVERAGE_CERTIVICATE_SCORE = "average_certificate_score";
+        public static final String SCORE_ON_CT= "score_on_ct";
         public static final String STATUS_ID = "status_id";
         public static final String USER_ID = "user_id";
         public static final String CITY_ID = "city_id";
@@ -41,6 +43,10 @@ public final class SQLFieldConstant {
         public static final String TOTAL_PLACE_COUNT = "total_count";
         public static final String PASSING_SCORE_BUDJET = "passing_score_budjet";
         public static final String PASSING_SCORE_PAID = "passing_score_paid";
+    }
+
+    public final class Subject{
+        public static final String GROUP_NUMBER = "group_number";
     }
 }
 

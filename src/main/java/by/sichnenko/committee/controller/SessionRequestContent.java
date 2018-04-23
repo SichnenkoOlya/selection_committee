@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Part;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.Collection;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -77,8 +78,6 @@ public class SessionRequestContent {
         }
         contextPath = request.getContextPath();
         realPath = request.getServletContext().getRealPath("");
-
-
     }
 
 

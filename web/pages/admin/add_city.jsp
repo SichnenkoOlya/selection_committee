@@ -13,37 +13,67 @@
 <fmt:message key="label.add" var="addTxt"/>
 <fmt:message key="label.country" var="countryTxt"/>
 
-<body>
 
-<h1>
-    <label>
-        <c:out value="${addCityTxt}"/>
-    </label>
-</h1>
-<br/>
-<form action="${pageContext.request.contextPath}/mainController" method="post">
-    <input type="hidden" name="command" value="SIGN_UP"/>
-    <label for="cityNameInput">
-        ${cityNameTxt}
-    </label>
-    <br/>
-    <input id="cityNameInput" type="text" name="cityName" value=""/>
-    <br/>
+<div class="page_title gradient_overlay" style="background: url(images/page_title_bg.jpg);">
+    <div class="container">
+        <div class="inner">
+            <h1>${addCityTxt}</h1>
+            <ol class="breadcrumb">
+                <li><a href="${pageContext.request.contextPath}/mainController">Home</a></li>
+                <li>${addCityTxt}</li>
+            </ol>
+        </div>
+    </div>
+</div>
 
-    <label for="countries">
-        ${countryTxt}
-    </label>
+<main>
+    <div class="container">
 
-    <select id="countries" name="country">
-        <c:forEach var="country" items="${countries}">
-            <option value="${country.countryId}">${country.name}</option>
-        </c:forEach>
-    </select>
+        <div class="row">
+            <div class="col-md-6">
+                <c:if test="${empty sessionScope.userName }">
+                    <div class="main_title a_left">
+                        <h2><c:out value="${addCityTxt}"/></h2>
+                    </div>
 
-    <input type="submit" name="commit" value="${addTxt}">
-    <br/>
+                    <c:if test="${requestScope.containsKey('wrongData')}">
+                        ${wrongPassOrLoginTxt}
+                    </c:if>
 
-</form>
-</body>
+                    <form id="contact-form-page" action="${pageContext.request.contextPath}/mainController"
+                          method="post">
+                        <input type="hidden" name="command" value="ADD_CITY"/>
+
+                        <div class="row">
+                            <div class="form-group col-md-12 col-sm-12">
+                                <label class="control-label">${cityNameTxt}</label>
+                                <input type="text" class="form-control" name="cityName" placeholder="${cityNameTxt}">
+                            </div>
+
+                            <div class="form-group col-md-12 col-sm-12">
+                                <label for="countries" class="control-label">${countryTxt}</label>
+                                <select id="countries" name="country" class="form-control" required>
+                                    <option></option>
+                                    <c:forEach var="country" items="${countries}">
+                                        <option value="${country.countryId}">${country.name}</option>
+                                    </c:forEach>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <button type="submit" class="button  btn_blue mt40 upper pull-right">
+                                    <i class="fa fa-check" aria-hidden="true"></i>${addTxt}
+                                </button>
+                            </div>
+
+                        </div>
+                    </form>
+                </c:if>
+
+            </div>
+        </div>
+    </div>
+</main>
+
 
 <%@include file="/pages/partial/footer.jsp" %>

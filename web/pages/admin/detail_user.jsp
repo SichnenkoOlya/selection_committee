@@ -27,70 +27,90 @@
 <fmt:message key="label.sertificateScore" var="sertificateScoreTxt"/>
 <body>
 
-<table border="1">
-    <caption>${usersTxt}</caption>
-    <tr>
-        <th>${loginTxt}</th>
-        <th>${user.login}</th>
-    </tr>
-    <tr>
-        <th>${roleTxt}</th>
-        <th>${user.role}</th>
-        <c:if test="${user.role=='USER'}">
-            <form action="${pageContext.request.contextPath}/mainController" method="post">
-                <input type="hidden" name="command" value="CHANGE_USER_ROLE"/>
-                <input type="hidden" name="id" value="${user.userId}"/>
-                <input type="hidden" name="role" value="ADMIN"/>
-                <input type="submit" name="commit" value="${makeAdminTxt}">
-            </form>
-        </c:if>
-    </tr>
-    <tr>
-        <th>${emailTxt}</th>
-        <th>${user.email}</th>
-    </tr>
-    <form action="${pageContext.request.contextPath}/mainController" method="post">
-        <input type="hidden" name="command" value="CHANGE_USER_LOCK"/>
-        <input type="hidden" name="id" value="${user.userId}"/>
-        <input type="hidden" name="lock" value="${not user.isBlocked}"/>
-        <c:if test="${user.isBlocked}">
-            <input type="submit" name="commit" value="${unblockTxt}">
-        </c:if>
-        <c:if test="${not user.isBlocked}">
-            <input type="submit" name="commit" value="${blockTxt}">
-        </c:if>
-    </form>
-</table>
+<div class="page_title gradient_overlay" style="background: url(images/page_title_bg.jpg);">
+    <div class="container">
+        <div class="inner">
+            <h1>Our Users</h1>
+            <ol class="breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li>Our Users</li>
+            </ol>
+        </div>
+    </div>
+</div>
 
-<c:if test="${ not empty enrollee}">
-    <table border="1">
-        <tr>
-            <th>${surnameTxt}</th>
-            <th>${enrollee.surname}</th>
-        </tr>
-        <tr>
-            <th>${nameTxt}</th>
-            <th>${enrollee.name}</th>
-        </tr>
-        <tr>
-            <th>${patronymicTxt}</th>
-            <th>${enrollee.patronymic}</th>
-        </tr>
-        <tr>
-            <th>${phoneNumberTxt}</th>
-            <th>${enrollee.phoneNumber}</th>
-        </tr>
-    </table>
-    <td>
-    <c:if test="${enrollee.statusId eq 6}">
-        <form action="${pageContext.request.contextPath}/mainController" method="post">
-            <input type="hidden" name="command" value="CHANGE_ENROLLEE_STATUS"/>
-            <input type="hidden" name="newStatusId" value="4"/>
-            <input type="hidden" name="userId" value="${user.userId}"/>
-            <input type="submit" name="commit" value="Confirm document">
-        </form>
-    </c:if>
-</td>
-</c:if>
-</body>
+
+<!-- =========== MAIN ========== -->
+<main id="our_staff_page">
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-6">
+                <dl class="info">
+                    <dt>${loginTxt}</dt>
+                    <dd>${user.login}</dd>
+
+                    <dt>${roleTxt}</dt>
+                    <dd>${user.role}</dd>
+
+                    <dt>${emailTxt}</dt>
+                    <dd>${user.email}</dd>
+
+                    <c:if test="${ not empty enrollee}">
+
+                        <dt>${surnameTxt}</dt>
+                        <dd>${enrollee.surname}</dd>
+
+                        <dt>${nameTxt}</dt>
+                        <dd>${enrollee.name}</dd>
+
+                        <dt>${patronymicTxt}</dt>
+                        <dd>${enrollee.patronymic}</dd>
+
+                        <dt>${phoneNumberTxt}</dt>
+                        <dd>${enrollee.phoneNumber}</dd>
+
+                    </c:if>
+                </dl>
+
+
+                <form action="${pageContext.request.contextPath}/mainController" method="post">
+                    <input type="hidden" name="command" value="CHANGE_USER_LOCK"/>
+                    <input type="hidden" name="id" value="${user.userId}"/>
+                    <input type="hidden" name="lock" value="${not user.isBlocked}"/>
+                    <c:if test="${user.isBlocked}">
+                        <input type="submit" name="commit" value="${unblockTxt}">
+                    </c:if>
+                    <c:if test="${not user.isBlocked}">
+                        <input type="submit" name="commit" value="${blockTxt}">
+                    </c:if>
+                </form>
+
+                <c:if test="${user.role=='USER'}">
+                    <form action="${pageContext.request.contextPath}/mainController" method="post">
+                        <input type="hidden" name="command" value="CHANGE_USER_ROLE"/>
+                        <input type="hidden" name="id" value="${user.userId}"/>
+                        <input type="hidden" name="role" value="ADMIN"/>
+                        <input type="submit" name="commit" value="${makeAdminTxt}">
+                    </form>
+                </c:if>
+
+                <c:if test="${ not empty enrollee}">
+                    <c:if test="${enrollee.statusId eq 6}">
+                        <form action="${pageContext.request.contextPath}/mainController" method="post">
+                            <input type="hidden" name="command" value="CHANGE_ENROLLEE_STATUS"/>
+                            <input type="hidden" name="newStatusId" value="4"/>
+                            <input type="hidden" name="userId" value="${user.userId}"/>
+                            <input type="submit" name="commit" value="Confirm document">
+                        </form>
+                    </c:if>
+                </c:if>
+
+            </div>
+        </div>
+    </div>
+</main>
+
+
 <%@include file="/pages/partial/footer.jsp" %>

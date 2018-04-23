@@ -13,150 +13,134 @@
 <fmt:message key="label.passport" var="passportTxt"/>
 <fmt:message key="label.sertificateScore" var="sertificateScoreTxt"/>
 
-<body>
-<c:set var="lastPage" value="/pages/enrollee_fill.jsp" scope="session"/>
+<div class="page_title gradient_overlay" style="background: url(images/page_title_bg.jpg);">
+    <div class="container">
+        <div class="inner">
+            <h1>Sign In</h1>
+            <ol class="breadcrumb">
+                <li><a href="${pageContext.request.contextPath}/mainController">Home</a></li>
+                <li>Sign In</li>
+            </ol>
+        </div>
+    </div>
+</div>
 
-<h1>
-    <label>
-        <c:out value="${fillProfileTxt}"/>
-    </label>
-</h1>
-<c:if test="${requestScope.containsKey('wrongData')}">
-    <%--${wrongPassOrLoginTxt}--%>
-</c:if>
-<br/>
-<form action="${pageContext.request.contextPath}/mainController" method="post">
-    <input type="hidden" name="command" value="FILL_ENROLLEE"/>
-    <label for="surnameInput">
-        ${surnameTxt}
-    </label>
-    <br/>
-    <input id="surnameInput" type="text" name="surname" value=""/>
-    <br/>
-    <label for="nameInput">
-        ${nameTxt}
-    </label>
-    <br/>
-    <input id="nameInput" type="text" name="name" value=""/>
-    <br/>
-    <label for="patronymicInput">
-        ${patronymicTxt}
-    </label>
-    <br/>
-    <input id="patronymicInput" type="text" name="patronymic" value=""/>
-    <br/>
-    <br/>
-    <label for="phoneInput">
-        ${phoneNumberTxt}
-    </label>
-    <br/>
-    <input id="phoneInput" type="text" name="phoneNumber" value=""/>
-    <br/>
-    <br/>
-    <label for="passportInput">
-        ${passportTxt}
-    </label>
-    <br/>
-    <input id="passportInput" type="text" name="passport" value=""/>
-    <br/>
-    <br/>
-    <label for="faculties">
-        ${facultyTxt}
-    </label>
-    <select id="faculties" name="faculty">
-        <c:forEach var="faculty" items="${faculties}">
-            <option value="${faculty.facultyId}">${faculty.name}</option>
-        </c:forEach>
-    </select>
-    <br/>
-    <br/>
-    <label for="countries">
-        ${countryTxt}
-    </label>
+<main>
+    <div class="container">
 
-    <select id="countries" name="country" required>
-        <option></option>
-        <c:forEach var="country" items="${countries}">
-            <option value="${country.countryId}">${country.name}</option>
-        </c:forEach>
-    </select>
-    <br/>
-    <script>
+        <div class="row">
+            <div class="col-md-6">
 
-        $('#countries').change(function() {
-            $(this).val();
-
-            var data = {command: "FIND_CITIES_BY_COUNTRY_ID", countryId: $(this).val()};
-            if(data !== '') {
-                $.ajax({
-                    type: "POST",
-                    url: "/mainController",
-                    data: data,
-                    dataType: "json",
-                    success: function (data, textStatus, jqXHR) {
-                        $('#cities').html(createHtml(data));
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-                        console.log("Something really bad happened " + textStatus);
-
-                    },
-                    beforeSend: function (jqXHR) {
-                        $('#cities').html('');
-                    }
-                });
-            }
-        });
-
-        function createHtml(data) {
-            var html = "";
-            data.forEach(function (value) {
-                html += "<option value='" + value["cityId"] + "'>" + value["name"] + "</option>"
-            });
-            return html;
-        }
-    </script>
-    <br/>
-    <select id="cities" name="city">
-        <%--<c:forEach var="city" items="${cities}">--%>
-            <%--<option value="${city.cityId}">${city.name}</option>--%>
-        <%--</c:forEach>--%>
-    </select>
-    <br/>
-    <br/>
-    <c:forEach var="subject" items="${subjects}">
-        <label for="subjects">
-            <input id="subjects" type="checkbox" name="idSubject" value="${subject.subjectId}">${subject.name}<BR>
-        </label>
-    </c:forEach>
-    <br/>
-    <br/>
-    <label for="sertificateInput">
-        ${sertificateScoreTxt}
-    </label>
-    <br/>
-    <input id="sertificateInput" type="number" name="sertificateScore" value=""/>
-    <br/>
-    <br/>
-    <br/>
-    <label for="ctScoreInput">
-        ${ctScoreTxt}
-    </label>
-    <br/>
-    <input id="ctScoreInput" type="number" name="ctScore" value=""/>
-    <br/>
-    <br/>
-    <c:forEach var="privilege" items="${privileges}">
-        <label for="privileges">
-            <input id="privileges" type="checkbox" name="idPrivilege" value="${privilege.privilegeId}">${privilege.name}<BR>
-        </label>
-    </c:forEach>
-
-    <br/>
-
-    <input type="submit" name="commit" value="${fillTxt}">
-    <br/>
+                <div class="main_title a_left">
+                    <h2><c:out value="${fillProfileTxt}"/></h2>
+                </div>
 
 
-</form>
-</body>
+                <c:if test="${requestScope.containsKey('wrongData')}">
+                    <%--${wrongPassOrLoginTxt}--%>
+                </c:if>
+
+                <form id="contact-form-page" action="${pageContext.request.contextPath}/mainController" method="post" name="enrollee-fill">
+                    <input type="hidden" name="command" value="FILL_ENROLLEE"/>
+
+                    <div class="row">
+                        <div class="form-group col-md-12 col-sm-12">
+                            <label class="control-label">${surnameTxt}</label>
+                            <input type="text" class="form-control" name="surname" placeholder="${surnameTxt}">
+                        </div>
+
+                        <div class="form-group col-md-12 col-sm-12">
+                            <label class="control-label">${nameTxt}</label>
+                            <input type="text" class="form-control" name="name" placeholder="${nameTxt}">
+                        </div>
+
+                        <div class="form-group col-md-12 col-sm-12">
+                            <label class="control-label">${patronymicTxt}</label>
+                            <input type="text" class="form-control" name="patronymic" placeholder="${patronymicTxt}">
+                        </div>
+
+                        <div class="form-group col-md-12 col-sm-12">
+                            <label class="control-label">${phoneNumberTxt}</label>
+                            <input type="tel" class="form-control" name="phoneNumber" placeholder="${phoneNumberTxt}">
+                        </div>
+
+                        <div class="form-group col-md-12 col-sm-12">
+                            <label class="control-label">${passportTxt}</label>
+                            <input type="tel" class="form-control" name="passport" placeholder="${passportTxt}">
+                        </div>
+
+                        <div class="form-group col-md-12 col-sm-12">
+                            <label for="faculties" class="control-label">${facultyTxt}</label>
+                            <select id="faculties" name="faculty" class="form-control">
+                                <option></option>
+                                <c:forEach var="faculty" items="${faculties}">
+                                    <option value="${faculty.facultyId}">${faculty.name}</option>
+                                </c:forEach>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-12 col-sm-12">
+                            <label for="countries" class="control-label">${countryTxt}</label>
+                            <select id="countries" name="country" class="form-control">
+                                <option></option>
+                                <c:forEach var="country" items="${countries}">
+                                    <option value="${country.countryId}">${country.name}</option>
+                                </c:forEach>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-12 col-sm-12">
+                            <label for="cities" class="control-label">${cityTxt}</label>
+                            <select id="cities" name="city" class="form-control"></select>
+                        </div>
+
+                        <div id="ajax-subjects">
+
+                        </div>
+
+                        <%--
+                        <div class="form-group col-md-12 col-sm-12">
+                            <c:forEach var="subject" items="${subjects}">
+                                <label for="subjects">
+                                    <input id="subjects" type="checkbox" name="idSubject"
+                                           value="${subject.subjectId}">${subject.name}<BR>
+                                </label>
+                            </c:forEach>
+                        </div>
+                        --%>
+
+                        <div class="form-group col-md-12 col-sm-12">
+                            <label class="control-label">${sertificateScoreTxt}</label>
+                            <input type="number" class="form-control" name="sertificateScore" placeholder="${sertificateScoreTxt}">
+                        </div>
+
+                        <div class="form-group col-md-12 col-sm-12">
+                            <label class="control-label">${ctScoreTxt}</label>
+                            <input type="number" class="form-control" name="ctScore" placeholder="${ctScoreTxt}">
+                        </div>
+
+                        <div class="form-group col-md-12 col-sm-12">
+                            <label class="control-label">Privelegy</label>
+                            <c:forEach var="privilege" items="${privileges}">
+                                <br/>
+                                <label for="privileges">
+                                    <input id="privileges" type="checkbox" name="idPrivilege"
+                                           value="${privilege.privilegeId}">
+                                        ${privilege.name}
+                                </label>
+                            </c:forEach>
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <button type="submit" class="button  btn_blue mt40 upper pull-right">
+                                <i class="fa fa-check" aria-hidden="true"></i>${fillTxt}
+                            </button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
 <%@include file="/pages/partial/footer.jsp" %>

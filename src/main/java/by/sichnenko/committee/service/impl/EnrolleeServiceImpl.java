@@ -21,6 +21,8 @@ import by.sichnenko.committee.validator.EnrolleeValidator;
 import by.sichnenko.committee.validator.GeneralValidator;
 import by.sichnenko.committee.validator.UserValidator;
 
+import java.util.List;
+
 import static by.sichnenko.committee.constant.RequestNameConstant.*;
 
 public class EnrolleeServiceImpl implements EnrolleeService {
@@ -102,9 +104,9 @@ public class EnrolleeServiceImpl implements EnrolleeService {
             throw new ServiceException("Incorrect data");
         }
         try {
-            UserDAO userDAO=new UserDAOImpl();
+            UserDAO userDAO = new UserDAOImpl();
             EnrolleeDAO enrolleeDAO = new EnrolleeDAOImpl();
-            Enrollee enrollee=enrolleeDAO.findEnrolleeByUserId(Long.valueOf(userId[0]));
+            Enrollee enrollee = enrolleeDAO.findEnrolleeByUserId(Long.valueOf(userId[0]));
             enrolleeDAO.changeStatus(enrollee.getEnrolleeId(), Long.valueOf(newStatusId[0]));
         } catch (DAOException e) {
             throw new ServiceException("Invalid name", e);
@@ -119,10 +121,46 @@ public class EnrolleeServiceImpl implements EnrolleeService {
             throw new ServiceException("Incorrect data");
         }
         try {
-            UserDAO userDAO=new UserDAOImpl();
-            User user=userDAO.findUserByLogin(login);
+            UserDAO userDAO = new UserDAOImpl();
+            User user = userDAO.findUserByLogin(login);
             EnrolleeDAO enrolleeDAO = new EnrolleeDAOImpl();
             return enrolleeDAO.findEnrolleeByUserId(user.getUserId());
+        } catch (DAOException e) {
+            throw new ServiceException("Invalid name", e);
+        }
+    }
+
+    @Override
+    public List<Enrollee> findEnrolleesEnteredFacultyBudjet(SessionRequestContent sessionRequestContent) throws ServiceException {
+        String[] facultyId = sessionRequestContent.getRequestParameters().get(FACULTY_ID);
+
+        if (!GeneralValidator.isVarExist(facultyId)) {
+            sessionRequestContent.getRequestAttributes().put(GeneralConstant.INCORRECT_DATA, true);
+            throw new ServiceException("Incorrect data");
+        }
+        try {
+            FacultyDAO facultyDAO = new FacultyDAOImpl();
+            Faculty faculty = facultyDAO.findFacultyById(Long.valueOf(facultyId[0]));
+            EnrolleeDAO enrolleeDAO = new EnrolleeDAOImpl();
+            return enrolleeDAO.findEnrolleesEnteredFacultyBudjet(faculty);
+        } catch (DAOException e) {
+            throw new ServiceException("Invalid name", e);
+        }
+    }
+
+    @Override
+    public List<Enrollee> findEnrolleesEnteredFacultyPaid(SessionRequestContent sessionRequestContent) throws ServiceException {
+        String[] facultyId = sessionRequestContent.getRequestParameters().get(FACULTY_ID);
+
+        if (!GeneralValidator.isVarExist(facultyId)) {
+            sessionRequestContent.getRequestAttributes().put(GeneralConstant.INCORRECT_DATA, true);
+            throw new ServiceException("Incorrect data");
+        }
+        try {
+            FacultyDAO facultyDAO = new FacultyDAOImpl();
+            Faculty faculty = facultyDAO.findFacultyById(Long.valueOf(facultyId[0]));
+            EnrolleeDAO enrolleeDAO = new EnrolleeDAOImpl();
+            return enrolleeDAO.findEnrolleesEnteredFacultyPaid(faculty);
         } catch (DAOException e) {
             throw new ServiceException("Invalid name", e);
         }

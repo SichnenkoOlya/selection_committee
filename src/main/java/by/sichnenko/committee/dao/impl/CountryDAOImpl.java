@@ -41,8 +41,20 @@ public class CountryDAOImpl implements CountryDAO {
     }
 
     @Override
-    public boolean create(Country item) throws DAOException {
-        return false;
+    public boolean create(Country country) throws DAOException {
+        ProxyConnection connection = null;
+        try {
+            connection = ConnectionPoolImpl.getInstance().takeConnection();
+            try (PreparedStatement preparedStatement = connection.prepareStatement(SQLQueryConstant.CREATE_COUNTRY)) {
+                preparedStatement.setString(1,country.getName());
+                preparedStatement.execute();
+                return true;
+            } catch (SQLException e) {
+                throw new DAOException("Find countries error ", e);
+            }
+        } finally {
+            closeConnection(connection);
+        }
     }
 
     @Override

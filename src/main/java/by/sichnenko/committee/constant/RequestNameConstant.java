@@ -25,6 +25,8 @@ public class RequestNameConstant {
     public static final String ID = "id";
     public static final String STATUS_ID="statusId";
     public static final String COUNTRY_ID="countryId";
+    public static final String COUNTRY_NAME="countryName";
+    public static final String CITY_NAME="cityName";
     public static final String FACULTY_ID="facultyId";
     public static final String FACULTY_NAME="facultyName";
     public static final String FACULTY_DESCRIPTION="facultyDescription";

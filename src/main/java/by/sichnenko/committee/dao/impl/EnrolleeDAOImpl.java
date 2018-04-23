@@ -5,8 +5,10 @@ import by.sichnenko.committee.connection.ProxyConnection;
 import by.sichnenko.committee.constant.SQLFieldConstant;
 import by.sichnenko.committee.constant.SQLQueryConstant;
 import by.sichnenko.committee.dao.EnrolleeDAO;
+import by.sichnenko.committee.dao.FacultyDAO;
 import by.sichnenko.committee.exception.DAOException;
 import by.sichnenko.committee.model.Enrollee;
+import by.sichnenko.committee.model.Faculty;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -144,7 +146,7 @@ public class EnrolleeDAOImpl implements EnrolleeDAO {
         try {
             connection = ConnectionPoolImpl.getInstance().takeConnection();
             try (PreparedStatement preparedStatement = connection.prepareStatement(SQLQueryConstant.SELECT_ENROLLEE_BY_USER_ID)) {
-                preparedStatement.setLong(1,userId);
+                preparedStatement.setLong(1, userId);
                 ResultSet resultSet = preparedStatement.executeQuery();
                 Enrollee enrollee = null;
                 if (resultSet.next()) {
@@ -160,6 +162,71 @@ public class EnrolleeDAOImpl implements EnrolleeDAO {
                     enrollee.setUserId(resultSet.getLong(SQLFieldConstant.Enrollee.USER_ID));
                 }
                 return enrollee;
+            } catch (SQLException e) {
+                throw new DAOException("Find enrollees error ", e);
+            }
+        } finally {
+            closeConnection(connection);
+        }
+    }
+
+    @Override
+    public List<Enrollee> findEnrolleesEnteredFacultyBudjet(Faculty faculty) throws DAOException {
+        ProxyConnection connection = null;
+        try {
+            connection = ConnectionPoolImpl.getInstance().takeConnection();
+            try (PreparedStatement preparedStatement = connection.prepareStatement(SQLQueryConstant.SELECT_ENROLLE_ENTERED_ON_FACULTY)) {
+                preparedStatement.setLong(1,faculty.getFacultyId());
+                preparedStatement.setInt(2,0);
+                preparedStatement.setInt(3,faculty.getBudjetPlaceCount());
+                ResultSet resultSet = preparedStatement.executeQuery();
+                List<by.sichnenko.committee.model.Enrollee> enrolleeList = new ArrayList<>();
+                while (resultSet.next()) {
+                    Enrollee enrollee = new by.sichnenko.committee.model.Enrollee();
+                    enrollee.setEnrolleeId(resultSet.getLong(SQLFieldConstant.Enrollee.ID));
+                    enrollee.setName(resultSet.getString(SQLFieldConstant.Enrollee.NAME));
+                    enrollee.setSurname(resultSet.getString(SQLFieldConstant.Enrollee.SURNAME));
+                    enrollee.setPatronymic(resultSet.getString(SQLFieldConstant.Enrollee.PATRONYMIC));
+                    enrollee.setPhoneNumber(resultSet.getString(SQLFieldConstant.Enrollee.PHONE_NUMBER));
+                    enrollee.setAvarageCertificateScore(resultSet.getInt(SQLFieldConstant.Enrollee.AVERAGE_CERTIVICATE_SCORE));
+                    enrollee.setScoreOnCT(resultSet.getInt(SQLFieldConstant.Enrollee.SCORE_ON_CT));
+                    enrollee.setUserId(resultSet.getLong(SQLFieldConstant.Enrollee.USER_ID));
+                    enrolleeList.add(enrollee);
+                }
+                return enrolleeList;
+            } catch (SQLException e) {
+                throw new DAOException("Find enrollees error ", e);
+            }
+        } finally {
+            closeConnection(connection);
+        }
+    }
+
+    @Override
+    public List<Enrollee> findEnrolleesEnteredFacultyPaid(Faculty faculty) throws DAOException {
+
+        ProxyConnection connection = null;
+        try {
+            connection = ConnectionPoolImpl.getInstance().takeConnection();
+            try (PreparedStatement preparedStatement = connection.prepareStatement(SQLQueryConstant.SELECT_ENROLLE_ENTERED_ON_FACULTY)) {
+                preparedStatement.setLong(1,faculty.getFacultyId());
+                preparedStatement.setInt(2,faculty.getBudjetPlaceCount());
+                preparedStatement.setInt(3,faculty.getBudjetPlaceCount()+faculty.getPaidPlaceCount());
+                ResultSet resultSet = preparedStatement.executeQuery();
+                List<by.sichnenko.committee.model.Enrollee> enrolleeList = new ArrayList<>();
+                while (resultSet.next()) {
+                    Enrollee enrollee = new by.sichnenko.committee.model.Enrollee();
+                    enrollee.setEnrolleeId(resultSet.getLong(SQLFieldConstant.Enrollee.ID));
+                    enrollee.setName(resultSet.getString(SQLFieldConstant.Enrollee.NAME));
+                    enrollee.setSurname(resultSet.getString(SQLFieldConstant.Enrollee.SURNAME));
+                    enrollee.setPatronymic(resultSet.getString(SQLFieldConstant.Enrollee.PATRONYMIC));
+                    enrollee.setPhoneNumber(resultSet.getString(SQLFieldConstant.Enrollee.PHONE_NUMBER));
+                    enrollee.setAvarageCertificateScore(resultSet.getInt(SQLFieldConstant.Enrollee.AVERAGE_CERTIVICATE_SCORE));
+                    enrollee.setScoreOnCT(resultSet.getInt(SQLFieldConstant.Enrollee.SCORE_ON_CT));
+                    enrollee.setUserId(resultSet.getLong(SQLFieldConstant.Enrollee.USER_ID));
+                    enrolleeList.add(enrollee);
+                }
+                return enrolleeList;
             } catch (SQLException e) {
                 throw new DAOException("Find enrollees error ", e);
             }

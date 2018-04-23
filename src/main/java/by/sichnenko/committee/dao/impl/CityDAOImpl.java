@@ -40,8 +40,21 @@ public class  CityDAOImpl implements CityDAO {
     }
 
     @Override
-    public boolean create(City item) throws DAOException {
-        return false;
+    public boolean create(City city) throws DAOException {
+        ProxyConnection connection = null;
+        try {
+            connection = ConnectionPoolImpl.getInstance().takeConnection();
+            try (PreparedStatement preparedStatement = connection.prepareStatement(SQLQueryConstant.CREATE_CITY)) {
+                preparedStatement.setString(1,city.getName());
+                preparedStatement.setLong(2,city.getCountryId());
+                preparedStatement.execute();
+                return true;
+            } catch (SQLException e) {
+                throw new DAOException("Find countries error ", e);
+            }
+        } finally {
+            closeConnection(connection);
+        }
     }
 
     @Override

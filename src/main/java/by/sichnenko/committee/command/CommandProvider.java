@@ -1,6 +1,13 @@
 package by.sichnenko.committee.command;
 
 import by.sichnenko.committee.command.impl.*;
+import by.sichnenko.committee.command.impl.enrollee.ChangeAllEnrolleeStatusCommand;
+import by.sichnenko.committee.command.impl.enrollee.ChangeEnrolleeStatusCommand;
+import by.sichnenko.committee.command.impl.enrollee.FillEnrolleeCommand;
+import by.sichnenko.committee.command.impl.faculty.AddNewFacultyCommand;
+import by.sichnenko.committee.command.impl.faculty.FindSubjectsByFacultyCommand;
+import by.sichnenko.committee.command.impl.faculty.LoadImageFacultyCommand;
+import by.sichnenko.committee.command.impl.user.*;
 
 import java.util.EnumMap;
 
@@ -34,7 +41,10 @@ public class CommandProvider {
         commands.put(CHANGE_ENROLLEE_STATUS, new ChangeEnrolleeStatusCommand());
         commands.put(CHANGE_AVATAR, new ChangeAvatarCommand());
         commands.put(EDIT_USER_PROFILE, new EditUserProfileCommand());
-
+        commands.put(ADD_COUNTRY, new AddCountryCommand());
+        commands.put(ADD_CITY, new AddCityCommand());
+        commands.put(SHOW_ENROLLEES_BUDJET, new ShowEnrolleesBudjetCommand());
+        commands.put(FIND_SUBJECTS_BY_FACULTY, new FindSubjectsByFacultyCommand());
     }
 
      ActionCommand getCommand(String commandName) {

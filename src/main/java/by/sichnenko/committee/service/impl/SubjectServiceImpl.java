@@ -1,5 +1,6 @@
 package by.sichnenko.committee.service.impl;
 
+import by.sichnenko.committee.constant.RequestNameConstant;
 import by.sichnenko.committee.controller.SessionRequestContent;
 import by.sichnenko.committee.dao.CountryDAO;
 import by.sichnenko.committee.dao.SubjectDAO;
@@ -9,10 +10,26 @@ import by.sichnenko.committee.exception.DAOException;
 import by.sichnenko.committee.exception.ServiceException;
 import by.sichnenko.committee.model.Subject;
 import by.sichnenko.committee.service.SubjectService;
+import by.sichnenko.committee.validator.GeneralValidator;
 
 import java.util.List;
 
 public class SubjectServiceImpl implements SubjectService {
+    @Override
+    public List<Subject> findSubjetsForFaculty(SessionRequestContent sessionRequestContent) throws ServiceException {
+        String[] facultyId = sessionRequestContent.getRequestParameters().get(RequestNameConstant.FACULTY_ID);
+        if (GeneralValidator.isVarExist(facultyId)){
+            SubjectDAO subjectDAO =new SubjectDAOImpl();
+            try {
+                return subjectDAO.findSubjetsForFaculty(Long.valueOf(facultyId[0]));
+
+            } catch (DAOException e) {
+                throw new ServiceException("Sorry, technical error", e);
+            }
+        }
+        throw new ServiceException("Sorry, technical error");
+    }
+
     @Override
     public List<Subject> findAllSubjects() throws ServiceException {
         SubjectDAO subjectDAO;
