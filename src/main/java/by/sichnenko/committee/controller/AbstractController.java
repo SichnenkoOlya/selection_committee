@@ -7,6 +7,7 @@ import net.sf.json.JSONArray;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,7 +17,7 @@ import java.io.PrintWriter;
 abstract class AbstractController extends HttpServlet {
 
     void processRequest(HttpServletRequest request,
-                                HttpServletResponse response)
+                        HttpServletResponse response)
             throws ServletException, IOException {
 
         ActionFactory client = new ActionFactory();
@@ -24,6 +25,9 @@ abstract class AbstractController extends HttpServlet {
         SessionRequestContent sessionRequestContent = new SessionRequestContent();
         sessionRequestContent.extractValues(request);
         Router router = command.execute(sessionRequestContent);
+        for (Cookie cookie : sessionRequestContent.getCookiesValues()) {
+            response.addCookie(cookie);
+        }
         sessionRequestContent.insertAttributes(request);
 
         switch (router.getRouterType()) {
@@ -35,7 +39,7 @@ abstract class AbstractController extends HttpServlet {
                 response.sendRedirect(router.getRouterPage());
                 break;
             case ERROR:
-                //response.sendError(router.getRouterPage());
+                response.sendError(500);
                 break;
             case AJAX:
                 JSONArray jsonArray = sessionRequestContent.getAjaxParameter();

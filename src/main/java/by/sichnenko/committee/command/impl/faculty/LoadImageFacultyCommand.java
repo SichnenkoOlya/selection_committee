@@ -17,8 +17,8 @@ public class LoadImageFacultyCommand implements ActionCommand {
         try {
             facultyService.loadImage(sessionRequestContent);
         } catch (ServiceException e) {
-            return new Router(RouterType.REDIRECT, MAIN_PAGE);
+            return new Router(RouterType.REDIRECT, defineQuery(sessionRequestContent));
         }
-        return new Router(RouterType.REDIRECT, MAIN_PAGE);
+        return new Router(RouterType.REDIRECT, defineQuery(sessionRequestContent));
     }
 }

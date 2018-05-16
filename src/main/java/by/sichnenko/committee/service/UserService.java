@@ -4,6 +4,7 @@ import by.sichnenko.committee.controller.SessionRequestContent;
 import by.sichnenko.committee.exception.ServiceException;
 import by.sichnenko.committee.model.User;
 
+import java.util.HashMap;
 import java.util.List;
 
 public interface UserService {
@@ -13,7 +14,7 @@ public interface UserService {
 
     void changeUserRole(SessionRequestContent sessionRequestContent) throws ServiceException;
 
-    void editUser(SessionRequestContent sessionRequestContent) throws ServiceException;
+    void editProfile(SessionRequestContent sessionRequestContent) throws ServiceException;
 
     void changeUserPassword(SessionRequestContent sessionRequestContent) throws ServiceException;
 
@@ -23,8 +24,10 @@ public interface UserService {
 
     List<User> findAllUsers() throws ServiceException;
 
-    User findUser(String login) throws ServiceException;
+    User findUser(SessionRequestContent sessionRequestContent) throws ServiceException;
 
     List<User> findUsersByStatus(SessionRequestContent sessionRequestContent) throws ServiceException;
+
+    HashMap<User, Long> findAllUsersAndStatus() throws ServiceException;
 
 }

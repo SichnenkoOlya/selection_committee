@@ -1,9 +1,6 @@
 package by.sichnenko.committee.service.impl;
 
-import by.sichnenko.committee.controller.SessionRequestContent;
-import by.sichnenko.committee.dao.FacultyDAO;
 import by.sichnenko.committee.dao.PrivilegeDAO;
-import by.sichnenko.committee.dao.impl.FacultyDAOImpl;
 import by.sichnenko.committee.dao.impl.PrivilegeDAOImpl;
 import by.sichnenko.committee.exception.DAOException;
 import by.sichnenko.committee.exception.ServiceException;
@@ -16,12 +13,11 @@ public class PrivilegeServiceImpl implements PrivilegeService {
 
     @Override
     public List<Privilege> findAllPrivileges() throws ServiceException {
-        PrivilegeDAO privilegeDAO;
         try {
-            privilegeDAO = new PrivilegeDAOImpl();
+            PrivilegeDAO privilegeDAO = new PrivilegeDAOImpl();
             return privilegeDAO.findAll();
         } catch (DAOException e) {
-            throw new ServiceException("Sorry, technical error", e);
+            throw new ServiceException("Find privileges error ", e);
         }
     }
 }

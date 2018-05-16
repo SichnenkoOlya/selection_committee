@@ -1,5 +1,6 @@
 package by.sichnenko.committee.model;
 
+import java.util.Date;
 import java.util.List;
 
 public class Faculty {
@@ -13,6 +14,8 @@ public class Faculty {
     private String imagePath;
     private String description;
     private List<Subject> subjects;
+    private boolean isFinish;
+    private Date finishDate;
 
     public long getFacultyId() {
         return facultyId;
@@ -92,5 +95,21 @@ public class Faculty {
 
     public void setSubjects(List<Subject> subjects) {
         this.subjects = subjects;
+    }
+
+    public boolean getIsFinish() {
+        return isFinish;
+    }
+
+    public void setIsFinish(boolean finish) {
+        isFinish = finish;
+    }
+
+    public Date getFinishDate() {
+        return finishDate;
+    }
+
+    public void setFinishDate(Date finishDate) {
+        this.finishDate = finishDate;
     }
 }

@@ -2,6 +2,11 @@ package by.sichnenko.committee.validator;
 
 import by.sichnenko.committee.type.ImageExtensionType;
 
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
+
+import static by.sichnenko.committee.constant.PatternConstant.DATE_REGEX;
+
 public class GeneralValidator {
     /**
      * Validate that string is not empty or null
@@ -46,6 +51,10 @@ public class GeneralValidator {
         return isPositiveNumber;
     }
 
+    public static boolean isPositiveNumber(String stringVar[]) {
+        return isVarExist(stringVar) && isPositiveNumber(stringVar[0]);
+    }
+
     /**
      * Validate that string is valid image extension
      *
@@ -68,4 +77,15 @@ public class GeneralValidator {
         }
         return isValid;
     }
+
+    public static boolean isLegalDate(String date){
+        SimpleDateFormat sdf = new SimpleDateFormat(DATE_REGEX);
+        sdf.setLenient(false);
+        return sdf.parse(date, new ParsePosition(0)) != null;
+    }
+
+    public static boolean isLegalDate(String[] date) {
+        return isVarExist(date) && isLegalDate(date[0]);
+    }
+
 }

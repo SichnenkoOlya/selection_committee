@@ -32,12 +32,12 @@ public class ImageUploader {
             InputStream fileContent = filePart.getInputStream();
             File folder = new File(IMAGE_DIRECTORY + File.separator + directoryName);
 
-            if (!folder.exists()) {
-                if (!folder.mkdir()) {
-                    LOGGER.error("Error creating directory: " + folder);
-                    return Optional.empty();
-                }
-            }
+//            if (!folder.exists()) {
+//                if (!folder.mkdir()) {
+//                    LOGGER.error("Error creating directory: " + folder);
+//                    return Optional.empty();
+//                }
+//            }
             String relativePath = IMAGE_DIRECTORY + File.separator + directoryName + File.separator + fileName + extension;
             String filePath = sessionRequestContent.getRealPath() + relativePath;
 

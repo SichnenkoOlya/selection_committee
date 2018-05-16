@@ -15,8 +15,8 @@ public class ChangeAllEnrolleeStatusCommand implements ActionCommand {
         try {
             enrolleeService.changeAllEnrolleesStatus(sessionRequestContent);
         } catch (ServiceException e) {
-            return new Router(RouterType.FORWARD, defineLastPage(sessionRequestContent));
+            return new Router(RouterType.FORWARD, defineQuery(sessionRequestContent));
         }
-        return new Router(RouterType.REDIRECT, defineLastPage(sessionRequestContent));
+        return new Router(RouterType.REDIRECT, defineQuery(sessionRequestContent));
     }
 }

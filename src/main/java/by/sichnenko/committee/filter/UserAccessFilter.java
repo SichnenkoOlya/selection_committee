@@ -11,11 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebFilter(filterName = "UserAccessFilter",
-        urlPatterns = {"/jsp/user/profile.jsp", "/jsp/user/change_avatar.jsp", "/jsp/user/change_password.jsp"},
+        urlPatterns = "/pages/user/*",
         dispatcherTypes = {DispatcherType.REQUEST, DispatcherType.FORWARD})
 public class UserAccessFilter implements Filter {
 
-    public void init(FilterConfig fConfig) throws ServletException {
+    public void init(FilterConfig fConfig) {
     }
 
     public void doFilter(ServletRequest request, ServletResponse response,
@@ -23,12 +23,12 @@ public class UserAccessFilter implements Filter {
 
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
- /*       User user = (User) httpRequest.getSession().getAttribute(RequestNameConstant.USER);
+        User user = (User) httpRequest.getSession().getAttribute(RequestNameConstant.USER);
 
         if (user == null) {
             httpResponse.sendRedirect(PageNameConstant.INDEX_PAGE);
             return;
-        }*/
+        }
         chain.doFilter(request, response);
     }
 

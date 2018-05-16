@@ -11,31 +11,65 @@
 <fmt:message key="label.add_country" var="addCountryTxt"/>
 <fmt:message key="label.country_name" var="countryNameTxt"/>
 <fmt:message key="label.add" var="addTxt"/>
+<fmt:message key="label.home" var="homeTxt"/>
+<fmt:message key="error.incorrect_data" var="incorrectDataTxt"/>
+<fmt:message key="error.make_sure" var="makeSureTxt"/>
+<fmt:message key="error.such_country_exist" var="suchCountryExistTxt"/>
 
-<body>
+<div class="page_title gradient_overlay" style="background: url(/images/page_title_bg.jpg);">
+    <div class="container">
+        <div class="inner">
+            <h1>${addCountryTxt}</h1>
+            <ol class="breadcrumb">
+                <li><a href="${pageContext.request.contextPath}/mainController">${homeTxt}</a></li>
+                <li>${addCountryTxt}</li>
+            </ol>
+        </div>
+    </div>
+</div>
 
-<c:set var="lastPage" value="pages/admin/add_country.jsp" scope="session" />
+<main>
+    <div class="container">
 
-<h1>
-    <label>
-        <c:out value="${addCountryTxt}"/>
-    </label>
-</h1>
-<br/>
-<form action="${pageContext.request.contextPath}/mainController" method="post">
-    <input type="hidden" name="command" value="ADD_COUNTRY"/>
-    <label for="countryNameInput">
-        ${countryNameTxt}
-    </label>
-    <br/>
-    <input id="countryNameInput" type="text" name="countryName" value=""/>
-    <br/>
+        <div class="row">
+            <div class="col-md-6">
+                <c:if test="${empty sessionScope.userName }">
+                    <div class="main_title a_left">
+                        <h2><c:out value="${addCountryTxt}"/></h2>
+                    </div>
 
-    <input type="submit" name="commit" value="${addTxt}">
-    <br/>
+                    <form id="contact-form-page" action="${pageContext.request.contextPath}/mainController"
+                          method="post">
+                        <input type="hidden" name="command" value="ADD_COUNTRY"/>
 
-</form>
-</body>
+                        <c:if test="${requestScope.containsKey('incorrectData')}">
+                            ${incorrectDataTxt}
+                            ${makeSureTxt}
+                        </c:if>
+                        <c:if test="${requestScope.containsKey('suchCityExist')}">
+                            ${suchCountryExistTxt}
+                        </c:if>
+
+
+                        <div class="row">
+                            <div class="form-group col-md-12 col-sm-12">
+                                <label class="control-label">${countryNameTxt}</label>
+                                <input type="text" class="form-control" name="countryName" placeholder="${countryNameTxt}">
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <button type="submit" class="button  btn_blue mt40 upper pull-right">
+                                    <i class="fa fa-check" aria-hidden="true"></i>${addTxt}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </c:if>
+            </div>
+        </div>
+    </div>
+</main>
+
 
 <%@include file="/pages/partial/footer.jsp" %>
 

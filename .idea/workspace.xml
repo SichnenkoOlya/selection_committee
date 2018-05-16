@@ -7,71 +7,286 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1daf1ab2-6414-43ab-9c74-a19cf16689e3" name="Default" comment="Added styles, js, css for jsp.">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/AddCityCommand.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/AddCountryCommand.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/ShowEnrolleesBudjetCommand.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/faculty/FindSubjectsByFacultyCommand.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/filter/AddNewCitiyJSPFilter.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/lib/itextpdf-5.5.13.jar" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/lib/joda-time-2.9.9.jar" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/lib/ooxml-schemas-1.0.jar" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/lib/opencsv-4.1.jar" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/lib/poi-3.17.jar" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/lib/poi-ooxml-3.17.jar" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/lib/xmlbeans-2.5.0.jar" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/web/js/generateHtml.js" />
+    <list default="true" id="1daf1ab2-6414-43ab-9c74-a19cf16689e3" name="Default" comment="A lot of changes">
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/EnrollCommand.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/ShowAddCityPageCommand.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/ShowAddCountryPageCommand.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/ShowChangePasswordPageCommand.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/ShowEditProfilePageCommand.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/ShowMainPageCommand.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/ShowMyProfilePageCommand.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/ShowSignInPageCommand.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/ShowSignUpPageCommand.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/enrollee/EditEnrolleeCommand.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/enrollee/ShowEnrolleeFillPage.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/enrollee/ShowEnrollesPaidCommand.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/classes/general.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/lib/bcprov-ext-jdk15on-159.jar" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/lib/bcprov-jdk15on-159.jar" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/lib/commons-beanutils-1.9.3.jar" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/lib/commons-collections-3.2.2.jar" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/lib/commons-collections4-4.1.jar" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/lib/commons-lang-2.6.jar" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/lib/commons-lang3-3.7.jar" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/lib/commons-logging-1.2.jar" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/lib/ezmorph-1.0.6.jar" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/lib/json-lib-2.4-jdk15.jar" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/lib/xssflt.jar" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/css/animate.min.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/css/bootstrap-datepicker.min.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/css/bootstrap-select.min.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/css/bootstrap.min.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/css/famfamfam-flags.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/css/magnific-popup.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/css/owl.carousel.min.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/css/responsive.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/css/style.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/fonts/Flaticon.woff" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/fonts/FontAwesome.otf" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/fonts/flaticon.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/fonts/font-awesome.min.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/fonts/fontawesome-webfont.eot" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/fonts/fontawesome-webfont.svg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/fonts/fontawesome-webfont.ttf" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/fonts/fontawesome-webfont.woff" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/fonts/fontawesome-webfont.woff2" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/fonts/glyphicons-halflings-regular.eot" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/fonts/glyphicons-halflings-regular.svg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/fonts/glyphicons-halflings-regular.ttf" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/fonts/glyphicons-halflings-regular.woff" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/fonts/glyphicons-halflings-regular.woff2" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/images/faculty/fcsis.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/images/faculty/fitu.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/images/faculty/fkp.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/images/faculty/fre.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/images/faculty/ftk.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/images/faculty/ief.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/images/famfamfam-flags.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/images/favicon.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/images/gallery/gallery1.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/images/gallery/gallery10.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/images/gallery/gallery11.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/images/gallery/gallery12.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/images/gallery/gallery2.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/images/gallery/gallery3.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/images/gallery/gallery4.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/images/gallery/gallery5.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/images/gallery/gallery6.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/images/gallery/gallery7.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/images/gallery/gallery8.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/images/gallery/gallery9.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/images/icons/gridtile.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/images/icons/pin.svg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/images/icons/wave.svg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/images/icons/wave_blue.svg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/images/icons/wave_dark.svg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/images/icons/wave_white.svg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/images/icons/wave_yellow.svg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/images/logo.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/images/logo_light.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/images/slider/slider-1.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/images/slider/slider-2.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/images/slider/slider-3.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/images/slider/slider-4.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/js/bootstrap-datepicker.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/js/bootstrap-select.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/js/bootstrap.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/js/countUp.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/js/isotope.pkgd.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/js/jPushMenu.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/js/jquery.countdown.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/js/jquery.easing.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/js/jquery.magnific-popup.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/js/jquery.matchHeight.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/js/jquery.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/js/jquery.smoothState.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/js/main.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/js/moment.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/js/morphext.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/js/owl.carousel.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/js/owl.carousel.thumbs.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/js/wow.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/pages/common/faculty_detail.jsp" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/pages/common/list_enrollees.jsp" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/pages/common/sign_in.jsp" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/pages/error/error_404.jsp" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/pages/error/error_500.jsp" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/pages/user/edit_profile.jsp" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/pages/user/my_profile.jsp" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/css/closedhand.cur" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/css/index.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/css/layers.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/css/navigation-skins/ares.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/css/navigation-skins/custom.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/css/navigation-skins/dione.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/css/navigation-skins/erinyen.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/css/navigation-skins/gyges.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/css/navigation-skins/hades.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/css/navigation-skins/hebe.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/css/navigation-skins/hephaistos.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/css/navigation-skins/hermes.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/css/navigation-skins/hesperiden.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/css/navigation-skins/metis.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/css/navigation-skins/persephone.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/css/navigation-skins/uranus.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/css/navigation-skins/zeus.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/css/navigation.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/css/openhand.cur" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/css/settings-ver.5.3.0.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/css/settings-ver.5.3.1.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/css/settings.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/fonts/font-awesome/css/font-awesome.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/fonts/font-awesome/css/font-awesome.min.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/fonts/font-awesome/fonts/FontAwesome.otf" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/fonts/font-awesome/fonts/fontawesome-webfont.eot" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/fonts/font-awesome/fonts/fontawesome-webfont.svg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/fonts/font-awesome/fonts/fontawesome-webfont.ttf" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/fonts/font-awesome/fonts/fontawesome-webfont.woff" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/fonts/font-awesome/fonts/fontawesome-webfont.woff2" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/fonts/pe-icon-7-stroke/css/helper.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/fonts/pe-icon-7-stroke/fonts/Pe-icon-7-stroke.eot" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/fonts/pe-icon-7-stroke/fonts/Pe-icon-7-stroke.svg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/fonts/pe-icon-7-stroke/fonts/Pe-icon-7-stroke.ttf" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/fonts/pe-icon-7-stroke/fonts/Pe-icon-7-stroke.woff" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/fonts/revicons/revicons.eot" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/fonts/revicons/revicons.svg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/fonts/revicons/revicons.ttf" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/fonts/revicons/revicons.woff" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/js/extensions/revolution.extension.actions.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/js/extensions/revolution.extension.carousel.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/js/extensions/revolution.extension.kenburn.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/js/extensions/revolution.extension.layeranimation.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/js/extensions/revolution.extension.migration.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/js/extensions/revolution.extension.navigation.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/js/extensions/revolution.extension.parallax.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/js/extensions/revolution.extension.slideanims.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/js/extensions/revolution.extension.video.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/js/extensions/source/revolution.extension.actions.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/js/extensions/source/revolution.extension.carousel.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/js/extensions/source/revolution.extension.kenburn.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/js/extensions/source/revolution.extension.layeranimation.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/js/extensions/source/revolution.extension.migration.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/js/extensions/source/revolution.extension.navigation.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/js/extensions/source/revolution.extension.parallax.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/js/extensions/source/revolution.extension.slideanims.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/js/extensions/source/revolution.extension.video.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/js/jquery.themepunch.enablelog.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/js/jquery.themepunch.revolution.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/js/jquery.themepunch.tools.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/js/source/jquery.themepunch.enablelog.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/js/source/jquery.themepunch.revolution.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/revolution/js/source/jquery.themepunch.tools.min.js" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/committee.iml" afterPath="$PROJECT_DIR$/committee.iml" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/ActionCommand.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/ActionCommand.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/CommandEnum.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/CommandEnum.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/CommandProvider.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/CommandProvider.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/AddNewFacultyCommand.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/faculty/AddNewFacultyCommand.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/ChangeAllEnrolleeStatusCommand.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/enrollee/ChangeAllEnrolleeStatusCommand.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/ChangeAvatarCommand.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/user/ChangeAvatarCommand.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/ChangeEnrolleeStatusCommand.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/enrollee/ChangeEnrolleeStatusCommand.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/ChangePasswordCommand.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/user/ChangePasswordCommand.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/ChangeUserLockCommand.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/user/ChangeUserLockCommand.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/ChangeUserRoleCommand.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/user/ChangeUserRoleCommand.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/EditUserProfileCommand.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/user/EditUserProfileCommand.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/FillEnrolleeCommand.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/enrollee/FillEnrolleeCommand.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/LoadImageFacultyCommand.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/faculty/LoadImageFacultyCommand.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/SignInCommand.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/user/SignInCommand.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/SignOutCommand.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/user/SignOutCommand.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/SignUpCommand.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/user/SignUpCommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/AddCityCommand.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/AddCityCommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/AddCountryCommand.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/AddCountryCommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/ChangeLocaleCommand.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/ChangeLocaleCommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/FindCitiesByCountryCommand.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/FindCitiesByCountryCommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/ShowAddFacultyPage.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/faculty/ShowAddFacultyPage.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/ShowAllUsers.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/user/ShowAllUsersCommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/ShowChangePasswordPage.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/user/ShowChangePasswordPage.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/ShowDetailFaculty.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/faculty/ShowDetailFaculty.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/ShowDetailUserPage.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/user/ShowDetailUserPage.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/ShowEnrolleeFillPage.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/ShowEnrolleesBudjetCommand.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/enrollee/ShowEnrolleesBudjetCommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/ShowFacultiesCommand.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/faculty/ShowFacultiesCommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/ShowUsersWirhStatus.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/user/ShowUsersWirhStatus.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/enrollee/ChangeAllEnrolleeStatusCommand.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/enrollee/ChangeAllEnrolleeStatusCommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/enrollee/ChangeEnrolleeStatusCommand.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/enrollee/ChangeEnrolleeStatusCommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/enrollee/FillEnrolleeCommand.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/enrollee/FillEnrolleeCommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/faculty/AddNewFacultyCommand.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/faculty/AddNewFacultyCommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/faculty/LoadImageFacultyCommand.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/faculty/LoadImageFacultyCommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/user/ChangePasswordCommand.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/user/ChangePasswordCommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/user/ChangeUserLockCommand.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/user/ChangeUserLockCommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/user/ChangeUserRoleCommand.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/user/ChangeUserRoleCommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/user/EditUserProfileCommand.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/user/EditUserProfileCommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/user/SignInCommand.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/user/SignInCommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/user/SignOutCommand.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/user/SignOutCommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/user/SignUpCommand.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/user/SignUpCommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/constant/ErrorConstant.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/constant/GeneralConstant.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/constant/GeneralConstant.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/constant/PageNameConstant.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/constant/PageNameConstant.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/constant/PatternConstant.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/constant/PatternConstant.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/constant/RequestNameConstant.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/constant/RequestNameConstant.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/constant/SQLFieldConstant.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/constant/SQLFieldConstant.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/constant/SQLQueryConstant.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/constant/SQLQueryConstant.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/controller/AbstractController.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/controller/AbstractController.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/controller/MainController.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/controller/MainController.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/controller/SessionRequestContent.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/controller/SessionRequestContent.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/dao/CityDAO.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/dao/CityDAO.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/dao/CountryDAO.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/dao/CountryDAO.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/dao/DAO.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/dao/DAO.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/dao/EnrolleeDAO.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/dao/EnrolleeDAO.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/dao/FacultyDAO.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/dao/FacultyDAO.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/dao/PrivilegeDAO.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/dao/PrivilegeDAO.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/dao/SubjectDAO.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/dao/SubjectDAO.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/dao/impl/CityDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/dao/impl/CityDAOImpl.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/dao/impl/CountryDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/dao/impl/CountryDAOImpl.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/dao/impl/EnrolleeDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/dao/impl/EnrolleeDAOImpl.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/dao/impl/FacultyDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/dao/impl/FacultyDAOImpl.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/dao/impl/PrivilegeDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/dao/impl/PrivilegeDAOImpl.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/dao/impl/SubjectDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/dao/impl/SubjectDAOImpl.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/dao/impl/UserDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/dao/impl/UserDAOImpl.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/filter/AddFacultyJSPFilter.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/filter/AddNewCitiyJSPFilter.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/filter/AdminAccessFilter.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/filter/AdminAccessFilter.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/filter/AllUserJSPFilter.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/filter/CurrentPageFilter.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/filter/CurrentPageFilter.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/filter/DetailFacultyJSPFilter.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/filter/DetailUserJSPPage.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/filter/EnrolleeFillJSPFilter.java" afterPath="" />
       <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/filter/MainJSPFilter.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/filter/MainJSPFilter.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/model/Subject.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/model/Subject.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/filter/SessionFilter.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/filter/UserAccessFilter.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/filter/UserAccessFilter.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/listener/ContextListener.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/listener/ContextListener.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/model/City.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/model/City.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/model/Country.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/model/Country.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/model/Enrollee.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/model/Enrollee.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/model/Faculty.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/model/Faculty.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/model/Status.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/model/Status.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/service/CityService.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/service/CityService.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/service/CountryService.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/service/CountryService.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/service/EnrolleeService.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/service/EnrolleeService.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/service/FacultyService.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/service/FacultyService.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/service/SubjectService.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/service/SubjectService.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/service/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/service/UserService.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/service/impl/CityServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/service/impl/CityServiceImpl.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/service/impl/CountryServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/service/impl/CountryServiceImpl.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/service/impl/EnrolleeServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/service/impl/EnrolleeServiceImpl.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/service/impl/FacultyServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/service/impl/FacultyServiceImpl.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/service/impl/PrivilegeServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/service/impl/PrivilegeServiceImpl.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/service/impl/SubjectServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/service/impl/SubjectServiceImpl.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/service/impl/UserServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/service/impl/UserServiceImpl.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/tag/DateTag.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/tag/DateTag.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/util/ImageUploader.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/util/ImageUploader.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/validator/GeneralValidator.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/validator/GeneralValidator.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/validator/UserValidator.java" afterPath="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/validator/UserValidator.java" />
       <change beforePath="$PROJECT_DIR$/web/WEB-INF/classes/text_en.properties" afterPath="$PROJECT_DIR$/web/WEB-INF/classes/text_en.properties" />
       <change beforePath="$PROJECT_DIR$/web/WEB-INF/classes/text_ru.properties" afterPath="$PROJECT_DIR$/web/WEB-INF/classes/text_ru.properties" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/tld/custom.tld" afterPath="$PROJECT_DIR$/web/WEB-INF/tld/custom.tld" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" />
+      <change beforePath="$PROJECT_DIR$/web/index.jsp" afterPath="$PROJECT_DIR$/web/index.jsp" />
+      <change beforePath="$PROJECT_DIR$/web/js/generateHtml.js" afterPath="$PROJECT_DIR$/web/js/generateHtml.js" />
       <change beforePath="$PROJECT_DIR$/web/pages/admin/add_city.jsp" afterPath="$PROJECT_DIR$/web/pages/admin/add_city.jsp" />
-      <change beforePath="$PROJECT_DIR$/web/pages/admin/add_country.jsp" afterPath="$PROJECT_DIR$/web/pages/admin/add_country.jsp" />
+      <change beforePath="$PROJECT_DIR$/web/pages/admin/add_faculty.jsp" afterPath="$PROJECT_DIR$/web/pages/admin/add_faculty.jsp" />
+      <change beforePath="$PROJECT_DIR$/web/pages/admin/add_privilege.jsp" afterPath="" />
       <change beforePath="$PROJECT_DIR$/web/pages/admin/all_users.jsp" afterPath="$PROJECT_DIR$/web/pages/admin/all_users.jsp" />
       <change beforePath="$PROJECT_DIR$/web/pages/admin/detail_user.jsp" afterPath="$PROJECT_DIR$/web/pages/admin/detail_user.jsp" />
-      <change beforePath="$PROJECT_DIR$/web/pages/change_password.jsp" afterPath="$PROJECT_DIR$/web/pages/change_password.jsp" />
-      <change beforePath="$PROJECT_DIR$/web/pages/enrollee_fill.jsp" afterPath="$PROJECT_DIR$/web/pages/enrollee_fill.jsp" />
-      <change beforePath="$PROJECT_DIR$/web/pages/main.jsp" afterPath="$PROJECT_DIR$/web/pages/main.jsp" />
+      <change beforePath="$PROJECT_DIR$/web/pages/change_password.jsp" afterPath="$PROJECT_DIR$/web/pages/user/change_password.jsp" />
+      <change beforePath="$PROJECT_DIR$/web/pages/edit_profile.jsp" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/web/pages/enrollee_fill.jsp" afterPath="$PROJECT_DIR$/web/pages/user/enrollee_fill.jsp" />
+      <change beforePath="$PROJECT_DIR$/web/pages/error/error.jsp" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/web/pages/faculty_detail.jsp" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/web/pages/main.jsp" afterPath="$PROJECT_DIR$/web/pages/common/main.jsp" />
       <change beforePath="$PROJECT_DIR$/web/pages/partial/footer.jsp" afterPath="$PROJECT_DIR$/web/pages/partial/footer.jsp" />
       <change beforePath="$PROJECT_DIR$/web/pages/partial/header.jsp" afterPath="$PROJECT_DIR$/web/pages/partial/header.jsp" />
-      <change beforePath="$PROJECT_DIR$/web/pages/sign_in.jsp" afterPath="$PROJECT_DIR$/web/pages/sign_in.jsp" />
-      <change beforePath="$PROJECT_DIR$/web/pages/sign_up.jsp" afterPath="$PROJECT_DIR$/web/pages/sign_up.jsp" />
+      <change beforePath="$PROJECT_DIR$/web/pages/sign_in.jsp" afterPath="$PROJECT_DIR$/web/pages/admin/add_country.jsp" />
+      <change beforePath="$PROJECT_DIR$/web/pages/sign_up.jsp" afterPath="$PROJECT_DIR$/web/pages/common/sign_up.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -111,58 +326,51 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="header.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/pages/partial/header.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="157" column="101" lean-forward="false" selection-start-line="157" selection-start-column="101" selection-end-line="157" selection-end-column="101" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="enrollee_fill.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/pages/enrollee_fill.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="268">
-              <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="144" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="change_password.jsp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/web/pages/change_password.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1638">
-              <caret line="72" column="14" lean-forward="false" selection-start-line="72" selection-start-column="14" selection-end-line="72" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="text_en.properties" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/classes/text_en.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="353">
-              <caret line="69" column="0" lean-forward="false" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="15" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="ResourceBundle">
+      <file leaf-file-name="default.png" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/images/user/default.png">
+          <provider selected="true" editor-type-id="images">
             <state />
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="text_ru.properties" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/classes/text_ru.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="66" column="0" lean-forward="false" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="10" />
-              <folding />
-            </state>
+      <file leaf-file-name="fitu.jpg" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/images/faculty/fitu.jpg">
+          <provider selected="true" editor-type-id="images">
+            <state />
           </provider>
-          <provider editor-type-id="ResourceBundle">
+        </entry>
+      </file>
+      <file leaf-file-name="pin.svg" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/images/icons/pin.svg">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="wave.svg" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/images/icons/wave.svg">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="wave_dark.svg" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/images/icons/wave_dark.svg">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="wave_yellow.svg" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/images/icons/wave_yellow.svg">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="wave_white.svg" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/images/icons/wave_white.svg">
+          <provider selected="true" editor-type-id="images">
             <state />
           </provider>
         </entry>
@@ -173,46 +381,50 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Jsp File" />
         <option value="jsf" />
         <option value="JavaScript File" />
+        <option value="Jsp File" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>lang</find>
-      <find>net.sf.json</find>
-      <find>Commons-lang</find>
-      <find>Morpher</find>
-      <find>commons-collections</find>
-      <find>commons-beanutils</find>
-      <find>facu</find>
-      <find>href</find>
-      <find>FACULTY</find>
-      <find>SHOW_CHANGE_PASSWORD_PAGE</find>
-      <find>isBlocked</find>
-      <find>fac</find>
-      <find>enrollees</find>
-      <find>/mainController</find>
-      <find>authentificated</find>
-      <find>email</find>
-      <find>formcontact-form-page</find>
-      <find>form</find>
-      <find>initialize</find>
-      <find>select</find>
-      <find>sub</find>
-      <find>req</find>
-      <find>link</find>
-      <find>wav</find>
-      <find>images</find>
-      <find>logo</find>
-      <find>pro</find>
+      <find>userName</find>
+      <find>error</find>
+      <find>cha</find>
+      <find>signInTxt</find>
+      <find>facultiesTxt</find>
+      <find>welcomeToTxt</find>
+      <find>enteredtTxt</find>
+      <find>myProfileTxt</find>
+      <find>passportTxt</find>
+      <find>paidTxt</find>
+      <find>editEnrolleeProfileTxt</find>
+      <find>sur</find>
+      <find>mak</find>
+      <find>Enrollees</find>
+      <find>blockTxt</find>
+      <find>emptyEnrolleesTxt</find>
+      <find>choosePhotoTxt</find>
+      <find>fillProfileTxt</find>
+      <find>emailTxt</find>
+      <find>edit</find>
+      <find>fill</find>
+      <find>makeSureTxt</find>
+      <find>pass</find>
+      <find>ave</find>
+      <find>enrollee</find>
+      <find>score</find>
+      <find>messa</find>
+      <find>mess</find>
+      <find>prevEve</find>
+      <find>prev</find>
     </findStrings>
     <replaceStrings>
       <replace>is_blocked</replace>
       <replace>authenticated</replace>
+      <replace>findEnrollee</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -226,57 +438,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/dao/impl/CityDAOImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/service/impl/CityServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/constant/RequestNameConstant.java" />
-        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/service/impl/CountryServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/service/CountryService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/dao/impl/CountryDAOImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/constant/PageNameConstant.java" />
-        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/AddCityCommand.java" />
-        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/AddCountryCommand.java" />
-        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/user/EditUserProfileCommand.java" />
-        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/user/ChangePasswordCommand.java" />
-        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/enrollee/FillEnrolleeCommand.java" />
-        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/dao/EnrolleeDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/dao/impl/EnrolleeDAOImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/service/EnrolleeService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/service/impl/EnrolleeServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/faculty/LoadImageFacultyCommand.java" />
-        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/ShowEnrolleesBudjetCommand.java" />
-        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/util/ExelGeneratorService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/util/ExcelGeneratorService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/controller/MainController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/filter/EncodingFilter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/controller/SessionRequestContent.java" />
-        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/filter/MainJSPFilter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/user/SignInCommand.java" />
-        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/user/SignOutCommand.java" />
-        <option value="$PROJECT_DIR$/web/pages/sign_in.jsp" />
-        <option value="$PROJECT_DIR$/web/pages/sign_up.jsp" />
-        <option value="$PROJECT_DIR$/web/js/generateHtml.xhtml" />
-        <option value="$PROJECT_DIR$/web/js/main.js" />
-        <option value="$PROJECT_DIR$/web/pages/admin/all_users.jsp" />
-        <option value="$PROJECT_DIR$/web/css/style.css" />
-        <option value="$PROJECT_DIR$/web/pages/admin/detail_user.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/CommandEnum.java" />
-        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/CommandProvider.java" />
         <option value="$PROJECT_DIR$/web/pages/enrollee_fill.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/service/SubjectService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/model/Subject.java" />
-        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/constant/SQLFieldConstant.java" />
-        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/constant/SQLQueryConstant.java" />
-        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/dao/impl/SubjectDAOImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/service/impl/SubjectServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/faculty/FindSubjectsByFacultyCommand.java" />
-        <option value="$PROJECT_DIR$/web/pages/admin/add_city.jsp" />
-        <option value="$PROJECT_DIR$/web/js/generateHtml.js" />
-        <option value="$PROJECT_DIR$/web/pages/partial/footer.jsp" />
-        <option value="$PROJECT_DIR$/web/pages/main.jsp" />
-        <option value="$PROJECT_DIR$/web/pages/partial/header.jsp" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/classes/text_en.properties" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/classes/text_ru.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/enrollee/EditEnrolleeCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/enrollee/ShowEnrolleeFillPage.java" />
         <option value="$PROJECT_DIR$/web/pages/change_password.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/user/ChangePasswordCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/dao/impl/CityDAOImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/dao/CityDAO.java" />
+        <option value="$PROJECT_DIR$/web/pages/admin/add_city.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/service/impl/CityServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/AddCityCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/dao/CountryDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/service/impl/CountryServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/AddCountryCommand.java" />
+        <option value="$PROJECT_DIR$/web/pages/admin/add_country.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/dao/impl/CountryDAOImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/constant/SQLQueryConstant.java" />
+        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/filter/MainJSPFilter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/constant/PatternConstant.java" />
+        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/validator/GeneralValidator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/constant/GeneralConstant.java" />
+        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/service/impl/FacultyServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/faculty/AddNewFacultyCommand.java" />
+        <option value="$PROJECT_DIR$/web/pages/admin/add_faculty.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/dao/impl/FacultyDAOImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/constant/RequestNameConstant.java" />
+        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/user/ShowDetailUserPage.java" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/classes/text_ru.properties" />
+        <option value="$PROJECT_DIR$/web/pages/error/error.jsp" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/controller/AbstractController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/ShowMainPageCommand.java" />
+        <option value="$PROJECT_DIR$/web/pages/error/error_500.jsp" />
+        <option value="$PROJECT_DIR$/web/pages/partial/footer.jsp" />
+        <option value="$PROJECT_DIR$/web/pages/sign_in.jsp" />
+        <option value="$PROJECT_DIR$/web/css/responsive.css" />
+        <option value="$PROJECT_DIR$/web/pages/faculty_detail.jsp" />
+        <option value="$PROJECT_DIR$/web/pages/my_profile.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/user/ShowUsersWirhStatus.java" />
+        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/service/UserService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/user/ShowAllUsersCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/service/impl/UserServiceImpl.java" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/classes/text_en.properties" />
+        <option value="$PROJECT_DIR$/web/css/style.css" />
+        <option value="$PROJECT_DIR$/web/pages/admin/all_users.jsp" />
+        <option value="$PROJECT_DIR$/web/pages/admin/detail_user.jsp" />
+        <option value="$PROJECT_DIR$/web/js/generateHtml.js" />
+        <option value="$PROJECT_DIR$/web/pages/error/error_404.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/constant/PageNameConstant.java" />
+        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/validator/UserValidator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/filter/UserAccessFilter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/by/sichnenko/committee/filter/AdminAccessFilter.java" />
       </list>
     </option>
   </component>
@@ -300,9 +512,14 @@
       </MavenImportingSettings>
     </option>
   </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand />
+      <select />
+    </treeState>
+  </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-2" />
-    <option name="y" value="-25" />
+    <option name="x" value="46" />
     <option name="width" value="1936" />
     <option name="height" value="1021" />
   </component>
@@ -322,7 +539,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -330,256 +546,14 @@
               <item name="committee" type="b2602c69:ProjectViewProjectNode" />
               <item name="committee" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="committee" type="b2602c69:ProjectViewProjectNode" />
-              <item name="committee" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="committee" type="b2602c69:ProjectViewProjectNode" />
-              <item name="committee" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="committee" type="b2602c69:ProjectViewProjectNode" />
-              <item name="committee" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="committee" type="b2602c69:ProjectViewProjectNode" />
-              <item name="committee" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="committee" type="b2602c69:ProjectViewProjectNode" />
-              <item name="committee" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="by" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="committee" type="b2602c69:ProjectViewProjectNode" />
-              <item name="committee" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="by" type="462c0819:PsiDirectoryNode" />
-              <item name="sichnenko" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="committee" type="b2602c69:ProjectViewProjectNode" />
-              <item name="committee" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="by" type="462c0819:PsiDirectoryNode" />
-              <item name="sichnenko" type="462c0819:PsiDirectoryNode" />
-              <item name="committee" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="committee" type="b2602c69:ProjectViewProjectNode" />
-              <item name="committee" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="by" type="462c0819:PsiDirectoryNode" />
-              <item name="sichnenko" type="462c0819:PsiDirectoryNode" />
-              <item name="committee" type="462c0819:PsiDirectoryNode" />
-              <item name="command" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="committee" type="b2602c69:ProjectViewProjectNode" />
-              <item name="committee" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="by" type="462c0819:PsiDirectoryNode" />
-              <item name="sichnenko" type="462c0819:PsiDirectoryNode" />
-              <item name="committee" type="462c0819:PsiDirectoryNode" />
-              <item name="command" type="462c0819:PsiDirectoryNode" />
-              <item name="impl" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="committee" type="b2602c69:ProjectViewProjectNode" />
-              <item name="committee" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="by" type="462c0819:PsiDirectoryNode" />
-              <item name="sichnenko" type="462c0819:PsiDirectoryNode" />
-              <item name="committee" type="462c0819:PsiDirectoryNode" />
-              <item name="command" type="462c0819:PsiDirectoryNode" />
-              <item name="impl" type="462c0819:PsiDirectoryNode" />
-              <item name="enrollee" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="committee" type="b2602c69:ProjectViewProjectNode" />
-              <item name="committee" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="by" type="462c0819:PsiDirectoryNode" />
-              <item name="sichnenko" type="462c0819:PsiDirectoryNode" />
-              <item name="committee" type="462c0819:PsiDirectoryNode" />
-              <item name="command" type="462c0819:PsiDirectoryNode" />
-              <item name="impl" type="462c0819:PsiDirectoryNode" />
-              <item name="faculty" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="committee" type="b2602c69:ProjectViewProjectNode" />
-              <item name="committee" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="by" type="462c0819:PsiDirectoryNode" />
-              <item name="sichnenko" type="462c0819:PsiDirectoryNode" />
-              <item name="committee" type="462c0819:PsiDirectoryNode" />
-              <item name="command" type="462c0819:PsiDirectoryNode" />
-              <item name="impl" type="462c0819:PsiDirectoryNode" />
-              <item name="user" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="committee" type="b2602c69:ProjectViewProjectNode" />
-              <item name="committee" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="by" type="462c0819:PsiDirectoryNode" />
-              <item name="sichnenko" type="462c0819:PsiDirectoryNode" />
-              <item name="committee" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="committee" type="b2602c69:ProjectViewProjectNode" />
-              <item name="committee" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="by" type="462c0819:PsiDirectoryNode" />
-              <item name="sichnenko" type="462c0819:PsiDirectoryNode" />
-              <item name="committee" type="462c0819:PsiDirectoryNode" />
-              <item name="dao" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="committee" type="b2602c69:ProjectViewProjectNode" />
-              <item name="committee" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="by" type="462c0819:PsiDirectoryNode" />
-              <item name="sichnenko" type="462c0819:PsiDirectoryNode" />
-              <item name="committee" type="462c0819:PsiDirectoryNode" />
-              <item name="dao" type="462c0819:PsiDirectoryNode" />
-              <item name="impl" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="committee" type="b2602c69:ProjectViewProjectNode" />
-              <item name="committee" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="by" type="462c0819:PsiDirectoryNode" />
-              <item name="sichnenko" type="462c0819:PsiDirectoryNode" />
-              <item name="committee" type="462c0819:PsiDirectoryNode" />
-              <item name="filter" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="committee" type="b2602c69:ProjectViewProjectNode" />
-              <item name="committee" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="by" type="462c0819:PsiDirectoryNode" />
-              <item name="sichnenko" type="462c0819:PsiDirectoryNode" />
-              <item name="committee" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="committee" type="b2602c69:ProjectViewProjectNode" />
-              <item name="committee" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="by" type="462c0819:PsiDirectoryNode" />
-              <item name="sichnenko" type="462c0819:PsiDirectoryNode" />
-              <item name="committee" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="impl" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="committee" type="b2602c69:ProjectViewProjectNode" />
-              <item name="committee" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="by" type="462c0819:PsiDirectoryNode" />
-              <item name="sichnenko" type="462c0819:PsiDirectoryNode" />
-              <item name="committee" type="462c0819:PsiDirectoryNode" />
-              <item name="tag" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="committee" type="b2602c69:ProjectViewProjectNode" />
-              <item name="committee" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="committee" type="b2602c69:ProjectViewProjectNode" />
-              <item name="committee" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="committee" type="b2602c69:ProjectViewProjectNode" />
-              <item name="committee" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="committee" type="b2602c69:ProjectViewProjectNode" />
-              <item name="committee" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="committee" type="b2602c69:ProjectViewProjectNode" />
-              <item name="committee" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="partial" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="committee" type="b2602c69:ProjectViewProjectNode" />
-              <item name="committee" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="committee" type="b2602c69:ProjectViewProjectNode" />
-              <item name="committee" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="committee" type="b2602c69:ProjectViewProjectNode" />
-              <item name="committee" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="tld" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="AndroidView" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -591,23 +565,28 @@
     <property name="project.structure.side.proportion" value="0.57056797" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL&#10;com.mysql.cj.jdbc.Driver" />
     <property name="settings.editor.selected.configurable" value="reference.settings.project.statistic.project.settings" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/web/WEB-INF/lib/itextpdf-5.5.13.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/web/WEB-INF/lib/xssflt.jar!/" />
     <property name="findjar.last.used.dir" value="$PROJECT_DIR$/lib" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Work\epam\committee\web\pages\common" />
+      <recent name="D:\Work\epam\committee\web\pages\user" />
+      <recent name="D:\Work\epam\committee\web\WEB-INF\lib" />
       <recent name="D:\Work\epam\committee\web\pages\error" />
       <recent name="D:\Work\epam\committee\lib" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="by.sichnenko.committee.command.impl" />
+      <recent name="by.sichnenko.committee.command.impl.enrollee" />
+      <recent name="by.sichnenko.committee.controller" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Work\epam\committee\web\js" />
+      <recent name="D:\Work\epam\committee\web\pages\error" />
+      <recent name="D:\Work\epam\committee\web\pages" />
       <recent name="D:\Work\epam\committee\web\WEB-INF\lib" />
       <recent name="D:\Work\epam\committee\web\images\faculty" />
-      <recent name="D:\Work\epam\committee\web\images\user" />
-      <recent name="D:\Work\epam\committee\web\WEB-INF\libs" />
-      <recent name="D:\Work\epam\committee\web\WEB-INF\classes" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -684,7 +663,7 @@
       <patterns />
     </configuration>
     <configuration name="index.jsp" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:8080/index.jsp" />
-    <configuration name="main.jsp" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:8080/pages/main.jsp" />
+    <configuration name="main.jsp" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:8080/pages/common/main.jsp" />
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -979,7 +958,17 @@
       <workItem from="1524246504389" duration="95386000" />
       <workItem from="1524473701550" duration="4766000" />
       <workItem from="1524501383310" duration="11265000" />
-      <workItem from="1524513680905" duration="1453000" />
+      <workItem from="1524513680905" duration="19007000" />
+      <workItem from="1524577729687" duration="1586000" />
+      <workItem from="1524662739494" duration="21318000" />
+      <workItem from="1524752974751" duration="16627000" />
+      <workItem from="1524776251741" duration="11407000" />
+      <workItem from="1524828777487" duration="19641000" />
+      <workItem from="1525198212441" duration="340000" />
+      <workItem from="1525855819889" duration="5598000" />
+      <workItem from="1525968571659" duration="2104000" />
+      <workItem from="1526025433231" duration="72606000" />
+      <workItem from="1526474221682" duration="10141000" />
     </task>
     <task id="LOCAL-00001" summary="A lot of changes: added dao, new commands, edited jsp pages">
       <created>1523186809340</created>
@@ -1030,11 +1019,18 @@
       <option name="project" value="LOCAL" />
       <updated>1524340705786</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Added styles, js, css for jsp.">
+      <created>1524515587960</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1524515587960</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="338416000" />
+    <option name="totallyTimeSpent" value="517338000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1049,27 +1045,27 @@
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33182332" sideWeight="0.5042965" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40996602" sideWeight="0.5021482" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.11546724" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24006444" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973147" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39955106" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32842582" sideWeight="0.49785176" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32884398" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32842582" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17893545" sideWeight="0.49785176" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3295583" sideWeight="0.4935553" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36240092" sideWeight="0.49570355" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.4935553" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33029002" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3295583" sideWeight="0.4935553" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29784825" sideWeight="0.49570355" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.4914071" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25456497" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
@@ -1095,56 +1091,34 @@
     <MESSAGE value="Added new jsp pages" />
     <MESSAGE value="Refactoring packeges type, validator, util.&#10;Added comment for methods of this packeges.&#10;Added ImageExtensionType." />
     <MESSAGE value="Refactoring.&#10;Added new filters." />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactoring.&#10;Added new filters." />
+    <MESSAGE value="Added styles, js, css for jsp." />
+    <MESSAGE value="A lot of files changes, add new function, refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="A lot of files changes, add new function, refactoring" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/dao/impl/UserDAOImpl.java</url>
-          <line>182</line>
-          <properties />
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/dao/impl/UserDAOImpl.java</url>
-          <line>202</line>
+          <line>204</line>
           <properties />
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/service/impl/EnrolleeServiceImpl.java</url>
-          <line>31</line>
+          <line>25</line>
           <properties />
           <option name="timeStamp" value="33" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/service/impl/EnrolleeServiceImpl.java</url>
-          <line>57</line>
-          <properties />
-          <option name="timeStamp" value="34" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/service/impl/EnrolleeServiceImpl.java</url>
-          <line>69</line>
-          <properties />
-          <option name="timeStamp" value="35" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/dao/impl/EnrolleeDAOImpl.java</url>
-          <line>65</line>
-          <properties />
-          <option name="timeStamp" value="36" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/ShowDetailUserPage.java</url>
-          <line>23</line>
+          <url>file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/user/ShowDetailUserPage.java</url>
+          <line>29</line>
           <properties />
           <option name="timeStamp" value="38" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/service/impl/UserServiceImpl.java</url>
-          <line>166</line>
+          <line>239</line>
           <properties />
           <option name="timeStamp" value="39" />
         </line-breakpoint>
@@ -1161,26 +1135,26 @@
           <option name="timeStamp" value="41" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/ShowUsersWirhStatus.java</url>
-          <line>21</line>
+          <url>file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/user/ShowUsersWirhStatus.java</url>
+          <line>23</line>
           <properties />
           <option name="timeStamp" value="42" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/ShowDetailFaculty.java</url>
-          <line>19</line>
+          <url>file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/faculty/ShowDetailFaculty.java</url>
+          <line>20</line>
           <properties />
           <option name="timeStamp" value="44" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/user/ChangePasswordCommand.java</url>
-          <line>15</line>
+          <line>20</line>
           <properties />
           <option name="timeStamp" value="45" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/faculty/AddNewFacultyCommand.java</url>
-          <line>17</line>
+          <line>18</line>
           <properties />
           <option name="timeStamp" value="47" />
         </line-breakpoint>
@@ -1198,13 +1172,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/user/EditUserProfileCommand.java</url>
-          <line>17</line>
+          <line>21</line>
           <properties />
           <option name="timeStamp" value="63" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/ShowEnrolleesBudjetCommand.java</url>
-          <line>21</line>
+          <url>file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/enrollee/ShowEnrolleesBudjetCommand.java</url>
+          <line>22</line>
           <properties />
           <option name="timeStamp" value="68" />
         </line-breakpoint>
@@ -1221,13 +1195,73 @@
           <option name="timeStamp" value="75" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/faculty/FindSubjectsByFacultyCommand.java</url>
-          <line>25</line>
+          <url>file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/user/ChangeUserLockCommand.java</url>
+          <line>17</line>
           <properties />
-          <option name="timeStamp" value="81" />
+          <option name="timeStamp" value="85" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/user/ChangeUserLockCommand.java</url>
+          <line>19</line>
+          <properties />
+          <option name="timeStamp" value="86" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/ActionCommand.java</url>
+          <line>22</line>
+          <properties />
+          <option name="timeStamp" value="87" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/enrollee/ShowEnrollesPaidCommand.java</url>
+          <line>21</line>
+          <properties />
+          <option name="timeStamp" value="91" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/EnrollCommand.java</url>
+          <line>15</line>
+          <properties />
+          <option name="timeStamp" value="94" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/AddCountryCommand.java</url>
+          <line>22</line>
+          <properties />
+          <option name="timeStamp" value="103" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/faculty/AddNewFacultyCommand.java</url>
+          <line>20</line>
+          <properties />
+          <option name="timeStamp" value="108" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/service/impl/UserServiceImpl.java</url>
+          <line>141</line>
+          <properties />
+          <option name="timeStamp" value="123" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/enrollee/FillEnrolleeCommand.java</url>
+          <line>21</line>
+          <properties />
+          <option name="timeStamp" value="124" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/enrollee/EditEnrolleeCommand.java</url>
+          <line>19</line>
+          <properties />
+          <option name="timeStamp" value="125" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/service/impl/EnrolleeServiceImpl.java</url>
+          <line>202</line>
+          <properties />
+          <option name="timeStamp" value="126" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="82" />
+      <option name="time" value="129" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1236,383 +1270,259 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/filter/EncodingFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="35" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/controller/SessionRequestContent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="22" column="42" lean-forward="false" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/filter/EnrolleeFillJSPFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-260">
-          <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/ShowEnrolleeFillPage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="29" column="31" lean-forward="false" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/AddCityCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="17" column="53" lean-forward="false" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/ShowAllUsers.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="17" column="69" lean-forward="false" selection-start-line="17" selection-start-column="48" selection-end-line="17" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/constant/RequestNameConstant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="4" column="31" lean-forward="false" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/user/SignOutCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="14" column="65" lean-forward="false" selection-start-line="14" selection-start-column="65" selection-end-line="14" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/tld/custom.tld">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-780">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/pages/sign_up.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1144">
-          <caret line="86" column="7" lean-forward="false" selection-start-line="86" selection-start-column="7" selection-end-line="86" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/user/SignInCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="35" column="66" lean-forward="false" selection-start-line="35" selection-start-column="61" selection-end-line="35" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/fonts/font-awesome.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="3" column="495" lean-forward="false" selection-start-line="3" selection-start-column="495" selection-end-line="3" selection-end-column="495" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/js/generateHtml.xhtml" />
-    <entry file="file://$PROJECT_DIR$/web/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="715" column="11" lean-forward="false" selection-start-line="715" selection-start-column="11" selection-end-line="715" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/tag/AdminTag.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/pages/admin/detail_user.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="62" column="52" lean-forward="true" selection-start-line="62" selection-start-column="52" selection-end-line="62" selection-end-column="52" />
-          <folding>
-            <element signature="e#1190#1240#0#HTML" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/pages/admin/all_users.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="28" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/controller/MainController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="24" column="42" lean-forward="false" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/service/impl/EnrolleeServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-468">
-          <caret line="32" column="19" lean-forward="false" selection-start-line="32" selection-start-column="19" selection-end-line="32" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/enrollee/FillEnrolleeCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="22" column="38" lean-forward="true" selection-start-line="22" selection-start-column="38" selection-end-line="22" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/service/FacultyService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="11" column="27" lean-forward="false" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/service/impl/CityServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="60" column="55" lean-forward="true" selection-start-line="60" selection-start-column="55" selection-end-line="60" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/FindCitiesByCountryCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="15" column="34" lean-forward="false" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/service/CityService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="12" column="26" lean-forward="false" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/CommandProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="46" column="45" lean-forward="false" selection-start-line="46" selection-start-column="21" selection-end-line="46" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/CommandEnum.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="30" column="28" lean-forward="false" selection-start-line="30" selection-start-column="28" selection-end-line="30" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/controller/AbstractController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="28" column="36" lean-forward="false" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/dao/FacultyDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/model/Subject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="5" column="24" lean-forward="false" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/constant/SQLQueryConstant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="47" column="115" lean-forward="false" selection-start-line="47" selection-start-column="115" selection-end-line="47" selection-end-column="115" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/dao/SubjectDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="8" column="3" lean-forward="true" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/dao/impl/SubjectDAOImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1430">
-          <caret line="68" column="0" lean-forward="false" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/pages/admin/add_city.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="21" column="31" lean-forward="false" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/pages/sign_in.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-130">
-          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="71" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/faculty/FindSubjectsByFacultyCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="30" column="41" lean-forward="false" selection-start-line="30" selection-start-column="41" selection-end-line="30" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/command/impl/faculty/AddNewFacultyCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="21" column="86" lean-forward="false" selection-start-line="16" selection-start-column="7" selection-end-line="21" selection-end-column="86" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/constant/SQLFieldConstant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="47" column="30" lean-forward="false" selection-start-line="47" selection-start-column="23" selection-end-line="47" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/service/SubjectService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="9" column="83" lean-forward="false" selection-start-line="9" selection-start-column="83" selection-end-line="9" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/service/impl/SubjectServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/sichnenko/committee/service/impl/FacultyServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="26">
-          <caret line="66" column="52" lean-forward="false" selection-start-line="66" selection-start-column="7" selection-end-line="66" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/js/generateHtml.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="110" column="16" lean-forward="false" selection-start-line="110" selection-start-column="16" selection-end-line="110" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/lib/idea.jar!/resources/html5-schema/html5/common.rnc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="124" column="18" lean-forward="false" selection-start-line="124" selection-start-column="18" selection-end-line="124" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="3498" column="8" lean-forward="false" selection-start-line="3498" selection-start-column="8" selection-end-line="3498" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/pages/partial/footer.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="8" column="23" lean-forward="false" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/pages/main.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5536">
-          <caret line="264" column="18" lean-forward="false" selection-start-line="264" selection-start-column="18" selection-end-line="264" selection-end-column="18" />
-          <folding>
-            <element signature="e#15663#15695#0#HTML" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/pages/partial/header.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="157" column="101" lean-forward="false" selection-start-line="157" selection-start-column="101" selection-end-line="157" selection-end-column="101" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/pages/enrollee_fill.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="144" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/classes/text_en.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="69" column="0" lean-forward="false" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="ResourceBundle">
+    <entry file="file://$PROJECT_DIR$/web/images/404_bg.jpg">
+      <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/classes/text_ru.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="66" column="0" lean-forward="false" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="ResourceBundle">
+    <entry file="file://$PROJECT_DIR$/web/images/about.jpg">
+      <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/pages/change_password.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1638">
-          <caret line="72" column="14" lean-forward="false" selection-start-line="72" selection-start-column="14" selection-end-line="72" selection-end-column="14" />
-          <folding />
-        </state>
+    <entry file="file://$PROJECT_DIR$/web/images/banner.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/boxed_bg.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/caretta_caretta.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/coming_soon_bg.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/conference.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/logo.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/logo_light.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/famfamfam-flags.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/favicon.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/gallery-2.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/page_title_bg.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/subscribe_bg.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/swimming.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/video_bg.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/zakynthos.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/users/user1.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/users/user2.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/users/user3.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/users/user4.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/staff/staff1.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/spa/spa2.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/slider/video_fullscreen.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/slider/slider-2.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/slider/full-slider-1.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/slider/full-slider-2.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/slider/full-slider-3.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/slider/hero.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/rooms/delux copy.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/rooms/double2.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/restaurant/restaurant3.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/restaurant/restaurant6.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/places/place5.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/icons/wave_blue.svg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/icons/wave_dark.svg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/icons/wave_yellow.svg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/icons/wave_white.svg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/icons/wave.svg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/icons/pin.svg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/icons/gridtile.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/user/default.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/gallery/gallery2.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/gallery/gallery5.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/events/event3.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/events/event5.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/events/event2.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/blog/blog_post2.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/blog/latest_news2.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/blog/thumb2.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/faculty/fitu.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
   </component>
@@ -1683,7 +1593,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>xmlbeans-2.5.0</last-edited>
+          <last-edited>xssflt</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

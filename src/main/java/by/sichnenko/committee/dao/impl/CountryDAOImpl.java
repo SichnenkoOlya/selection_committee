@@ -7,8 +7,6 @@ import by.sichnenko.committee.constant.SQLQueryConstant;
 import by.sichnenko.committee.dao.CountryDAO;
 import by.sichnenko.committee.exception.DAOException;
 import by.sichnenko.committee.model.Country;
-import by.sichnenko.committee.model.RoleType;
-import by.sichnenko.committee.model.User;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -41,16 +39,15 @@ public class CountryDAOImpl implements CountryDAO {
     }
 
     @Override
-    public boolean create(Country country) throws DAOException {
+    public void create(Country country) throws DAOException {
         ProxyConnection connection = null;
         try {
             connection = ConnectionPoolImpl.getInstance().takeConnection();
             try (PreparedStatement preparedStatement = connection.prepareStatement(SQLQueryConstant.CREATE_COUNTRY)) {
-                preparedStatement.setString(1,country.getName());
+                preparedStatement.setString(1, country.getName());
                 preparedStatement.execute();
-                return true;
             } catch (SQLException e) {
-                throw new DAOException("Find countries error ", e);
+                throw new DAOException("Create country error ", e);
             }
         } finally {
             closeConnection(connection);
@@ -58,7 +55,30 @@ public class CountryDAOImpl implements CountryDAO {
     }
 
     @Override
-    public void update(Country item) throws DAOException {
+    public void update(Country item) {
+        throw new UnsupportedOperationException();
+    }
 
+    @Override
+    public Country findCountryByName(String countrName) throws DAOException {
+        ProxyConnection connection = null;
+        try {
+            connection = ConnectionPoolImpl.getInstance().takeConnection();
+            try (PreparedStatement preparedStatement = connection.prepareStatement(SQLQueryConstant.SELECT_COUNTRY_BY_NAME)) {
+                preparedStatement.setString(1, countrName);
+                ResultSet resultSet = preparedStatement.executeQuery();
+                Country country = null;
+                if (resultSet.next()) {
+                    country=new Country();
+                    country.setCountryId(resultSet.getLong(SQLFieldConstant.ID));
+                    country.setName(resultSet.getString(SQLFieldConstant.NAME));
+                }
+                return country;
+            } catch (SQLException e) {
+                throw new DAOException("Find country error ", e);
+            }
+        } finally {
+            closeConnection(connection);
+        }
     }
 }

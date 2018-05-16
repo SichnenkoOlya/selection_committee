@@ -11,11 +11,12 @@ import java.util.List;
 public interface DAO<T> {
     List<T> findAll() throws DAOException;
 
-    boolean create(T item) throws DAOException;
+    void create(T item) throws DAOException;
 
     void update(T item) throws DAOException;
 
-    default void closeConnection(ProxyConnection proxyConnection){
+    default void closeConnection(ProxyConnection proxyConnection) {
+        //TODO:
         if (proxyConnection != null) {
             try {
                 proxyConnection.close();

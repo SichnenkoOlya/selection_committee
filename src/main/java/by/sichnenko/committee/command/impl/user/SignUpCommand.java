@@ -13,6 +13,8 @@ import by.sichnenko.committee.util.Router;
 import java.util.Set;
 
 import static by.sichnenko.committee.constant.PageNameConstant.*;
+import static by.sichnenko.committee.constant.RequestNameConstant.ENROLLEE;
+import static by.sichnenko.committee.constant.RequestNameConstant.USER;
 
 public class SignUpCommand implements ActionCommand {
     @Override
@@ -20,14 +22,17 @@ public class SignUpCommand implements ActionCommand {
         UserService userService = new UserServiceImpl();
         try {
             User newUser = userService.signUp(sessionRequestContent);
+            sessionRequestContent.getSessionAttributes().put(USER, newUser);
+            //TODO: обновление сессии
             return new Router(RouterType.REDIRECT, MAIN_PAGE);
         } catch (ServiceException e) {
-            //???
             Set<String> keys = sessionRequestContent.getRequestAttributes().keySet();
-            if (keys.contains(GeneralConstant.INCORRECT_DATA)) {
-                return new Router(RouterType.FORWARD, SIGN_UP_PAGE);
+            if (keys.contains(GeneralConstant.INCORRECT_DATA) || keys.contains(GeneralConstant.INCORRECT_LOGIN) ||
+                    keys.contains(GeneralConstant.INCORRECT_PASSWORD)|| keys.contains(GeneralConstant.INCORRECT_EMAIL)
+                    || keys.contains(GeneralConstant.INCORRECT_CONFIRM_PASSWORD)|| keys.contains(GeneralConstant.SUCH_NAME_EXIST)) {
+                return new Router(RouterType.FORWARD,SIGN_UP_PAGE);
             }
-            return new Router(RouterType.REDIRECT, MAIN_PAGE);
+            return new Router(RouterType.ERROR);
         }
     }
 }

@@ -8,5 +8,6 @@ import java.util.List;
 
 public interface CountryService {
     List<Country> findAllCountries() throws ServiceException;
+
     void addCountry(SessionRequestContent sessionRequestConten) throws ServiceException;
 }

@@ -14,6 +14,7 @@ public class RequestNameConstant {
     public static final String LAST_PAGE = "lastPage";
     public static final String LOCALE = "locale";
     public static final String LOGIN = "login";
+    public static final String NEW_LOGIN = "newLogin";
     public static final String NAME = "name";
     public static final String PASSWORD = "password";
     public static final String PATRONYMIC = "patronymic";
@@ -21,6 +22,10 @@ public class RequestNameConstant {
     public static final String ROLE = "role";
     public static final String SURNAME = "surname";
     public static final String PASSPORT = "passport";
+    public static final String SERTIFICATE_SCORE = "sertificateScore";
+    public static final String CT_SCORE = "ctScore";
+    public static final String COUNT_SCORE = "countScore";
+
     public static final String LOCK = "lock";
     public static final String ID = "id";
     public static final String STATUS_ID="statusId";
@@ -35,17 +40,24 @@ public class RequestNameConstant {
     public static final String BUDJET_SCORE="budjetScore";
     public static final String PAID_SCORE="paidScore";
     public static final String SUBJECT_ID="idSubject";
+    public static final String PRIVILEGE_ID="idPrivilege";
     public static final String FACULTY_IMAGE="facultyImage";
     public static final String FACULTIES="faculties";
     public static final String SUBJECTS="subjects";
     public static final String PRIVILEGES="privileges";
 
     public static final String ENROLLEE="enrollee";
+    public static final String FIND_ENROLLEE="findEnrollee";
+    public static final String FIND_USER="findUser";
+    public static final String FINISH_DATE="finishDate";
+
     public static final String USERS="users";
     public static final String IMAGE="image";
     public static final String OLD_STATUS_ID="oldStatusId";
     public static final String NEW_STATUS_ID="newStatusId";
     public static final String ENROLLEE_ID="enrolleeId";
     public static final String USER_ID="userId";
+    public static final String MESSAGE="message";
+
 
 }

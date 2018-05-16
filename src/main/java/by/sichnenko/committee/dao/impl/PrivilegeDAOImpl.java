@@ -39,12 +39,46 @@ public class PrivilegeDAOImpl implements PrivilegeDAO {
     }
 
     @Override
-    public boolean create(Privilege item) throws DAOException {
-        return false;
+    public void create(Privilege item) {
+        throw new UnsupportedOperationException();
     }
 
     @Override
-    public void update(Privilege item) throws DAOException {
+    public void update(Privilege item){
+        throw new UnsupportedOperationException();
+    }
 
+    @Override
+    public void addPrivilegesForEnrollee(Long enrolleeId, List<Long> privileges_id) throws DAOException {
+        ProxyConnection connection;
+
+        connection = ConnectionPoolImpl.getInstance().takeConnection();
+        for (Long privilegeId : privileges_id) {
+            try (PreparedStatement preparedStatement = connection.prepareStatement(SQLQueryConstant.INSERT_PRIVILEGES_FOR_ENROLLEE)) {
+                preparedStatement.setLong(1, privilegeId);
+                preparedStatement.setLong(2, enrolleeId);
+                preparedStatement.execute();
+            } catch (SQLException e) {
+                throw new DAOException("Add privileges for enrollee error ", e);
+            } finally {
+                closeConnection(connection);
+            }
+        }
+    }
+
+    @Override
+    public void deletePrivilegesForEnrollee(Long enrolleeId) throws DAOException {
+        ProxyConnection connection;
+
+        connection = ConnectionPoolImpl.getInstance().takeConnection();
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SQLQueryConstant.DELETE_PRIVILEGES_FOR_ENROLLEE)) {
+            preparedStatement.setLong(1, enrolleeId);
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            throw new DAOException("Delete privileges for enrollee error ", e);
+        } finally {
+            closeConnection(connection);
+        }
     }
 }

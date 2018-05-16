@@ -1,6 +1,7 @@
 package by.sichnenko.committee.command.impl.enrollee;
 
 import by.sichnenko.committee.command.ActionCommand;
+import by.sichnenko.committee.constant.GeneralConstant;
 import by.sichnenko.committee.controller.SessionRequestContent;
 import by.sichnenko.committee.exception.ServiceException;
 import by.sichnenko.committee.model.Enrollee;
@@ -9,8 +10,8 @@ import by.sichnenko.committee.service.impl.EnrolleeServiceImpl;
 import by.sichnenko.committee.type.RouterType;
 import by.sichnenko.committee.util.Router;
 
-import static by.sichnenko.committee.constant.PageNameConstant.FILL_ENROLLEE_PAGE;
-import static by.sichnenko.committee.constant.PageNameConstant.MAIN_PAGE;
+import java.util.Set;
+
 import static by.sichnenko.committee.constant.RequestNameConstant.ENROLLEE;
 
 public class FillEnrolleeCommand implements ActionCommand {
@@ -19,10 +20,15 @@ public class FillEnrolleeCommand implements ActionCommand {
         EnrolleeService enrolleeService = new EnrolleeServiceImpl();
         try {
             Enrollee enrollee = enrolleeService.fillEnrollee(sessionRequestContent);
-            sessionRequestContent.getSessionAttributes().put(ENROLLEE,enrollee);
+            sessionRequestContent.getSessionAttributes().put(ENROLLEE, enrollee);
         } catch (ServiceException e) {
-            return new Router(RouterType.FORWARD, FILL_ENROLLEE_PAGE);
+            Set<String> keys = sessionRequestContent.getRequestAttributes().keySet();
+
+            if (keys.contains(GeneralConstant.INCORRECT_DATA)) {
+                return new Router(RouterType.FORWARD, defineQuery(sessionRequestContent));
+            }
+            return new Router(RouterType.ERROR);
         }
-        return new Router(RouterType.REDIRECT, MAIN_PAGE);
+        return new Router(RouterType.REDIRECT, defineQuery(sessionRequestContent));
     }
 }

@@ -18,7 +18,7 @@ public class UserValidator {
      * @see RoleType
      */
     public static boolean isAdmin(User user) {
-        return user.getRole() == RoleType.ADMIN;
+        return user != null && user.getRole() == RoleType.ADMIN;
     }
 
     /**

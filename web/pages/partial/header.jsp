@@ -8,11 +8,10 @@
 <%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib prefix="ctg" uri="customtags" %>
 
 <c:set var="locale" value="${not empty sessionScope.locale ? sessionScope.locale : 'en'}" scope="session"/>
 <fmt:setLocale value="${locale}"/>
-<c:set var="userName" value="${sessionScope.get('userName')}"/>
-<c:set var="userRole" value="${sessionScope.get('userRole')}"/>
 
 <fmt:setBundle basename="text" scope="session"/>
 <fmt:message key="label.Russian" var="russianTxt"/>
@@ -26,6 +25,12 @@
 <fmt:message key="label.change_password" var="changePasswordTxt"/>
 <fmt:message key="label.edit_user_profile" var="editUserProfileTxt"/>
 <fmt:message key="label.my_profile" var="myProfileTxt"/>
+<fmt:message key="label.submitDocuments" var="submitDocumentsTxt"/>
+<fmt:message key="label.add_faculty" var="addFacultyTxt"/>
+<fmt:message key="label.add_country" var="addCountryTxt"/>
+<fmt:message key="label.add_city" var="addCityTxt"/>
+<fmt:message key="label.users" var="usersTxt"/>
+<fmt:message key="label.add" var="addTxt"/>
 
 <html>
 <head>
@@ -55,7 +60,6 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900%7cRaleway:400,500,600,700"
           rel="stylesheet">
 
-    <%--<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>--%>
 </head>
 
 <div class="wrapper">
@@ -67,27 +71,26 @@
                 ${welcomeTxt}
             </div>
             <ul class="top_menu_right">
-
                 <c:if test="${empty sessionScope.user}">
                     <li>
-                        <a href="${pageContext.request.contextPath}/pages/sign_in.jsp">
-                            ${signInTxt}
+                        <a href="${pageContext.request.contextPath}/mainController?command=SHOW_SIGN_IN_PAGE">
+                                ${signInTxt}
                         </a>
                     </li>
 
                     <li>
-                        <a href="${pageContext.request.contextPath}/pages/sign_up.jsp">
-                            ${signUpTxt}
+                        <a href="${pageContext.request.contextPath}/mainController?command=SHOW_SIGN_UP_PAGE">
+                                ${signUpTxt}
                         </a>
                     </li>
                 </c:if>
                 <c:if test="${not empty sessionScope.user}">
                     <li>
-                        ${helloTxt} ${sessionScope.user.login}!
+                            ${helloTxt} ${sessionScope.user.login}!
                     </li>
                     <li>
                         <a href="${pageContext.request.contextPath}/mainController?command=SIGN_OUT">
-                            ${signOutTxt}
+                                ${signOutTxt}
                         </a>
                     </li>
                 </c:if>
@@ -144,69 +147,82 @@
             </div>
             <nav id="main_menu" class="mobile_menu navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="mobile_menu_title" style="display:none;">MENU</li>
+                    <li class="mobile_menu_title" style="display:none;"></li>
 
-                    <li class="dropdown simple_menu">
-                        <a class="dropdown-toggle" data-toggle="dropdown">My profile <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="${pageContext.request.contextPath}/pages/enrollee_fill.jsp">
-                                   ${myProfileTxt}
-                                </a>
-                            </li>
-                            <li>
-                                <a href="${pageContext.request.contextPath}/pages/change_password.jsp">
-                                    ${changePasswordTxt}
-                                </a>
-                            </li>
-                            <li>
-                                <a href="${pageContext.request.contextPath}/pages/edit_profile.jsp">
-                                    ${editUserProfileTxt}
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="${pageContext.request.contextPath}/pages/enrollee_fill.jsp">
-                            Fill enrollee
-                        </a>
-                    </li>
-                    <li>
-                        <a href="${pageContext.request.contextPath}/pages/admin/add_city.jsp">
-                            Add city
-                        </a>
-                    </li>
-                    <li>
-                        <a href="${pageContext.request.contextPath}/pages/admin/add_country.jsp">
-                            Add country
-                        </a>
-                    </li>
-                    <li>
-                        <a href="${pageContext.request.contextPath}/mainController?command=SHOW_ALL_USERS">
-                            Users
-                        </a>
-                    </li>
-
-                    <li>
-                        <ctg:admin role="${sessionScope.role}">
-                            <a href="${pageContext.request.contextPath}/mainController?command=SHOW_ADD_FACULTY_PAGE">
-                                Add new faculty
+                    <c:if test="${empty sessionScope.user}">
+                        <li>
+                            <a href="${pageContext.request.contextPath}/mainController?command=SHOW_SIGN_IN_PAGE">
+                                    ${signInTxt}
                             </a>
-                        </ctg:admin>
-                    </li>
+                        </li>
 
+                        <li>
+                            <a href="${pageContext.request.contextPath}/mainController?command=SHOW_SIGN_UP_PAGE">
+                                    ${signUpTxt}
+                            </a>
+                        </li>
+                    </c:if>
+                    <c:if test="${not empty sessionScope.user}">
+                        <li class="dropdown simple_menu">
+                            <a class="dropdown-toggle" data-toggle="dropdown"> ${myProfileTxt}<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="${pageContext.request.contextPath}/mainController?command=SHOW_MY_PROFILE_PAGE">
+                                            ${myProfileTxt}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="${pageContext.request.contextPath}/mainController?command=SHOW_CHANGE_PASSWORD_PAGE">
+                                            ${changePasswordTxt}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="${pageContext.request.contextPath}/mainController?command=SHOW_EDIT_PROFILE_PAGE">
+                                            ${editUserProfileTxt}
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </c:if>
+                    <c:if test="${not empty sessionScope.user}">
+                        <c:if test="${empty sessionScope.enrollee}">
+                            <li>
+                                <a href="${pageContext.request.contextPath}/mainController?command=SHOW_ENROLLEE_FILL_PAGE">
+                                        ${submitDocumentsTxt}
+                                </a>
+                            </li>
+                        </c:if>
+                    </c:if>
+                    <ctg:admin role="${sessionScope.role}">
+                        <li class="dropdown simple_menu">
+                            <a class="dropdown-toggle" data-toggle="dropdown"> ${addTxt}<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="${pageContext.request.contextPath}/mainController?command=SHOW_ADD_CITY_PAGE">
+                                            ${addCityTxt}
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="${pageContext.request.contextPath}/mainController?command=SHOW_ADD_COUNTRY_PAGE">
+                                            ${addCountryTxt}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="${pageContext.request.contextPath}/mainController?command=SHOW_ADD_FACULTY_PAGE">
+                                            ${addFacultyTxt}
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="${pageContext.request.contextPath}/mainController?command=SHOW_ALL_USERS">
+                                    ${usersTxt}
+                            </a>
+                        </li>
+                    </ctg:admin>
                 </ul>
             </nav>
         </div>
     </header>
-
-    <%--
-        <form action="${pageContext.request.contextPath}/mainController" method="post">
-            <input type="hidden" name="command" value="CHANGE_LOCALE"/>
-            <select name="locale" onchange="submit()">
-                <option value="ru" <c:if test="${locale eq 'ru'}">selected</c:if> >${russianTxt}</option>
-                <option value="en" <c:if test="${locale eq 'en'}">selected</c:if> >${englishTxt}</option>
-            </select>
-        </form>
-    --%>

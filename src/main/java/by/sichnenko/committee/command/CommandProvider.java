@@ -1,12 +1,8 @@
 package by.sichnenko.committee.command;
 
 import by.sichnenko.committee.command.impl.*;
-import by.sichnenko.committee.command.impl.enrollee.ChangeAllEnrolleeStatusCommand;
-import by.sichnenko.committee.command.impl.enrollee.ChangeEnrolleeStatusCommand;
-import by.sichnenko.committee.command.impl.enrollee.FillEnrolleeCommand;
-import by.sichnenko.committee.command.impl.faculty.AddNewFacultyCommand;
-import by.sichnenko.committee.command.impl.faculty.FindSubjectsByFacultyCommand;
-import by.sichnenko.committee.command.impl.faculty.LoadImageFacultyCommand;
+import by.sichnenko.committee.command.impl.enrollee.*;
+import by.sichnenko.committee.command.impl.faculty.*;
 import by.sichnenko.committee.command.impl.user.*;
 
 import java.util.EnumMap;
@@ -25,7 +21,7 @@ public class CommandProvider {
         commands.put(FILL_ENROLLEE, new FillEnrolleeCommand());
         commands.put(CHANGE_LOCALE, new ChangeLocaleCommand());
         commands.put(SHOW_ENROLLEE_FILL_PAGE, new ShowEnrolleeFillPage());
-        commands.put(SHOW_ALL_USERS, new ShowAllUsers());
+        commands.put(SHOW_ALL_USERS, new ShowAllUsersCommand());
         commands.put(SHOW_DETAIL_USER, new ShowDetailUserPage());
         commands.put(CHANGE_USER_LOCK, new ChangeUserLockCommand());
         commands.put(CHANGE_USER_ROLE, new ChangeUserRoleCommand());
@@ -44,6 +40,16 @@ public class CommandProvider {
         commands.put(ADD_COUNTRY, new AddCountryCommand());
         commands.put(ADD_CITY, new AddCityCommand());
         commands.put(SHOW_ENROLLEES_BUDJET, new ShowEnrolleesBudjetCommand());
+        commands.put(SHOW_ENROLLEES_PAID, new ShowEnrollesPaidCommand());
+        commands.put(ENROLL_TO_FACULTY, new EnrollCommand());
+        commands.put(EDIT_ENROLLEE, new EditEnrolleeCommand());
+        commands.put(SHOW_SIGN_IN_PAGE, new ShowSignInPageCommand());
+        commands.put(SHOW_SIGN_UP_PAGE, new ShowSignUpPageCommand());
+        commands.put(SHOW_MY_PROFILE_PAGE, new ShowMyProfilePageCommand());
+        commands.put(SHOW_ADD_CITY_PAGE, new ShowAddCityPageCommand());
+        commands.put(SHOW_ADD_COUNTRY_PAGE, new ShowAddCountryPageCommand());
+        commands.put(SHOW_EDIT_PROFILE_PAGE, new ShowEditProfilePageCommand());
+
         commands.put(FIND_SUBJECTS_BY_FACULTY, new FindSubjectsByFacultyCommand());
     }
 

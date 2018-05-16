@@ -9,11 +9,16 @@ import java.util.List;
 public interface EnrolleeDAO extends DAO<Enrollee> {
     void changeAllEnrolleesStatus(Long oldStatusId, Long newStatusId) throws DAOException;
 
-    void changeStatus(Long enrolleeId, Long newStatusId) throws DAOException;
+    void changeStatus(Long enrolleeId, Long newStatusId, String message) throws DAOException;
 
     Enrollee findEnrolleeByUserId(Long userId) throws DAOException;
 
     List<Enrollee> findEnrolleesEnteredFacultyBudjet(Faculty faculty) throws DAOException;
 
+    List<Long> findSubjectsForEnrollee(Long enrolleeId) throws DAOException;
+
     List<Enrollee> findEnrolleesEnteredFacultyPaid(Faculty faculty) throws DAOException;
+
+    List<Enrollee> findEnrolleesNotEntered(Faculty faculty) throws DAOException;
+
 }

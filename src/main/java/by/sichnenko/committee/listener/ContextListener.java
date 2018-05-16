@@ -20,6 +20,7 @@ public class ContextListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         ConnectionPoolImpl.getInstance();
+
     }
 
     @Override

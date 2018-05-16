@@ -17,6 +17,6 @@ public class ChangeUserRoleCommand implements ActionCommand {
         } catch (ServiceException e) {
             return new Router(RouterType.FORWARD, defineLastPage(sessionRequestContent));
         }
-        return new Router(RouterType.REDIRECT, defineLastPage(sessionRequestContent));
+        return new Router(RouterType.REDIRECT, defineQuery(sessionRequestContent));
     }
 }

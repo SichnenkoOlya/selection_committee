@@ -32,6 +32,7 @@ public final class SQLFieldConstant {
         public static final String STATUS_ID = "status_id";
         public static final String USER_ID = "user_id";
         public static final String CITY_ID = "city_id";
+        public static final String MESSAGE = "info_message";
     }
 
     public final class City {
@@ -43,10 +44,14 @@ public final class SQLFieldConstant {
         public static final String TOTAL_PLACE_COUNT = "total_count";
         public static final String PASSING_SCORE_BUDJET = "passing_score_budjet";
         public static final String PASSING_SCORE_PAID = "passing_score_paid";
+        public static final String IS_FINISH = "is_finish";
+        public static final String FINISH_DATE = "finish_date";
     }
 
     public final class Subject{
         public static final String GROUP_NUMBER = "group_number";
+        public static final String SUBJECT_ID = "subject_id";
+
     }
 }
 

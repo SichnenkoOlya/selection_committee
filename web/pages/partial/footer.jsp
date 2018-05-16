@@ -4,6 +4,7 @@
 <fmt:message key="label.university" var="universityTxt"/>
 <fmt:message key="label.copyRight" var="copyRightTxt"/>
 <fmt:message key="label.allRightsReserved" var="allRightsReservedTxt"/>
+<fmt:message key="label.today" var="todayTxt"/>
 
 <footer class="dark">
     <div class="inner">
@@ -12,9 +13,11 @@
                 <div class="col-md-12 col-sm-12 widget">
                     <div class="about">
                         <a href="${pageContext.request.contextPath}/mainController">
-                            <img class="logo" src="${pageContext.request.contextPath}/images/logo_light.png" height="32" alt="Logo">
+                            <img class="logo" src="${pageContext.request.contextPath}/images/logo_light.png" height="32"
+                                 alt="Logo">
                         </a>
                         <p>${descriptionTxt}</p>
+                        <p>${todayTxt} <ctg:cur-date/></p>
                     </div>
                 </div>
             </div>
@@ -25,7 +28,8 @@
             <div class="row">
                 <div class="col-md-12 col-sm-12">
                     <div class="copyrights">
-                        ${copyRightTxt} <a href="${pageContext.request.contextPath}/mainController">${universityTxt}</a> ${allRightsReservedTxt}
+                        ${copyRightTxt} <a
+                            href="${pageContext.request.contextPath}/mainController">${universityTxt}</a> ${allRightsReservedTxt}
                     </div>
                 </div>
             </div>
@@ -63,17 +67,30 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/generateHtml.js"></script>
 
 <!-- ========== REVOLUTION SLIDER ========== -->
-<script type="text/javascript" src="${pageContext.request.contextPath}/revolution/js/jquery.themepunch.tools.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/revolution/js/jquery.themepunch.revolution.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/revolution/js/extensions/revolution.extension.actions.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/revolution/js/extensions/revolution.extension.migration.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/revolution/js/extensions/revolution.extension.video.min.js"></script>
+<script type="text/javascript"
+        src="${pageContext.request.contextPath}/revolution/js/jquery.themepunch.tools.min.js"></script>
+<script type="text/javascript"
+        src="${pageContext.request.contextPath}/revolution/js/jquery.themepunch.revolution.min.js"></script>
+<script type="text/javascript"
+        src="${pageContext.request.contextPath}/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+<script type="text/javascript"
+        src="${pageContext.request.contextPath}/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+<script type="text/javascript"
+        src="${pageContext.request.contextPath}/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+<script type="text/javascript"
+        src="${pageContext.request.contextPath}/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+<script type="text/javascript"
+        src="${pageContext.request.contextPath}/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+<script type="text/javascript"
+        src="${pageContext.request.contextPath}/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+<script type="text/javascript"
+        src="${pageContext.request.contextPath}/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+<script type="text/javascript"
+        src="${pageContext.request.contextPath}/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+<script type="text/javascript"
+        src="${pageContext.request.contextPath}/revolution/js/extensions/revolution.extension.video.min.js"></script>
+<script type="text/javascript"
+        src="${pageContext.request.contextPath}/js/jquery.matchHeight.min.js"></script>
 
 </body>
 </html>

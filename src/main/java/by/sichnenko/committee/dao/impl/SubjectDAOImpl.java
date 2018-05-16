@@ -6,7 +6,6 @@ import by.sichnenko.committee.constant.SQLFieldConstant;
 import by.sichnenko.committee.constant.SQLQueryConstant;
 import by.sichnenko.committee.dao.SubjectDAO;
 import by.sichnenko.committee.exception.DAOException;
-import by.sichnenko.committee.model.Country;
 import by.sichnenko.committee.model.Subject;
 
 import java.sql.PreparedStatement;
@@ -41,13 +40,13 @@ public class SubjectDAOImpl implements SubjectDAO {
     }
 
     @Override
-    public boolean create(Subject item) throws DAOException {
-        return false;
+    public void create(Subject item) {
+        throw new UnsupportedOperationException();
     }
 
     @Override
-    public void update(Subject item) throws DAOException {
-
+    public void update(Subject item) {
+        throw new UnsupportedOperationException();
     }
 
     @Override
@@ -76,18 +75,52 @@ public class SubjectDAOImpl implements SubjectDAO {
     }
 
     @Override
-    public void addSubjectsForFaculty(Long facultyId,List<Long> subjectsId) throws DAOException {
-        ProxyConnection connection ;
+    public void addSubjectsForEnrollee(Long enrolleeId, List<Long> subjectsId) throws DAOException {
+        ProxyConnection connection;
+
+        connection = ConnectionPoolImpl.getInstance().takeConnection();
+        for (Long subjectId : subjectsId) {
+            try (PreparedStatement preparedStatement = connection.prepareStatement(SQLQueryConstant.INSERT_SUBJECTS_FOR_ENROLLEE)) {
+                preparedStatement.setLong(1, subjectId);
+                preparedStatement.setLong(2, enrolleeId);
+                preparedStatement.execute();
+            } catch (SQLException e) {
+                throw new DAOException("Add subjects for enrollee error ", e);
+            } finally {
+                closeConnection(connection);
+            }
+        }
+    }
+
+    @Override
+    public void deleteSubjectsForEnrollee(Long enrolleeId) throws DAOException {
+        ProxyConnection connection;
+
+        connection = ConnectionPoolImpl.getInstance().takeConnection();
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SQLQueryConstant.DELETE_SUBJECTS_FOR_ENROLLEE)) {
+            preparedStatement.setLong(1, enrolleeId);
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            throw new DAOException("Add subjects for enrollee error ", e);
+        } finally {
+            closeConnection(connection);
+        }
+
+    }
+
+    @Override
+    public void addSubjectsForFaculty(Long facultyId, List<Long> subjectsId) throws DAOException {
+        ProxyConnection connection;
 
         connection = ConnectionPoolImpl.getInstance().takeConnection();
         for (Long subjectId : subjectsId) {
             try (PreparedStatement preparedStatement = connection.prepareStatement(SQLQueryConstant.INSERT_SUBJECTS_FOR_FACULTY)) {
                 preparedStatement.setLong(1, subjectId);
                 preparedStatement.setLong(2, facultyId);
-
                 preparedStatement.execute();
             } catch (SQLException e) {
-                throw new DAOException("Find subjects error ", e);
+                throw new DAOException("Add subjects for faculty error ", e);
             } finally {
                 closeConnection(connection);
             }
@@ -109,7 +142,7 @@ public class SubjectDAOImpl implements SubjectDAO {
                 }
                 return subject;
             } catch (SQLException e) {
-                throw new DAOException("Find subjects error ", e);
+                throw new DAOException("Find subject /error ", e);
             }
         } finally {
             closeConnection(connection);

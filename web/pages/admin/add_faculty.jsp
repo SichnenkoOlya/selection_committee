@@ -5,6 +5,7 @@
   Time: 23:18
   To change this template use File | Settings | File Templates.
 --%>
+
 <%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@include file="/pages/partial/header.jsp" %>
 <fmt:message key="label.add_faculty" var="addFacultyTxt"/>
@@ -16,70 +17,99 @@
 <fmt:message key="label.budjet_score" var="scoreBudjetTxt"/>
 <fmt:message key="label.subjects" var="subjectsTxt"/>
 <fmt:message key="label.add" var="addTxt"/>
+<fmt:message key="label.home" var="homeTxt"/>
+<fmt:message key="label.finish_date" var="finishDateTxt"/>
+<fmt:message key="error.incorrect_data" var="incorrectDataTxt"/>
+<fmt:message key="error.make_sure" var="makeSureTxt"/>
+<fmt:message key="error.faculty_exist" var="suchFacultyExistTxt"/>
+
 <body>
 
-<c:set var="lastPage" value="pages/admin/add_faculty.jsp" scope="session" />
+<div class="page_title gradient_overlay" style="background: url(/images/page_title_bg.jpg);">
+    <div class="container">
+        <div class="inner">
+            <h1>${addFacultyTxt}</h1>
+            <ol class="breadcrumb">
+                <li><a href="${pageContext.request.contextPath}/mainController">${homeTxt}</a></li>
+                <li>${addFacultyTxt}</li>
+            </ol>
+        </div>
+    </div>
+</div>
 
-    <h1>
-        <label>
-            <c:out value="${addFacultyTxt}"/>
-        </label>
-    </h1>
-    <br/>
-    <form action="${pageContext.request.contextPath}/mainController" method="post">
-        <input type="hidden" name="command" value="ADD_NEW_FACULTY"/>
-        <label for="facultyNameInput">
-                ${facultyNameTxt}
-        </label>
-        <br/>
-        <input id="facultyNameInput" type="text" name="facultyName" value=""/>
-        <br/>
+<main>
+    <div class="container">
 
-        <label for="descriptionFacultyInput">
-            ${descriptionTxt}
-        </label>
-        <br/>
-        <textarea id="descriptionFacultyInput" cols="40" rows="5" name="facultyDescription"></textarea>
-        <br/>
+        <div class="row">
+            <div class="col-md-6">
+                <c:if test="${empty sessionScope.userName }">
+                    <div class="main_title a_left">
+                        <h2><c:out value="${addFacultyTxt}"/></h2>
+                    </div>
 
-        <label for="budjetInput">
-            ${budjetTxt}
-        </label>
-        <br/>
-        <input id="budjetInput" type="text" name="budjetCount" value=""/>
-        <br/>
+                    <c:if test="${requestScope.containsKey('incorrectData')}">
+                        ${incorrectDataTxt}
+                        ${makeSureTxt}
+                    </c:if>
+                    <c:if test="${requestScope.containsKey('suchFacultyExist')}">
+                        ${suchFacultyExistTxt}
+                    </c:if>
 
+                    <form id="contact-form-page" action="${pageContext.request.contextPath}/mainController"
+                          method="post">
+                        <input type="hidden" name="command" value="ADD_NEW_FACULTY"/>
+                        <div class="row">
+                            <div class="form-group col-md-12 col-sm-12">
+                                <label class="control-label">${facultyNameTxt}</label>
+                                <input type="text" class="form-control" name="facultyName"
+                                       placeholder="${facultyNameTxt}">
+                            </div>
 
-        <label for="paidInput">
-            ${paidTxt}
-        </label>
-        <br/>
-        <input id="paidInput" type="text" name="paidCount" value=""/>
-        <br/>
+                            <div class="form-group col-md-12 col-sm-12">
+                                <label class="control-label">${descriptionTxt}</label>
+                                <input type="text" class="form-control" name="facultyDescription"
+                                       placeholder="${descriptionTxt}">
+                            </div>
 
-        <%--<label for="scorePaidInput">--%>
-            <%--${scorePaidTxt}--%>
-        <%--</label>--%>
-        <%--<br/>--%>
-        <%--<input id="scorePaidInput" type="text" name="paidScore" value=""/>--%>
-        <%--<br/>--%>
+                            <div class="form-group col-md-12 col-sm-12">
+                                <label class="control-label">${budjetTxt}</label>
+                                <input type="number" class="form-control" name="budjetCount" placeholder="${budjetTxt}">
+                            </div>
 
-        <%--<label for="scoreBudjetInput">--%>
-            <%--${scoreBudjetTxt}--%>
-        <%--</label>--%>
-        <%--<br/>--%>
-        <%--<input id="scoreBudjetInput" type="text" name="budjetScore" value=""/>--%>
-        <br/>
-        <c:forEach var="subject" items="${subjects}">
-            <label for="subjects">
-                <input id="subjects" type="checkbox" name="idSubject" value="${subject.subjectId}">${subject.name}<BR>
-            </label>
-        </c:forEach>
-        <input type="submit" name="commit" value="${addTxt}">
-        <br/>
+                            <div class="form-group col-md-12 col-sm-12">
+                                <label class="control-label">${paidTxt}</label>
+                                <input type="text" class="form-control" name="paidCount" placeholder="${paidTxt}">
+                            </div>
 
-    </form>
-</body>
+                            <div class="form-group col-md-12 col-sm-12">
+                                <label class="control-label">${finishDateTxt}</label>
+                                <input type="date" class="form-control" name="finishDate" placeholder="${finishDateTxt}">
+                            </div>
+
+                            <div class="form-group col-md-12 col-sm-12">
+                                <label class="control-label">${subjectsTxt}</label>
+                                <c:forEach var="subject" items="${subjects}">
+                                    <br/>
+                                    <label for="privileges">
+                                        <input id="privileges" type="checkbox" name="idSubject"
+                                               value="${subject.subjectId}">
+                                            ${subject.name}
+                                    </label>
+                                </c:forEach>
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <button type="submit" class="button  btn_blue mt40 upper pull-right">
+                                    <i class="fa fa-check" aria-hidden="true"></i>${addTxt}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </c:if>
+            </div>
+        </div>
+    </div>
+</main>
 
 <%@include file="/pages/partial/footer.jsp" %>
 

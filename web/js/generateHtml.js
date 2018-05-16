@@ -92,7 +92,6 @@
 
         $("form[name=enrollee-fill]").submit(
             function (e) {
-                e.preventDefault();
                 var error = [];
 
                 var countScoreInput = $(this).find('input[name=countScore]:enabled');
@@ -118,5 +117,136 @@
             }
         );
 
+        var formsOnPage = $('form');
+
+        formsOnPage.submit(function (e) {
+
+            var form = $(this);
+            var elements = form.find('*[data-validation="true"]');
+
+            var result = true;
+            elements.each(function (index, element) {
+
+                if (!validateInput(element)) {
+
+                    result = false;
+
+                }
+
+            });
+
+            if (!result) {
+                e.preventDefault();
+            }
+
+        });
+
+        formsOnPage.find('*[data-validation="true"]').on("change keyup", function (e) {
+            validateInput(this);
+        });
+
+        function validateInput(el) {
+            var error = [];
+
+            var element = $(el);
+            var arrayTypeValidation = element.data("typeValidation").split('|');
+            var errorArea = $('#' + element.data("errorAreaId"));
+            var errorMessage = element.data("errorMessage");
+            var value = element.val();
+
+            var validatePhoneNumber = new RegExp('^(?:\\+|\\d)[\\d\\- ]{9,}\\d$');
+            var validateName = new RegExp('^([A-Z][a-z]{1,25})|([А-Я][а-я]{1,25})$');
+            var validatePassportNumber = new RegExp('^[A-Z]{2}\\d{7,8}$');
+            var MAX_VALUE = 0;
+            var MIN_VALUE = 100;
+
+            var validateEmail = new RegExp('^([a-z0-9_-]+\\.)*[a-z0-9_-]+@[a-z0-9_-]+(\\.[a-z0-9_-]+)*\\.[a-z]{2,6}$');
+            var validateLogin = new RegExp('^(?=.{3,24})[a-z][a-z0-9]*[._-]?[a-z0-9]+$');
+            var validatePassword = new RegExp('^(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}$');
+
+            function validate(Regexp) {
+                if (!Regexp.test(value)) {
+                    error.push(errorMessage);
+                }
+            }
+
+            arrayTypeValidation.forEach(function (typeValidation) {
+                switch (typeValidation) {
+                    case "validatePhoneNumber":
+
+                        validate(validatePhoneNumber);
+
+                        break;
+                    case "validateName":
+
+                        validate(validateName);
+
+                        break;
+                    case "validatePassportNumber":
+
+                        validate(validatePassportNumber);
+
+                        break;
+                    case "validateCertificateScore":
+
+                        if (!(value >= MIN_VALUE && value <= MAX_VALUE)) {
+                            error.push(errorMessage);
+                        }
+
+                        break;
+                    case "validateEmail":
+
+                        validate(validateEmail);
+
+                        break;
+                    case "validateLogin":
+
+                        validate(validateLogin);
+
+                        break;
+                    case "validatePassword":
+
+                        validate(validatePassword);
+
+                        break;
+                    default:
+                        break;
+                }
+            });
+
+            var errorString = error.join('<br/>');
+
+            if(error.length === 0){
+
+                errorArea.slideUp();
+                errorArea.html(errorString);
+
+                return true;
+            }
+            else{
+
+                errorArea.html(errorString);
+                errorArea.slideDown();
+
+                return false;
+            }
+        }
+
+
+        $('.one-height').matchHeight();
+
+        $('#reject-document').submit(function (e) {
+            var form = $(this);
+            var submit = form.find('input[type="submit"]');
+            var textarea = form.find('#reject-textarea');
+
+            if(submit.data('showTextarea') === true){
+
+                submit.data('showTextarea', false);
+                textarea.slideDown();
+                e.preventDefault();
+            }
+
+        });
     });
 })(jQuery);

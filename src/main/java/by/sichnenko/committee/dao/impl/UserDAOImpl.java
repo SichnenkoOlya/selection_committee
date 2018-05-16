@@ -6,7 +6,6 @@ import by.sichnenko.committee.constant.SQLFieldConstant;
 import by.sichnenko.committee.constant.SQLQueryConstant;
 import by.sichnenko.committee.exception.DAOException;
 import by.sichnenko.committee.model.RoleType;
-import by.sichnenko.committee.model.Status;
 import by.sichnenko.committee.model.User;
 
 import java.sql.PreparedStatement;
@@ -24,11 +23,14 @@ public class UserDAOImpl implements by.sichnenko.committee.dao.UserDAO {
             connection = ConnectionPoolImpl.getInstance().takeConnection();
 
             try (PreparedStatement preparedStatement = connection.prepareStatement(SQLQueryConstant.SELECT_USER_BY_LOGIN)) {
+                //TODO: 1 это нормально?
                 preparedStatement.setString(1, login);
                 ResultSet resultSet = preparedStatement.executeQuery();
-                User user = new User();
+                //TODO: null или optional
+                User user = null;
                 if (resultSet.next()) {
-                    user.setUserId(resultSet.getInt(SQLFieldConstant.User.ID));
+                    user = new User();
+                    user.setUserId(resultSet.getLong(SQLFieldConstant.ID));
                     user.setRole(RoleType.valueOf(resultSet.getString(SQLFieldConstant.User.ROLE).toUpperCase()));
                     user.setEmail(resultSet.getString(SQLFieldConstant.User.EMAIL));
                     user.setLogin(resultSet.getString(SQLFieldConstant.User.LOGIN));
@@ -56,7 +58,7 @@ public class UserDAOImpl implements by.sichnenko.committee.dao.UserDAO {
                 statement.setLong(2, userId);
                 statement.executeUpdate();
             } catch (SQLException e) {
-                throw new DAOException("Update user error ", e);
+                throw new DAOException("Update user's role error ", e);
             }
         } finally {
             closeConnection(connection);
@@ -75,7 +77,7 @@ public class UserDAOImpl implements by.sichnenko.committee.dao.UserDAO {
                 statement.executeUpdate();
 
             } catch (SQLException e) {
-                throw new DAOException("Update user error ", e);
+                throw new DAOException("Update user's lock error ", e);
             }
         } finally {
             closeConnection(connection);
@@ -94,7 +96,7 @@ public class UserDAOImpl implements by.sichnenko.committee.dao.UserDAO {
                 statement.executeUpdate();
 
             } catch (SQLException e) {
-                throw new DAOException("Update user error ", e);
+                throw new DAOException("Update user's password error ", e);
             }
         } finally {
             closeConnection(connection);
@@ -112,7 +114,7 @@ public class UserDAOImpl implements by.sichnenko.committee.dao.UserDAO {
                 List<User> userList = new ArrayList<>();
                 while (resultSet.next()) {
                     User user = new User();
-                    user.setUserId(resultSet.getInt(SQLFieldConstant.User.ID));
+                    user.setUserId(resultSet.getLong(SQLFieldConstant.User.ID));
                     user.setRole(RoleType.valueOf(resultSet.getString(SQLFieldConstant.User.ROLE).toUpperCase()));
                     user.setEmail(resultSet.getString(SQLFieldConstant.User.EMAIL));
                     user.setLogin(resultSet.getString(SQLFieldConstant.User.LOGIN));
@@ -123,7 +125,7 @@ public class UserDAOImpl implements by.sichnenko.committee.dao.UserDAO {
                 }
                 return userList;
             } catch (SQLException e) {
-                throw new DAOException("Find user error ", e);
+                throw new DAOException("Find users error ", e);
             }
         } finally {
             closeConnection(connection);
@@ -141,12 +143,13 @@ public class UserDAOImpl implements by.sichnenko.committee.dao.UserDAO {
                 List<User> userList = new ArrayList<>();
                 while (resultSet.next()) {
                     User user = new User();
-                    user.setUserId(resultSet.getInt(SQLFieldConstant.User.ID));
+                    user.setUserId(resultSet.getLong(SQLFieldConstant.User.ID));
                     user.setRole(RoleType.valueOf(resultSet.getString(SQLFieldConstant.User.ROLE).toUpperCase()));
                     user.setEmail(resultSet.getString(SQLFieldConstant.User.EMAIL));
                     user.setLogin(resultSet.getString(SQLFieldConstant.User.LOGIN));
                     user.setHashPassword(resultSet.getString(SQLFieldConstant.User.HASH_PASSWORD));
                     user.setIsBlocked(resultSet.getBoolean(SQLFieldConstant.User.LOCK));
+                    user.setImagePath(resultSet.getString(SQLFieldConstant.IMAGE_PATH));
                     userList.add(user);
                 }
                 return userList;
@@ -168,9 +171,8 @@ public class UserDAOImpl implements by.sichnenko.committee.dao.UserDAO {
                 statement.setString(1, imagePath);
                 statement.setLong(2, userId);
                 statement.executeUpdate();
-
             } catch (SQLException e) {
-                throw new DAOException("Update user error ", e);
+                throw new DAOException("Update user's image error ", e);
             }
         } finally {
             closeConnection(proxyConnection);
@@ -178,7 +180,7 @@ public class UserDAOImpl implements by.sichnenko.committee.dao.UserDAO {
     }
 
     @Override
-    public boolean create(User user) throws DAOException {
+    public void create(User user) throws DAOException {
         ProxyConnection connection = null;
         try {
             connection = ConnectionPoolImpl.getInstance().takeConnection();
@@ -188,7 +190,7 @@ public class UserDAOImpl implements by.sichnenko.committee.dao.UserDAO {
                 statement.setString(2, user.getHashPassword());
                 statement.setString(3, user.getRole().toString());
                 statement.setString(4, user.getEmail());
-                return statement.executeUpdate() == 1;
+                statement.executeUpdate();
 
             } catch (SQLException e) {
                 throw new DAOException("Create user error ", e);
@@ -211,7 +213,7 @@ public class UserDAOImpl implements by.sichnenko.committee.dao.UserDAO {
                 statement.setString(4, user.getEmail());
                 statement.setBoolean(5, user.getIsBlocked());
                 statement.setString(6, user.getImagePath());
-                statement.setLong(7,user.getUserId());
+                statement.setLong(7, user.getUserId());
                 statement.executeUpdate();
 
             } catch (SQLException e) {
@@ -221,5 +223,4 @@ public class UserDAOImpl implements by.sichnenko.committee.dao.UserDAO {
             closeConnection(proxyConnection);
         }
     }
-
 }

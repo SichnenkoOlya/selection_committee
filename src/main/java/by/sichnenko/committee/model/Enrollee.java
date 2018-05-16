@@ -13,6 +13,7 @@ public class Enrollee {
     private long cityId;
     private int avarageCertificateScore;
     private int scoreOnCT;
+    private String infoMessage;
 
     public long getEnrolleeId() {
         return enrolleeId;
@@ -108,5 +109,13 @@ public class Enrollee {
 
     public void setPassport(String passport) {
         this.passport = passport;
+    }
+
+    public String getInfoMessage() {
+        return infoMessage;
+    }
+
+    public void setInfoMessage(String infoMessage) {
+        this.infoMessage = infoMessage;
     }
 }

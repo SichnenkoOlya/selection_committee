@@ -12,14 +12,17 @@
 <fmt:message key="label.city_name" var="cityNameTxt"/>
 <fmt:message key="label.add" var="addTxt"/>
 <fmt:message key="label.country" var="countryTxt"/>
+<fmt:message key="label.home" var="homeTxt"/>
+<fmt:message key="error.incorrect_data" var="incorrectDataTxt"/>
+<fmt:message key="error.make_sure" var="makeSureTxt"/>
+<fmt:message key="error.such_city_exist" var="suchCityExistTxt"/>
 
-
-<div class="page_title gradient_overlay" style="background: url(images/page_title_bg.jpg);">
+<div class="page_title gradient_overlay" style="background: url(/images/page_title_bg.jpg);">
     <div class="container">
         <div class="inner">
             <h1>${addCityTxt}</h1>
             <ol class="breadcrumb">
-                <li><a href="${pageContext.request.contextPath}/mainController">Home</a></li>
+                <li><a href="${pageContext.request.contextPath}/mainController">${homeTxt}</a></li>
                 <li>${addCityTxt}</li>
             </ol>
         </div>
@@ -36,13 +39,18 @@
                         <h2><c:out value="${addCityTxt}"/></h2>
                     </div>
 
-                    <c:if test="${requestScope.containsKey('wrongData')}">
-                        ${wrongPassOrLoginTxt}
-                    </c:if>
 
                     <form id="contact-form-page" action="${pageContext.request.contextPath}/mainController"
                           method="post">
                         <input type="hidden" name="command" value="ADD_CITY"/>
+
+                        <c:if test="${requestScope.containsKey('incorrectData')}">
+                            ${incorrectDataTxt}
+                            ${makeSureTxt}
+                        </c:if>
+                        <c:if test="${requestScope.containsKey('suchCityExist')}">
+                            ${suchCityExistTxt}
+                        </c:if>
 
                         <div class="row">
                             <div class="form-group col-md-12 col-sm-12">
@@ -52,7 +60,7 @@
 
                             <div class="form-group col-md-12 col-sm-12">
                                 <label for="countries" class="control-label">${countryTxt}</label>
-                                <select id="countries" name="country" class="form-control" required>
+                                <select id="countries" name="countryId" class="form-control" required>
                                     <option></option>
                                     <c:forEach var="country" items="${countries}">
                                         <option value="${country.countryId}">${country.name}</option>
@@ -69,7 +77,6 @@
                         </div>
                     </form>
                 </c:if>
-
             </div>
         </div>
     </div>

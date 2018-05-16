@@ -7,7 +7,7 @@
 
     <tlib-version>1.0</tlib-version>
     <short-name>ctg</short-name>
-    <uri>http://sichnenko.by/pages/</uri>
+    <uri>customtags</uri>
 
     <tag>
         <name>admin</name>
@@ -40,6 +40,12 @@
             <required>true</required>
             <rtexprvalue>true</rtexprvalue>
         </attribute>
+    </tag>
+
+    <tag>
+        <name>cur-date</name>
+        <tag-class>by.sichnenko.committee.tag.DateTag</tag-class>
+        <body-content>scriptless</body-content>
     </tag>
 
 </taglib>

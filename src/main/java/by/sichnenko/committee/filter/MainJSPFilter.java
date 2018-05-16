@@ -16,7 +16,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static by.sichnenko.committee.constant.ErrorConstant.ERROR_LOADING_FACULTIES;
 import static by.sichnenko.committee.constant.RequestNameConstant.FACULTIES;
 
 @WebFilter(filterName = "MainJSPFilter", urlPatterns = {"/pages/main.jsp"}, dispatcherTypes = {DispatcherType.FORWARD, DispatcherType.REQUEST})
@@ -36,7 +35,7 @@ public class MainJSPFilter implements Filter {
             servletRequest.setAttribute(FACULTIES, faculties);
         } catch (ServiceException e) {
             //((HttpServletResponse)servletResponse).sendError(404);
-            servletRequest.setAttribute(ERROR_LOADING_FACULTIES, true);
+
             LOGGER.error("Error loading faculties ", e);
             return;
         }
