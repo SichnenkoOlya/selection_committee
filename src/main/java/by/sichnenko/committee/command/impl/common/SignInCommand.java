@@ -58,12 +58,10 @@ public class SignInCommand implements ActionCommand {
 
         if (authenticatedUser != null) {
             sessionRequestContent.getSessionAttributes().put(USER, authenticatedUser);
-            sessionRequestContent.getSessionAttributes().put(LOGIN, authenticatedUser.getLogin());
-            sessionRequestContent.getSessionAttributes().put(ROLE, authenticatedUser.getRole());
             if (enrollee != null) {
                 sessionRequestContent.getSessionAttributes().put(ENROLLEE, enrollee);
             }
         }
-        return new Router(RouterType.REDIRECT, INDEX_PAGE);
+        return new Router(RouterType.REDIRECT, ROOT_PAGE);
     }
 }

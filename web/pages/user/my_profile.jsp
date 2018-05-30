@@ -127,17 +127,21 @@
                             <c:when test="${enrollee.statusId eq documentRejectedStatus}">
 
                                 ${documentRejectedTxt}<br/>
-                                <form action="${pageContext.request.contextPath}/mainController" method="post">
-                                    <div class="form-group col-md-12">
-                                        <input type="hidden" name="command" value="SHOW_ENROLLEE_FILL_PAGE"/>
-                                        <button type="submit" class="button  btn_blue mt40 upper pull-right">
-                                            <i class="fa fa-check" aria-hidden="true"></i>${sendDocumentsAgainTxt}
-                                        </button>
-                                    </div>
-                                </form>
                                 <c:if test="${not empty enrollee.infoMessage}">
                                     ${messageFromAdminTxt} ${enrollee.infoMessage}
                                 </c:if>
+
+                                <form action="${pageContext.request.contextPath}/mainController" method="post">
+                                    <div class="row">
+                                        <div class="form-group col-md-12">
+                                            <input type="hidden" name="command" value="SHOW_ENROLLEE_FILL_PAGE"/>
+                                            <button type="submit" class="button  btn_blue mt40 upper">
+                                                <i class="fa fa-check" aria-hidden="true"></i>${sendDocumentsAgainTxt}
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+
                             </c:when>
                         </c:choose>
                     </c:if>

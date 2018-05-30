@@ -32,17 +32,6 @@
     </tag>
 
     <tag>
-        <name>null</name>
-        <tag-class>by.sichnenko.committee.tag.NullElement</tag-class>
-        <body-content>scriptless</body-content>
-        <attribute>
-            <name>test</name>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-    </tag>
-
-    <tag>
         <name>cur-date</name>
         <tag-class>by.sichnenko.committee.tag.DateTag</tag-class>
         <body-content>scriptless</body-content>

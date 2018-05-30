@@ -47,6 +47,5 @@ public interface SubjectDAO extends DAO<Subject> {
      */
     void addSubjectsForFaculty(Long facultyId, List<Long> subjectsId) throws DAOException;
 
-    Subject findSubjectByName(String subjectName) throws DAOException;
 }
 

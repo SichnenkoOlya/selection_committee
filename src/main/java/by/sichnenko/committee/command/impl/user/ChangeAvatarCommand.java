@@ -36,7 +36,7 @@ public class ChangeAvatarCommand implements ActionCommand {
             LOGGER.catching(e);
             Set<String> keys = sessionRequestContent.getRequestAttributes().keySet();
             if (keys.contains(GeneralConstant.INCORRECT_DATA) || keys.contains(GeneralConstant.IMAGE_NOT_LOADED)) {
-                return new Router(RouterType.FORWARD, defineLastQuery(sessionRequestContent));
+                return new Router(RouterType.FORWARD, MY_PROFILE_PAGE);
             }
             return new Router(RouterType.ERROR);
         }

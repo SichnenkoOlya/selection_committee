@@ -51,8 +51,6 @@ public interface EnrolleeDAO extends DAO<Enrollee> {
      */
     List<Enrollee> findEnrolleesEnteredFacultyBudjet(Faculty faculty) throws DAOException;
 
-    List<Long> findSubjectsForEnrollee(Long enrolleeId) throws DAOException;
-
     /**
      * Find enrollees entered for faculty for paid
      *

@@ -283,16 +283,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> findAllUsers() throws ServiceException {
-        try {
-            UserDAO userDAO = new UserDAOImpl();
-            return userDAO.findAll();
-        } catch (DAOException e) {
-            throw new ServiceException("Find users error ", e);
-        }
-    }
-
-    @Override
     public HashMap<User, Long> findAllUsersAndStatus() throws ServiceException {
         try {
             UserDAO userDAO = new UserDAOImpl();

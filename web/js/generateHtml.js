@@ -61,15 +61,12 @@
             var html = '';
             data.forEach(function (value, i) {
 
-                var rand = (Math.random() * 100001);
+                var rand = Math.floor((Math.random() * 100001));
                 html += '<div class="form-group col-md-12 col-sm-12" id="group-' + value["groupNumber"] + '">' +
                     '<label class="control-label">' + value["name"] + '</label>' +
                     '<input type="hidden" name="idSubject" value="' + value["subjectId"] + '"/>' +
                     '<p id="input-countScore-' + rand + '" class="error display-none"></p>' +
-                    '<input data-validation="true" ' +
-                    'data-type-validation="validateCertificateScore" ' +
-                    'data-error-area-id="input-countScore-' + rand + '" ' +
-                    'data-error-message="${incorrectDataTxt}" ' +
+                    '<input data-error-area-id="input-countScore-' + rand + '" ' +
                     'type="number" class="form-control" data-group="group-' + value["groupNumber"] + '" name="countScore"/>' +
                     '</div>';
             });
@@ -99,32 +96,46 @@
         }
 
 
-        $("form[name=enrollee-fill]").submit(
+        /*$("form[name=enrollee-fill]").submit(
             function (e) {
-                var error = [];
 
                 var countScoreInput = $(this).find('input[name=countScore]:enabled');
                 var countValue = 0;
+                var prevent = false;
 
                 countScoreInput.each(function (item, value) {
-                    var inputValue = $(value).val();
+                    var input = $(value);
+                    var inputValue = input.val();
 
-                    if ((inputValue < 0) || (inputValue > 100)) {
-                        error.push('Fill number from 0 to 100.');
-                    }
-                    else if((inputValue >= 0) && (inputValue <= 100)){
+                    var errorArea = $('#' + input.data("errorAreaId"));
+
+                    if ((inputValue !== "") && (inputValue >= 0) && (inputValue <= 100)){
+
+                        errorArea.slideUp();
+                        errorArea.html('');
                         countValue += 1;
+
                     }
+                    else {
+
+                        errorArea.html("Incorrect data.");
+                        errorArea.slideDown();
+                        prevent = true;
+
+                    }
+
                 });
-                
-                if (countValue !== 3){
-                    error.push('3 items not fill.');
+
+                if (countValue !== 3) {
+                    console.log("3 items not fill.");
+                    prevent = true;
                 }
 
-                console.log(error);
-
+                if(prevent){
+                    e.preventDefault();
+                }
             }
-        );
+        );*/
 
         var formsOnPage = $('form');
 
@@ -164,7 +175,7 @@
             var value = element.val();
             var name = element.attr("name");
 
-            var validatePhoneNumber = new RegExp('^(?:\\+|\\d)[\\d\\- ]{9,}\\d$');
+            var validatePhoneNumber = new RegExp('^(?:\\+|\\d)[\\d\\- ]{9,13}\\d$');
             var validateName = new RegExp('^([A-Z][a-z]{1,25})|([А-Я][а-я]{1,25})$');
             var validatePassportNumber = new RegExp('^[A-Z]{2}\\d{7,8}$');
             var MAX_VALUE = 0;

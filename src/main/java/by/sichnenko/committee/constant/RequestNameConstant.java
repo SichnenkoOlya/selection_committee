@@ -30,7 +30,6 @@ public class RequestNameConstant {
     public static final String NEW_PASSWORD = "newPassword";
     public static final String PASSWORD = "password";
 
-    public static final String LAST_PAGE = "lastPage";
     public static final String LAST_QUERY = "lastQuery";
     public static final String LOCALE = "locale";
 

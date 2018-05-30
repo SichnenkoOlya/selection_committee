@@ -111,7 +111,7 @@ public class UserValidatorTest {
 
     @Test
     public void validateLoginPositiveThreeLetter() {
-        String correctLogin = "ol1";
+        String correctLogin = "olr";
         Assert.assertTrue(UserValidator.validateLogin(correctLogin));
     }
 
@@ -122,26 +122,15 @@ public class UserValidatorTest {
     }
 
     @Test
-    public void validateLoginPositiveWithDot() {
-        String correctLogin = "ol.ay";
-        Assert.assertTrue(UserValidator.validateLogin(correctLogin));
-    }
-
-    @Test
     public void validateLoginPositiveWithUnderscore() {
         String correctLogin = "ol_ay";
         Assert.assertTrue(UserValidator.validateLogin(correctLogin));
     }
 
-    @Test
-    public void validateLoginPositiveWithDash() {
-        String correctLogin = "ol-ay";
-        Assert.assertTrue(UserValidator.validateLogin(correctLogin));
-    }
 
     @Test
     public void validateLoginPositiveWithNumbers() {
-        String correctLogin = "olay11";
+        String correctLogin = "olay11q";
         Assert.assertTrue(UserValidator.validateLogin(correctLogin));
     }
 

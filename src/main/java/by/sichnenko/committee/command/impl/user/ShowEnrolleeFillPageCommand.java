@@ -1,7 +1,6 @@
 package by.sichnenko.committee.command.impl.user;
 
 import by.sichnenko.committee.command.ActionCommand;
-import by.sichnenko.committee.command.impl.common.FindCitiesByCountryCommand;
 import by.sichnenko.committee.constant.GeneralConstant;
 import by.sichnenko.committee.controller.SessionRequestContent;
 import by.sichnenko.committee.exception.ServiceException;

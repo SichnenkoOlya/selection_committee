@@ -215,28 +215,6 @@ public class EnrolleeDAOImpl implements EnrolleeDAO {
     }
 
     @Override
-    public List<Long> findSubjectsForEnrollee(Long enrolleeId) throws DAOException {
-        ProxyConnection connection = null;
-        try {
-            connection = ConnectionPoolImpl.getInstance().takeConnection();
-            try (PreparedStatement preparedStatement = connection.prepareStatement(SQLQueryConstant.SELECT_SUBJECTS_FOR_ENROLLEE)) {
-                preparedStatement.setLong(1, enrolleeId);
-                ResultSet resultSet = preparedStatement.executeQuery();
-                List<Long> subjectsId = new ArrayList<>();
-                while (resultSet.next()) {
-                    Long subjectId=resultSet.getLong(SQLFieldConstant.Subject.SUBJECT_ID);
-                    subjectsId.add(subjectId);
-                }
-                return subjectsId;
-            } catch (SQLException e) {
-                throw new DAOException("Find subjects error ", e);
-            }
-        } finally {
-            closeConnection(connection);
-        }
-    }
-
-    @Override
     public List<Enrollee> findEnrolleesEnteredFacultyPaid(Faculty faculty) throws DAOException {
 
         ProxyConnection connection = null;
@@ -245,7 +223,7 @@ public class EnrolleeDAOImpl implements EnrolleeDAO {
             try (PreparedStatement preparedStatement = connection.prepareStatement(SQLQueryConstant.SELECT_ENROLLE_ENTERED_ON_FACULTY)) {
                 preparedStatement.setLong(1, faculty.getFacultyId());
                 preparedStatement.setInt(2, faculty.getBudjetPlaceCount());
-                preparedStatement.setInt(3, faculty.getBudjetPlaceCount() + faculty.getPaidPlaceCount());
+                preparedStatement.setInt(3, faculty.getPaidPlaceCount());
                 ResultSet resultSet = preparedStatement.executeQuery();
                 return extractEnrollees(resultSet);
             } catch (SQLException e) {

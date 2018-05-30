@@ -22,7 +22,6 @@ import java.util.List;
 public class CountryServiceImpl implements CountryService {
     @Override
     public List<Country> findAllCountries() throws ServiceException {
-        ;
         try {
             CountryDAO countryDAO = new CountryDAOImpl();
             return countryDAO.findAll();

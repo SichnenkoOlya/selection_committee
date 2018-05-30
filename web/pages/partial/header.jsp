@@ -56,6 +56,7 @@
     <link href="${pageContext.request.contextPath}/fonts/font-awesome.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/fonts/flaticon.css" rel="stylesheet">
 
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
 </head>
 
 <div class="wrapper">
@@ -189,7 +190,7 @@
                             </li>
                         </c:if>
                     </c:if>
-                    <ctg:admin role="${sessionScope.role}">
+                    <ctg:admin role="${sessionScope.user.role}">
                         <li class="dropdown simple_menu">
                             <a class="dropdown-toggle" data-toggle="dropdown"> ${addTxt}<b class="caret"></b></a>
                             <ul class="dropdown-menu">

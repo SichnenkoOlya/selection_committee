@@ -2,6 +2,7 @@ package by.sichnenko.committee.constant;
 
 public class PageNameConstant {
     //Common pages
+    public static final String ROOT_PAGE = "/";
     public static final String INDEX_PAGE = "/index.jsp";
     public static final String MAIN_PAGE = "/pages/common/main.jsp";
     public static final String DETAIL_FACULTY_PAGE = "/pages/common/faculty_detail.jsp";
@@ -14,7 +15,6 @@ public class PageNameConstant {
     public static final String MY_PROFILE_PAGE = "/pages/user/my_profile.jsp";
     public static final String FILL_ENROLLEE_PAGE = "/pages/user/enrollee_fill.jsp";
     public static final String CHANGE_PASSWORD_PAGE = "/pages/user/change_password.jsp";
-    public static final String EDIT_USER_PAGE = "/pages/user/edit_profile.jsp";
 
     //Admin pages
     public static final String ALL_USERS_PAGE = "/pages/admin/all_users.jsp";

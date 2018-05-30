@@ -69,8 +69,6 @@ public interface UserService {
      */
     void changeAvatar(SessionRequestContent sessionRequestContent) throws ServiceException;
 
-    List<User> findAllUsers() throws ServiceException;
-
     /**
      * Find user
      *

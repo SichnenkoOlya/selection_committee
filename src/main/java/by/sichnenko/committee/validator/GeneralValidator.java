@@ -4,7 +4,6 @@ import by.sichnenko.committee.type.ImageExtensionType;
 
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import static by.sichnenko.committee.constant.PatternConstant.DATE_REGEX;
 

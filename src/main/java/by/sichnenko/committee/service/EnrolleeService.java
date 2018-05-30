@@ -28,13 +28,6 @@ public interface EnrolleeService {
      */
     Enrollee editEnrollee(SessionRequestContent sessionRequestContent) throws ServiceException;
 
-    /**
-     * Change status for all enrollees
-     *
-     * @param sessionRequestContent request content
-     * @throws ServiceException the service exception
-     */
-    void changeAllEnrolleesStatus(SessionRequestContent sessionRequestContent) throws ServiceException;
 
     /**
      * Change status for enrollee
@@ -70,8 +63,6 @@ public interface EnrolleeService {
      * @throws ServiceException the service exception
      */
     List<Enrollee> findEnrolleesEnteredFacultyPaid(SessionRequestContent sessionRequestContent) throws ServiceException;
-
-    void enrollToAllFaculty(SessionRequestContent sessionRequestContent) throws ServiceException;
 
     /**
      * Enroll pupils to faculyt

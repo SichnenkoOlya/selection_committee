@@ -29,18 +29,25 @@ public class EnrolleeServiceImpl implements EnrolleeService {
 
     @Override
     public Enrollee fillEnrollee(SessionRequestContent sessionRequestContent) throws ServiceException {
+        final int FILL_DOCUMENTS_STATUS_ID = 6;
+
         String[] name = sessionRequestContent.getRequestParameters().get(NAME);
         String[] surname = sessionRequestContent.getRequestParameters().get(SURNAME);
         String[] patronymic = sessionRequestContent.getRequestParameters().get(PATRONYMIC);
         String[] phoneNumber = sessionRequestContent.getRequestParameters().get(PHONE_NUMBER);
         String[] facultyId = sessionRequestContent.getRequestParameters().get(FACULTY);
-        String login = sessionRequestContent.getSessionAttributes().get(LOGIN).toString();
         String[] cityId = sessionRequestContent.getRequestParameters().get(CITY);
         String[] passport = sessionRequestContent.getRequestParameters().get(PASSPORT);
         String[] sertificateScore = sessionRequestContent.getRequestParameters().get(SERTIFICATE_SCORE);
         String[] countScore = sessionRequestContent.getRequestParameters().get(COUNT_SCORE);
         String[] idSubjects = sessionRequestContent.getRequestParameters().get(SUBJECT_ID);
         String[] idPrivileges = sessionRequestContent.getRequestParameters().get(PRIVILEGE_ID);
+        User user = (User) sessionRequestContent.getSessionAttributes().get(USER);
+        String login = "";
+        if (user != null) {
+            login = user.getLogin();
+        }
+
         int ctScore = 0;
         List<Long> subject_ids = new ArrayList<>();
         List<Long> privilege_ids = new ArrayList<>();
@@ -93,7 +100,7 @@ public class EnrolleeServiceImpl implements EnrolleeService {
             UserDAO userDAO = new UserDAOImpl();
             SubjectDAO subjectDAO = new SubjectDAOImpl();
             PrivilegeDAO privilegeDAO = new PrivilegeDAOImpl();
-            User user = userDAO.findUserByLogin(login);
+            user = userDAO.findUserByLogin(login);
 
             Enrollee enrollee = new Enrollee();
             enrollee.setName(name[0]);
@@ -103,7 +110,7 @@ public class EnrolleeServiceImpl implements EnrolleeService {
             enrollee.setUserId(user.getUserId());
             enrollee.setCityId(Long.valueOf(cityId[0]));
             enrollee.setFacultyId(Long.valueOf(facultyId[0]));
-            enrollee.setStatusId(1);
+            enrollee.setStatusId(FILL_DOCUMENTS_STATUS_ID);
             enrollee.setPassport(passport[0]);
             enrollee.setAvarageCertificateScore(Integer.valueOf(sertificateScore[0]));
             enrollee.setScoreOnCT(ctScore);
@@ -123,6 +130,8 @@ public class EnrolleeServiceImpl implements EnrolleeService {
 
     @Override
     public Enrollee editEnrollee(SessionRequestContent sessionRequestContent) throws ServiceException {
+        final int FILL_DOCUMENTS_STATUS_ID = 6;
+
         String[] name = sessionRequestContent.getRequestParameters().get(NAME);
         String[] surname = sessionRequestContent.getRequestParameters().get(SURNAME);
         String[] patronymic = sessionRequestContent.getRequestParameters().get(PATRONYMIC);
@@ -200,7 +209,7 @@ public class EnrolleeServiceImpl implements EnrolleeService {
             enrollee.setUserId(user.getUserId());
             enrollee.setCityId(Long.valueOf(cityId[0]));
             enrollee.setFacultyId(Long.valueOf(facultyId[0]));
-            enrollee.setStatusId(6);
+            enrollee.setStatusId(FILL_DOCUMENTS_STATUS_ID);
             enrollee.setEnrolleeId(Long.valueOf(idEnrollee[0]));
             enrollee.setInfoMessage("");
             enrollee.setPassport(passport[0]);
@@ -220,23 +229,6 @@ public class EnrolleeServiceImpl implements EnrolleeService {
 
         } catch (DAOException e) {
             throw new ServiceException("Edit enrollee error ", e);
-        }
-    }
-
-    @Override
-    public void changeAllEnrolleesStatus(SessionRequestContent sessionRequestContent) throws ServiceException {
-        String[] oldStatusId = sessionRequestContent.getRequestParameters().get(OLD_STATUS_ID);
-        String[] newStatusId = sessionRequestContent.getRequestParameters().get(NEW_STATUS_ID);
-
-        if (!GeneralValidator.isPositiveNumber(oldStatusId) || !GeneralValidator.isPositiveNumber(newStatusId)) {
-            sessionRequestContent.getRequestAttributes().put(GeneralConstant.INCORRECT_DATA, true);
-            throw new ServiceException("Incorrect data  ");
-        }
-        try {
-            EnrolleeDAO enrolleeDAO = new EnrolleeDAOImpl();
-            enrolleeDAO.changeAllEnrolleesStatus(Long.valueOf(oldStatusId[0]), Long.valueOf(newStatusId[0]));
-        } catch (DAOException e) {
-            throw new ServiceException("Change status error ", e);
         }
     }
 
@@ -320,20 +312,6 @@ public class EnrolleeServiceImpl implements EnrolleeService {
     }
 
     @Override
-    public void enrollToAllFaculty(SessionRequestContent sessionRequestContent) throws ServiceException {
-        FacultyDAO facultyDAO = new FacultyDAOImpl();
-        try {
-            List<Faculty> faculties = facultyDAO.findAll();
-            for (Faculty faculty : faculties) {
-                enroll(faculty);
-            }
-
-        } catch (DAOException e) {
-            throw new ServiceException("Enroll to faculty error ", e);
-        }
-    }
-
-    @Override
     public void enrollToFaculty(SessionRequestContent sessionRequestContent) throws ServiceException {
         FacultyDAO facultyDAO = new FacultyDAOImpl();
         String[] facultyId = sessionRequestContent.getRequestParameters().get(FACULTY_ID);
@@ -354,20 +332,24 @@ public class EnrolleeServiceImpl implements EnrolleeService {
     }
 
     private void enroll(Faculty faculty) throws ServiceException {
+        final long BUDJET_STATUS = 2L;
+        final long PAID_STATUS = 3L;
+        final long NOT_ENTERED_STATUS = 5L;
+
         try {
             FacultyDAO facultyDAO = new FacultyDAOImpl();
             EnrolleeDAO enrolleeDAO = new EnrolleeDAOImpl();
             List<Enrollee> budjetEnrollees = enrolleeDAO.findEnrolleesEnteredFacultyBudjet(faculty);
             for (Enrollee enrollee : budjetEnrollees) {
-                enrolleeDAO.changeStatus(enrollee.getEnrolleeId(), 2L, "");
+                enrolleeDAO.changeStatus(enrollee.getEnrolleeId(), BUDJET_STATUS, "");
             }
             List<Enrollee> paidEnrolles = enrolleeDAO.findEnrolleesEnteredFacultyPaid(faculty);
             for (Enrollee enrollee : paidEnrolles) {
-                enrolleeDAO.changeStatus(enrollee.getEnrolleeId(), 3L, "");
+                enrolleeDAO.changeStatus(enrollee.getEnrolleeId(), PAID_STATUS, "");
             }
             List<Enrollee> notEnteredEnrolles = enrolleeDAO.findEnrolleesNotEntered(faculty);
             for (Enrollee enrollee : notEnteredEnrolles) {
-                enrolleeDAO.changeStatus(enrollee.getEnrolleeId(), 5L, "");
+                enrolleeDAO.changeStatus(enrollee.getEnrolleeId(), NOT_ENTERED_STATUS, "");
             }
             if (budjetEnrollees.size() < faculty.getBudjetPlaceCount() || budjetEnrollees.size() == 0) {
                 faculty.setPassingScoreBudjet((short) 0);
@@ -382,7 +364,7 @@ public class EnrolleeServiceImpl implements EnrolleeService {
             } else {
                 Enrollee lastEnrollee = paidEnrolles.get(paidEnrolles.size() - 1);
                 int scorePaid = lastEnrollee.getAvarageCertificateScore() + lastEnrollee.getScoreOnCT();
-                faculty.setPassingScoreBudjet((short) scorePaid);
+                faculty.setPassingScorePaid((short) scorePaid);
             }
             facultyDAO.updateScore(faculty);
 

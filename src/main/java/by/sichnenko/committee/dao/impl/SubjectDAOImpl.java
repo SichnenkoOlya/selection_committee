@@ -132,26 +132,4 @@ public class SubjectDAOImpl implements SubjectDAO {
             }
         }
     }
-
-    @Override
-    public Subject findSubjectByName(String subjectName) throws DAOException {
-        ProxyConnection connection = null;
-        try {
-            connection = ConnectionPoolImpl.getInstance().takeConnection();
-            try (PreparedStatement preparedStatement = connection.prepareStatement(SQLQueryConstant.SELECT_SUBJECT_BY_NAME)) {
-                preparedStatement.setString(1, subjectName);
-                ResultSet resultSet = preparedStatement.executeQuery();
-                Subject subject = new Subject();
-                if (resultSet.next()) {
-                    subject.setSubjectId(resultSet.getLong(SQLFieldConstant.ID));
-                    subject.setName(resultSet.getString(SQLFieldConstant.NAME));
-                }
-                return subject;
-            } catch (SQLException e) {
-                throw new DAOException("Find subject /error ", e);
-            }
-        } finally {
-            closeConnection(connection);
-        }
-    }
 }

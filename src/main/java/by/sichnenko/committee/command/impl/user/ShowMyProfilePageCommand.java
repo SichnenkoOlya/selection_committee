@@ -7,8 +7,10 @@ import by.sichnenko.committee.exception.ServiceException;
 import by.sichnenko.committee.model.Enrollee;
 import by.sichnenko.committee.model.Faculty;
 import by.sichnenko.committee.model.User;
+import by.sichnenko.committee.service.EnrolleeService;
 import by.sichnenko.committee.service.FacultyService;
 import by.sichnenko.committee.service.UserService;
+import by.sichnenko.committee.service.impl.EnrolleeServiceImpl;
 import by.sichnenko.committee.service.impl.FacultyServiceImpl;
 import by.sichnenko.committee.service.impl.UserServiceImpl;
 import by.sichnenko.committee.type.RouterType;
@@ -32,6 +34,7 @@ public class ShowMyProfilePageCommand implements ActionCommand {
     public Router execute(SessionRequestContent sessionRequestContent) {
         if (sessionRequestContent.getSessionAttributes().containsKey(ENROLLEE)) {
             UserService userService = new UserServiceImpl();
+            EnrolleeService enrolleeService = new EnrolleeServiceImpl();
             Enrollee enrollee = ((Enrollee) sessionRequestContent.getSessionAttributes().get(ENROLLEE));
             FacultyService facultyService = new FacultyServiceImpl();
             sessionRequestContent.getRequestParameters().put(FACULTY_ID, new String[]{String.valueOf(enrollee.getFacultyId())});
@@ -41,6 +44,8 @@ public class ShowMyProfilePageCommand implements ActionCommand {
                 sessionRequestContent.getRequestParameters().put(LOGIN, new String[]{((User) sessionRequestContent.getSessionAttributes().get(USER)).getLogin()});
                 User user = userService.findUser(sessionRequestContent);
                 sessionRequestContent.getSessionAttributes().put(USER, user);
+                sessionRequestContent.getRequestParameters().put(USER_ID, new String[]{ String.valueOf (((User) sessionRequestContent.getSessionAttributes().get(USER)).getUserId())});
+                sessionRequestContent.getSessionAttributes().put(ENROLLEE, enrolleeService.findEnrolleeByUser(sessionRequestContent));
             } catch (ServiceException e) {
                 LOGGER.catching(e);
                 Set<String> keys = sessionRequestContent.getRequestAttributes().keySet();
