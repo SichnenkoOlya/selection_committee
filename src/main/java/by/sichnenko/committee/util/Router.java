@@ -4,6 +4,9 @@ import by.sichnenko.committee.type.RouterType;
 
 import static by.sichnenko.committee.constant.PageNameConstant.INDEX_PAGE;
 
+/**
+ * The Router class
+ */
 public class Router {
     private RouterType routerType = RouterType.FORWARD;
     private String routPage = INDEX_PAGE;

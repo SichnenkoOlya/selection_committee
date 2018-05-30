@@ -2,29 +2,50 @@ package by.sichnenko.committee.dao;
 
 import by.sichnenko.committee.connection.ProxyConnection;
 import by.sichnenko.committee.exception.DAOException;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
-import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * The interface DAO
+ *
+ * @param <T>
+ */
 public interface DAO<T> {
+    /**
+     * Find all objects
+     *
+     * @return list of objects
+     * @throws DAOException when sql exception occurs
+     */
     List<T> findAll() throws DAOException;
 
+    /**
+     * Create object
+     *
+     * @param item item of type T
+     * @throws DAOException when sql exception occurs
+     */
     void create(T item) throws DAOException;
 
+    /**
+     * Update item of type T
+     *
+     * @param item item of type T
+     * @throws DAOException when sql exception occurs
+     */
     void update(T item) throws DAOException;
 
+    /**
+     * Close connection
+     *
+     * @param proxyConnection connection
+     * @see ProxyConnection
+     */
     default void closeConnection(ProxyConnection proxyConnection) {
-        //TODO:
         if (proxyConnection != null) {
-            try {
-                proxyConnection.close();
-            } catch (SQLException e) {
-                Logger logger = LogManager.getLogger();
-                logger.error("Error return connection to connection pool", e);
-            }
+            proxyConnection.close();
         }
     }
 }
+
 

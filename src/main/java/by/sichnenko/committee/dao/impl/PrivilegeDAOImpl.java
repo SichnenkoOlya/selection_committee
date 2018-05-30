@@ -14,6 +14,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The PrivilegeDAOImpl class. Implementation of interface PrivilegeDAO.
+ *
+ * @see PrivilegeDAO
+ * @see Privilege
+ */
 public class PrivilegeDAOImpl implements PrivilegeDAO {
     @Override
     public List<Privilege> findAll() throws DAOException {
@@ -44,16 +50,16 @@ public class PrivilegeDAOImpl implements PrivilegeDAO {
     }
 
     @Override
-    public void update(Privilege item){
+    public void update(Privilege item) {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public void addPrivilegesForEnrollee(Long enrolleeId, List<Long> privileges_id) throws DAOException {
+    public void addPrivilegesForEnrollee(Long enrolleeId, List<Long> privilegesId) throws DAOException {
         ProxyConnection connection;
 
         connection = ConnectionPoolImpl.getInstance().takeConnection();
-        for (Long privilegeId : privileges_id) {
+        for (Long privilegeId : privilegesId) {
             try (PreparedStatement preparedStatement = connection.prepareStatement(SQLQueryConstant.INSERT_PRIVILEGES_FOR_ENROLLEE)) {
                 preparedStatement.setLong(1, privilegeId);
                 preparedStatement.setLong(2, enrolleeId);

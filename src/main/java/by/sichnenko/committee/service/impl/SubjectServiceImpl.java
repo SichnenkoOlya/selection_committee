@@ -13,6 +13,12 @@ import by.sichnenko.committee.validator.GeneralValidator;
 
 import java.util.List;
 
+/**
+ * The SubjectServiceImpl class. Implementation of interface SubjectService.
+ *
+ * @see SubjectService
+ * @see Subject
+ */
 public class SubjectServiceImpl implements SubjectService {
     @Override
     public List<Subject> findSubjetsForFaculty(SessionRequestContent sessionRequestContent) throws ServiceException {

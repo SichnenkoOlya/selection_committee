@@ -56,10 +56,6 @@
     <link href="${pageContext.request.contextPath}/fonts/font-awesome.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/fonts/flaticon.css" rel="stylesheet">
 
-    <!-- ========== GOOGLE FONTS ========== -->
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900%7cRaleway:400,500,600,700"
-          rel="stylesheet">
-
 </head>
 
 <div class="wrapper">

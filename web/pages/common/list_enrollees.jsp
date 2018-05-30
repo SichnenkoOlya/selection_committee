@@ -30,11 +30,15 @@
 
 <!-- =========== MAIN ========== -->
 <main id="our_staff_page">
-    <ctg:emptyList items="${enrollees}">
-        <h2>${emptyEnrolleesTxt}</h2>
-    </ctg:emptyList>
-
     <div class="container">
+        <ctg:emptyList items="${enrollees}">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>${emptyEnrolleesTxt}</h2>
+                </div>
+            </div>
+        </ctg:emptyList>
+
         <c:if test="${not empty enrollees}">
             <div class="row">
 
@@ -51,16 +55,6 @@
                 </div>
             </div>
         </c:if>
-
-        <%--<ctg:admin role="${user.role}">--%>
-
-            <%--<form action="${pageContext.request.contextPath}/mainController" method="post">--%>
-                <%--<input type="hidden" name="command" value="CHANGE_ENROLLEE_STATUS"/>--%>
-                <%--<input type="hidden" name="newStatusId" value="4"/>--%>
-                <%--<input type="hidden" name="userId" value="${user.userId}"/>--%>
-                <%--<input type="submit" name="commit" value="${confirmDocumentTxt}">--%>
-            <%--</form>--%>
-        <%--</ctg:admin>--%>
     </div>
 </main>
 

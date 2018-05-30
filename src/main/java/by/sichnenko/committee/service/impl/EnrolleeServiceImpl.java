@@ -19,6 +19,12 @@ import java.util.List;
 
 import static by.sichnenko.committee.constant.RequestNameConstant.*;
 
+/**
+ * The EnrolleeServiceImpl class. Implementation of interface EnrolleeService.
+ *
+ * @see EnrolleeService
+ * @see Enrollee
+ */
 public class EnrolleeServiceImpl implements EnrolleeService {
 
     @Override

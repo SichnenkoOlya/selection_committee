@@ -4,6 +4,10 @@ import by.sichnenko.committee.model.RoleType;
 
 import javax.servlet.jsp.tagext.TagSupport;
 
+/**
+ * The AdminTag class.
+ * If user role is admin then include body, else skip body.
+ */
 public class AdminTag extends TagSupport {
     private RoleType role;
 

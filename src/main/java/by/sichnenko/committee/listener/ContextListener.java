@@ -13,6 +13,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Enumeration;
 
+/**
+ * The ContextListener class
+ */
 @WebListener
 public class ContextListener implements ServletContextListener {
     private final static Logger LOGGER = LogManager.getLogger();

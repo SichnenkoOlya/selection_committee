@@ -8,11 +8,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(filterName = "CurrentPageFilter", urlPatterns = {"/pages/*","/mainController"}, dispatcherTypes = {DispatcherType.REQUEST, DispatcherType.FORWARD})
+import static by.sichnenko.committee.constant.RequestNameConstant.CURRENT_QUERY;
+import static by.sichnenko.committee.constant.RequestNameConstant.LAST_QUERY;
+
+@WebFilter(filterName = "CurrentPageFilter", urlPatterns = {"/pages/*", "/mainController"}, dispatcherTypes = {DispatcherType.REQUEST, DispatcherType.FORWARD})
 public class CurrentPageFilter implements Filter {
 
     @Override
-    public void init(FilterConfig filterConfig){
+    public void init(FilterConfig filterConfig) {
 
     }
 
@@ -20,14 +23,14 @@ public class CurrentPageFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         String uri = URIAnalyzer.cleanURI(request.getRequestURI().substring(request.getContextPath().length()));
-        if (URIAnalyzer.isPageURI(uri)) {
-            ((HttpServletRequest) servletRequest).getSession().setAttribute("lastPage", uri);
-        }else {
+        if (!URIAnalyzer.isPageURI(uri)) {
             HttpSession session = ((HttpServletRequest) servletRequest).getSession();
-            String s1 = ((HttpServletRequest) servletRequest).getRequestURI();
-            String s2 = ((HttpServletRequest) servletRequest).getQueryString();
-            session.setAttribute("lastQuery",session.getAttribute("currentQuery"));
-            session.setAttribute("currentQuery", ((HttpServletRequest) servletRequest).getRequestURI() + "?" + ((HttpServletRequest) servletRequest).getQueryString());
+            session.setAttribute(LAST_QUERY, session.getAttribute(CURRENT_QUERY));
+            if (((HttpServletRequest) servletRequest).getQueryString() != null) {
+                session.setAttribute(CURRENT_QUERY, ((HttpServletRequest) servletRequest).getRequestURI() + "?" + ((HttpServletRequest) servletRequest).getQueryString());
+            } else {
+                session.setAttribute(CURRENT_QUERY, ((HttpServletRequest) servletRequest).getRequestURI());
+            }
         }
         filterChain.doFilter(servletRequest, servletResponse);
     }

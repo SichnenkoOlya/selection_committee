@@ -471,14 +471,6 @@
     </ul>
 </div>
 
-<%--<ctg:admin role="${user.role}">--%>
-<%--<form action="${pageContext.request.contextPath}/mainController" method="post">--%>
-<%--<input type="hidden" name="command" value="ENROLL"/>--%>
-<%--<input type="submit" class="button btn_lg btn_yellow" name="commit" value="${endCommitteeTxt}">--%>
-<%--</form>--%>
-<%--</ctg:admin>--%>
-<%--<br/>--%>
-
 <!-- ========== BLOG ========== -->
 <section id="blog">
     <div class="container">
@@ -495,7 +487,8 @@
                                 <figure>
                                     <a class="hover_effect h_blue"
                                        href="${pageContext.request.contextPath}/mainController?command=SHOW_DETAIL_FACULTY&facultyId=${faculty.facultyId}">
-                                        <img src="${pageContext.request.contextPath}/${faculty.imagePath}" class="img-responsive" alt="Image">
+                                        <img src="${pageContext.request.contextPath}/${faculty.imagePath}"
+                                             class="img-responsive" alt="Image">
                                     </a>
                                 </figure>
                             </div>
@@ -519,21 +512,12 @@
 
                                     <br/>
 
-                                    <form action="${pageContext.request.contextPath}/mainController" method="get"
-                                          class="first-form">
-                                        <input type="hidden" name="command" value="SHOW_ENROLLEES_BUDJET"/>
-                                        <input type="hidden" name="facultyId" value="${faculty.facultyId}"/>
-                                        <button type="submit"
-                                                class="button btn_lg btn_yellow button-one-width">${budjetTxt}</button>
-                                    </form>
+                                    <a class="button btn_lg btn_yellow button-one-width main-link"
+                                       href="${pageContext.request.contextPath}/mainController?command=SHOW_ENROLLEES_BUDJET&facultyId=${faculty.facultyId}">${budjetTxt}</a>
 
-                                    <form action="${pageContext.request.contextPath}/mainController" method="get">
-                                        <input type="hidden" name="command" value="SHOW_ENROLLEES_PAID"/>
-                                        <input type="hidden" name="facultyId" value="${faculty.facultyId}"/>
-                                        <button type="submit"
-                                                class="button btn_lg btn_yellow button-one-width">${paidTxt}</button>
-                                    </form>
-                                    <br/>
+                                    <a class="button btn_lg btn_yellow button-one-width main-link"
+                                       href="${pageContext.request.contextPath}/mainController?command=SHOW_ENROLLEES_PAID&facultyId=${faculty.facultyId}">${paidTxt}</a>
+
                                 </div>
                             </div>
                         </div>

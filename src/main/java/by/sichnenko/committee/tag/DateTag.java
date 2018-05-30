@@ -8,13 +8,17 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * The DateTag class.
+ * Display date in format "dd.MM.yyyy"
+ */
 public class DateTag extends TagSupport {
     private static final String DATE_FORMAT_PATTERN = "dd.MM.yyyy";
 
     @Override
     public int doStartTag() throws JspException {
         DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT_PATTERN);
-        Date date=new Date();
+        Date date = new Date();
         JspWriter out = pageContext.getOut();
         try {
             out.write(dateFormat.format(date));
@@ -25,7 +29,7 @@ public class DateTag extends TagSupport {
     }
 
     @Override
-    public int doEndTag(){
+    public int doEndTag() {
         return EVAL_PAGE;
     }
 }

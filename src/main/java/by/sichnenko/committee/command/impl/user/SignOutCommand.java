@@ -7,6 +7,9 @@ import by.sichnenko.committee.util.Router;
 
 import static by.sichnenko.committee.constant.PageNameConstant.MAIN_PAGE;
 
+/**
+ * The SignOutCommand class
+ */
 public class SignOutCommand implements ActionCommand {
     @Override
     public Router execute(SessionRequestContent sessionRequestContent) {

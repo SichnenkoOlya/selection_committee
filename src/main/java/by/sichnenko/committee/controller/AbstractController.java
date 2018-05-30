@@ -14,8 +14,18 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+/**
+ * The AbstractController class
+ */
 abstract class AbstractController extends HttpServlet {
-
+    /**
+     * Proccess request
+     *
+     * @param request  HttpServletRequest
+     * @param response HttpServletResponse
+     * @throws ServletException the Servlet exception
+     * @throws IOException the IO exception
+     */
     void processRequest(HttpServletRequest request,
                         HttpServletResponse response)
             throws ServletException, IOException {
@@ -25,9 +35,11 @@ abstract class AbstractController extends HttpServlet {
         SessionRequestContent sessionRequestContent = new SessionRequestContent();
         sessionRequestContent.extractValues(request);
         Router router = command.execute(sessionRequestContent);
+
         for (Cookie cookie : sessionRequestContent.getCookiesValues()) {
             response.addCookie(cookie);
         }
+
         sessionRequestContent.insertAttributes(request);
 
         switch (router.getRouterType()) {
@@ -43,7 +55,6 @@ abstract class AbstractController extends HttpServlet {
                 break;
             case AJAX:
                 JSONArray jsonArray = sessionRequestContent.getAjaxParameter();
-                response.setCharacterEncoding("UTF-8");
                 PrintWriter out = response.getWriter();
                 out.println(jsonArray);
                 break;

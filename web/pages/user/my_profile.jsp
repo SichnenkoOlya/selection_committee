@@ -63,9 +63,6 @@
     <div class="container">
 
         <div class="row">
-            <img class="img-responsive hover_effect h_yellow" src="/${user.imagePath}"
-                 alt="${user.login}">
-
             <c:if test="${requestScope.containsKey('imageNotLoaded')}">
                 ${imageNotLoadedTxt}
                 ${makeSureTxt}
@@ -75,6 +72,9 @@
                 ${incorrectDataTxt}
                 ${makeSureTxt}
             </c:if>
+
+            <img class="img-responsive hover_effect h_yellow" src="/${user.imagePath}"
+                 alt="${user.login}">
 
             <div class="col-md-6">
                 <dl class="info">
@@ -154,10 +154,18 @@
                         <label for="fl_inp" class="custom-file-upload button btn_sm btn_yellow">
                             <i class="fa fa-cloud-upload"></i>${choosePhotoTxt}
                         </label>
-                        <input id="fl_inp" type="file" name="image"/>
+                        <p id="input-image" class="error display-none"></p>
+                        <input data-validation="true"
+                               data-type-validation="validateEmpty"
+                               data-error-area-id="input-image"
+                               data-error-message="${fileNotSelectedTxt}"
+                               id="fl_inp"
+                               type="file"
+                               name="image"/>
                         <br/>
                         <div id="fl_nm" class="file-not-selected">${fileNotSelectedTxt}</div>
-                        <button type="submit" class="button btn_sm btn_yellow button-one-width"><i class="fa fa-check"></i>${okTxt}</button>
+                        <button type="submit" class="button btn_sm btn_yellow button-one-width"><i
+                                class="fa fa-check"></i>${okTxt}</button>
                     </div>
                 </form>
             </div>

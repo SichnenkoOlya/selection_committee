@@ -57,37 +57,84 @@
                     <div class="row">
                         <div class="form-group col-md-12 col-sm-12">
                             <label class="control-label">${surnameTxt}</label>
-                            <input type="text" class="form-control" name="surname" placeholder="${surnameTxt}"
+                            <p id="input-surname" class="error display-none"></p>
+                            <input data-validation="true"
+                                   data-type-validation="validateName"
+                                   data-error-area-id="input-surname"
+                                   data-error-message="${incorrectDataTxt}"
+                                   type="text"
+                                   class="form-control"
+                                   name="surname"
+                                   placeholder="${surnameTxt}"
                                    value="${enrollee.surname}">
                         </div>
 
                         <div class="form-group col-md-12 col-sm-12">
                             <label class="control-label">${nameTxt}</label>
-                            <input type="text" class="form-control" name="name" placeholder="${nameTxt}"
+                            <p id="input-name" class="error display-none"></p>
+                            <input data-validation="true"
+                                   data-type-validation="validateName"
+                                   data-error-area-id="input-name"
+                                   data-error-message="${incorrectDataTxt}"
+                                   type="text"
+                                   class="form-control"
+                                   name="name"
+                                   placeholder="${nameTxt}"
                                    value="${enrollee.name}">
                         </div>
 
                         <div class="form-group col-md-12 col-sm-12">
                             <label class="control-label">${patronymicTxt}</label>
-                            <input type="text" class="form-control" name="patronymic" placeholder="${patronymicTxt}"
+                            <p id="input-patronymic" class="error display-none"></p>
+                            <input data-validation="true"
+                                   data-type-validation="validateName"
+                                   data-error-area-id="input-patronymic"
+                                   data-error-message="${incorrectDataTxt}"
+                                   type="text"
+                                   class="form-control"
+                                   name="patronymic"
+                                   placeholder="${patronymicTxt}"
                                    value="${enrollee.patronymic}">
                         </div>
 
                         <div class="form-group col-md-12 col-sm-12">
                             <label class="control-label">${phoneNumberTxt}</label>
-                            <input type="tel" class="form-control" name="phoneNumber" placeholder="${phoneNumberTxt}"
+                            <p id="input-phoneNumber" class="error display-none"></p>
+                            <input data-validation="true"
+                                   data-type-validation="validatePhoneNumber"
+                                   data-error-area-id="input-phoneNumber"
+                                   data-error-message="${incorrectDataTxt}"
+                                   type="tel"
+                                   class="form-control"
+                                   name="phoneNumber"
+                                   placeholder="${phoneNumberTxt}"
                                    value="${enrollee.phoneNumber}">
                         </div>
 
                         <div class="form-group col-md-12 col-sm-12">
                             <label class="control-label">${passportTxt}</label>
-                            <input type="tel" class="form-control" name="passport" placeholder="${passportTxt}"
+                            <p id="input-passport" class="error display-none"></p>
+                            <input data-validation="true"
+                                   data-type-validation="validatePassportNumber"
+                                   data-error-area-id="input-passport"
+                                   data-error-message="${incorrectDataTxt}"
+                                   type="text"
+                                   class="form-control"
+                                   name="passport"
+                                   placeholder="${passportTxt}"
                                    value="${enrollee.passport}">
                         </div>
 
                         <div class="form-group col-md-12 col-sm-12">
                             <label for="countries" class="control-label">${countryTxt}</label>
-                            <select id="countries" name="country" class="form-control">
+                            <p id="input-country" class="error display-none"></p>
+                            <select data-validation="true"
+                                    data-type-validation="validateEmpty"
+                                    data-error-area-id="input-country"
+                                    data-error-message="${incorrectDataTxt}"
+                                    id="countries"
+                                    name="country"
+                                    class="form-control">
                                 <option></option>
                                 <c:forEach var="country" items="${countries}">
                                     <option value="${country.countryId}">${country.name}</option>
@@ -97,12 +144,26 @@
 
                         <div class="form-group col-md-12 col-sm-12">
                             <label for="cities" class="control-label">${cityTxt}</label>
-                            <select id="cities" name="city" class="form-control"></select>
+                            <p id="input-city" class="error display-none"></p>
+                            <select data-validation="true"
+                                    data-type-validation="validateEmpty"
+                                    data-error-area-id="input-city"
+                                    data-error-message="${incorrectDataTxt}"
+                                    id="cities"
+                                    name="city"
+                                    class="form-control"></select>
                         </div>
 
                         <div class="form-group col-md-12 col-sm-12">
                             <label for="faculties" class="control-label">${facultyTxt}</label>
-                            <select id="faculties" name="faculty" class="form-control">
+                            <p id="input-faculty" class="error display-none"></p>
+                            <select data-validation="true"
+                                    data-type-validation="validateEmpty"
+                                    data-error-area-id="input-faculty"
+                                    data-error-message="${incorrectDataTxt}"
+                                    id="faculties"
+                                    name="faculty"
+                                    class="form-control">
                                 <option></option>
                                 <c:forEach var="faculty" items="${faculties}">
                                     <option value="${faculty.facultyId}">${faculty.name}</option>
@@ -116,8 +177,16 @@
 
                         <div class="form-group col-md-12 col-sm-12">
                             <label class="control-label">${sertificateScoreTxt}</label>
-                            <input type="number" class="form-control" name="sertificateScore"
-                                   placeholder="${sertificateScoreTxt}" value="${enrollee.avarageCertificateScore}">
+                            <p id="input-sertificateScore" class="error display-none"></p>
+                            <input data-validation="true"
+                                   data-type-validation="validateEmpty"
+                                   data-error-area-id="input-sertificateScore"
+                                   data-error-message="${incorrectDataTxt}"
+                                   type="number"
+                                   class="form-control"
+                                   name="sertificateScore"
+                                   placeholder="${sertificateScoreTxt}"
+                                   value="${enrollee.avarageCertificateScore}">
                         </div>
 
 

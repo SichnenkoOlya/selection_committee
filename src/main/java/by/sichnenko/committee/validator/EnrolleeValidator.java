@@ -66,6 +66,7 @@ public class EnrolleeValidator {
      */
     public static boolean validateScoreOnCT(int score, int countSubjects) {
         int sumMaxValue = countSubjects * MAX_VALUE;
-        return score <= sumMaxValue && score >= MIN_VALUE;
+        final int MIN_SUBJECT_COUNT = 1;
+        return countSubjects >= MIN_SUBJECT_COUNT && score <= sumMaxValue && score >= MIN_VALUE;
     }
 }

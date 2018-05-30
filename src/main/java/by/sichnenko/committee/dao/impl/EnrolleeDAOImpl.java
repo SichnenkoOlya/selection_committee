@@ -15,6 +15,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The EnrolleeDAOImpl class. Implementation of interface EnrolleeDAO.
+ *
+ * @see EnrolleeDAO
+ * @see Enrollee
+ */
 public class EnrolleeDAOImpl implements EnrolleeDAO {
     @Override
     public List<Enrollee> findAll() throws DAOException {

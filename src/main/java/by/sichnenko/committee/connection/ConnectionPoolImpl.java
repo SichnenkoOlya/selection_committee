@@ -13,40 +13,55 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.ReentrantLock;
 
-
+/**
+ * The ConnectionPoolImpl class.
+ * Implementation of interface ConnectionPool.
+ */
 public class ConnectionPoolImpl implements ConnectionPool {
     private static final Logger LOGGER = LogManager.getLogger(ConnectionPoolImpl.class);
+
+    private static final String DB_FILE_PROPERTIES_NAME = "dataBase";
+    private static final String DB_URL = "db_url";
+    private static final String DB_DRIVER_NAME = "db_driver_name";
+    private static final String DB_USER = "db_user";
+    private static final String DB_PASSWORD = "db_password";
+    private static final String DB_POOL_SIZE = "db_pool_size";
+
+    private final static int DEFAULT_POOL_SIZE = 12;
     private static ConnectionPool instance;
     private static AtomicBoolean isCreated = new AtomicBoolean();
     private static ReentrantLock lock = new ReentrantLock();
-
-    private static final String DB_FILE_PROPERTIES_NAME = "dataBase";
     private final String DRIVER_NAME;
     private final String URL;
     private final String USER;
     private final String PASSWORD;
     private int POOL_SIZE;
-    private final static int DEFAULT_POOL_SIZE = 12;
     private LinkedBlockingQueue<ProxyConnection> availableConnections;
     private ArrayDeque<ProxyConnection> usedConnections;//
 
-    private ConnectionPoolImpl() {
-        DRIVER_NAME = ResourceManager.readProperty("db_driver_name", DB_FILE_PROPERTIES_NAME);
-        URL = ResourceManager.readProperty("db_url", DB_FILE_PROPERTIES_NAME);
-        USER = ResourceManager.readProperty("db_user", DB_FILE_PROPERTIES_NAME);
-        PASSWORD = ResourceManager.readProperty("db_password", DB_FILE_PROPERTIES_NAME);
+    private ConnectionPoolImpl() throws SQLException {
+        DRIVER_NAME = ResourceManager.readProperty(DB_DRIVER_NAME, DB_FILE_PROPERTIES_NAME);
+        URL = ResourceManager.readProperty(DB_URL, DB_FILE_PROPERTIES_NAME);
+        USER = ResourceManager.readProperty(DB_USER, DB_FILE_PROPERTIES_NAME);
+        PASSWORD = ResourceManager.readProperty(DB_PASSWORD, DB_FILE_PROPERTIES_NAME);
+
         try {
-            POOL_SIZE = Integer.parseInt(ResourceManager.readProperty("db_pool_size", DB_FILE_PROPERTIES_NAME));
+            POOL_SIZE = Integer.parseInt(ResourceManager.readProperty(DB_POOL_SIZE, DB_FILE_PROPERTIES_NAME));
         } catch (NumberFormatException ex) {
             POOL_SIZE = DEFAULT_POOL_SIZE;
         }
         try {
             initConnectionPool();
-        } catch (ConnectionPoolException e) {
-            e.printStackTrace();
+        } catch (SQLException e) {
+            throw new SQLException("Error to init connection pool", e);
         }
     }
 
+    /**
+     * Get instance of connection pool
+     *
+     * @return connection pool
+     */
     public static ConnectionPool getInstance() {
         if (!isCreated.get()) {
             lock.lock();
@@ -55,6 +70,9 @@ public class ConnectionPoolImpl implements ConnectionPool {
                     instance = new ConnectionPoolImpl();
                     isCreated.set(true);
                 }
+            } catch (SQLException e) {
+                LOGGER.fatal(e);
+                throw new RuntimeException("Error to get instance of connection pool", e);
             } finally {
                 lock.unlock();
             }
@@ -63,7 +81,7 @@ public class ConnectionPoolImpl implements ConnectionPool {
     }
 
 
-     private void initConnectionPool() throws ConnectionPoolException {
+    private void initConnectionPool() throws SQLException {
         try {
             Class.forName(DRIVER_NAME);
             usedConnections = new ArrayDeque<>(POOL_SIZE);
@@ -73,15 +91,20 @@ public class ConnectionPoolImpl implements ConnectionPool {
                 ProxyConnection proxyConnection = new ProxyConnection(connection);
                 availableConnections.offer(proxyConnection);
             }
-            ///Проверка сколько создалось
         } catch (SQLException e) {
-            throw new ConnectionPoolException("Error creating connection", e);
+            throw new SQLException("Error creating connection", e);
 
         } catch (ClassNotFoundException e) {
-            throw new RuntimeException("Class not found", e);///RunTime
+            LOGGER.fatal(e);
+            throw new RuntimeException("Class not found exception", e);
         }
     }
 
+    /**
+     * Dispose connection pool
+     *
+     * @throws ConnectionPoolException if was exception during disposing
+     */
     @Override
     public void disposeConnectionPool() throws ConnectionPoolException {
         try {
@@ -96,12 +119,18 @@ public class ConnectionPoolImpl implements ConnectionPool {
                 }
             }
         } catch (SQLException e) {
-            throw new ConnectionPoolException(e);
+            throw new ConnectionPoolException("Error to dispose connection pool", e);
         } catch (InterruptedException e) {
-            throw new ConnectionPoolException(e);
+            throw new ConnectionPoolException("Error to take avaliable connection", e);
         }
     }
 
+    /**
+     * Take connection from connection pool
+     *
+     * @return proxy connection
+     * @see ProxyConnection
+     */
     @Override
     public ProxyConnection takeConnection() {
         ProxyConnection connection = null;
@@ -114,6 +143,12 @@ public class ConnectionPoolImpl implements ConnectionPool {
         return connection;
     }
 
+    /**
+     * Return connection to connection pool
+     *
+     * @param connection proxy connection
+     * @see ProxyConnection
+     */
     @Override
     public void returnConnection(ProxyConnection connection) {
         if (connection != null) {

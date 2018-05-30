@@ -2,7 +2,6 @@ package by.sichnenko.committee.controller;
 
 import net.sf.json.JSONArray;
 
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -11,21 +10,24 @@ import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * The SessionRequestContent class
+ */
 public class SessionRequestContent {
     private HashMap<String, Object> requestAttributes;
     private HashMap<String, String[]> requestParameters;
     private HashMap<String, Object> sessionAttributes;
     private Map<String, Part> parts;
     private Set<Cookie> cookiesValues;
-    private ServletContext servletContext;
     private JSONArray ajaxParameter;
 
     private boolean needInvalidateSession;
     private String contextPath;
     private String realPath;
-    private String requestURI;
-    private String queryString;
 
+    /**
+     * Default constructor
+     */
     public SessionRequestContent() {
         requestAttributes = new HashMap<>();
         requestParameters = new HashMap<>();
@@ -33,26 +35,112 @@ public class SessionRequestContent {
         cookiesValues = new HashSet<>();
     }
 
+    /**
+     * Get request attributes
+     *
+     * @return request attributes
+     */
     public HashMap<String, Object> getRequestAttributes() {
         return requestAttributes;
     }
 
+    /**
+     * Get request parameters
+     *
+     * @return request parameters
+     */
     public HashMap<String, String[]> getRequestParameters() {
         return requestParameters;
     }
 
+    /**
+     * Get session attributes
+     *
+     * @return session attributes
+     */
     public HashMap<String, Object> getSessionAttributes() {
         return sessionAttributes;
     }
 
+    /**
+     * Get context path
+     *
+     * @return context path
+     */
     public String getContextPath() {
         return contextPath;
     }
 
+    /**
+     * Get real path
+     *
+     * @return real path
+     */
     public String getRealPath() {
         return realPath;
     }
 
+    /**
+     * Get ajax parameter
+     *
+     * @return ajax parameter
+     */
+    public JSONArray getAjaxParameter() {
+        return ajaxParameter;
+    }
+
+    /**
+     * Set ajax parameter
+     *
+     * @param ajaxParameter ajax parameter
+     */
+    public void setAjaxParameter(JSONArray ajaxParameter) {
+        this.ajaxParameter = ajaxParameter;
+    }
+
+    /**
+     * Get parts of request
+     *
+     * @return parts
+     */
+    public Map<String, Part> getParts() {
+        return parts;
+    }
+
+    /**
+     * Set parts
+     *
+     * @param parts parts
+     */
+    public void setParts(Map<String, Part> parts) {
+        this.parts = parts;
+    }
+
+    /**
+     * Set boolean value if need to invalidate current session
+     *
+     * @param needInvalidateSession boolean value, true if we need to invalidate current session, else false
+     */
+    public void setNeedInvalidateSession(boolean needInvalidateSession) {
+        this.needInvalidateSession = needInvalidateSession;
+    }
+
+    /**
+     * Get cookies values
+     *
+     * @return cookies values
+     */
+    public Set<Cookie> getCookiesValues() {
+        return cookiesValues;
+    }
+
+    /**
+     * Fills the this object with the current values of request
+     *
+     * @param request HttpServletRequest
+     * @throws ServletException the Servlet exception
+     * @throws IOException      the IO exception
+     */
     void extractValues(HttpServletRequest request) throws IOException, ServletException {
         Enumeration<String> attributteNames = request.getAttributeNames();
         Enumeration<String> parameterNames = request.getParameterNames();
@@ -72,18 +160,20 @@ public class SessionRequestContent {
             String sessionAttrName = sessionAttrNameibutteNames.nextElement();
             sessionAttributes.put(sessionAttrName, request.getSession().getAttribute(sessionAttrName));
         }
-        servletContext = request.getServletContext();
+
         if (request.getContentType() != null && request.getContentType().toLowerCase().contains("multipart/form-data")) {
             parts = request.getParts().stream()
                     .collect(Collectors.toMap(Part::getName, x -> x));
         }
         contextPath = request.getContextPath();
-        requestURI = request.getRequestURI();
-        queryString = request.getQueryString();
         realPath = request.getServletContext().getRealPath("");
     }
 
-
+    /**
+     * Insert into request the values of SessionRequestContent object
+     *
+     * @param request HttpServletRequest
+     */
     void insertAttributes(HttpServletRequest request) {
 
         Enumeration<String> sessionAttrNameibutteNames = request.getSession().getAttributeNames();
@@ -113,57 +203,5 @@ public class SessionRequestContent {
         requestAttributes.forEach(request::setAttribute);
         contextPath = request.getContextPath();
         realPath = request.getServletContext().getRealPath("");
-    }
-
-    public JSONArray getAjaxParameter() {
-        return ajaxParameter;
-    }
-
-    public void setAjaxParameter(JSONArray ajaxParameter) {
-        this.ajaxParameter = ajaxParameter;
-    }
-
-    public Map<String, Part> getParts() {
-        return parts;
-    }
-
-    public void setParts(Map<String, Part> parts) {
-        this.parts = parts;
-    }
-
-    public ServletContext getServletContext() {
-        return servletContext;
-    }
-
-    public void setServletContext(ServletContext servletContext) {
-        this.servletContext = servletContext;
-    }
-
-    public String getRequestURI() {
-        return requestURI;
-    }
-
-    public void setRequestURI(String requestURI) {
-        this.requestURI = requestURI;
-    }
-
-    public String getQueryString() {
-        return queryString;
-    }
-
-    public void setQueryString(String queryString) {
-        this.queryString = queryString;
-    }
-
-    public void setNeedInvalidateSession(boolean needInvalidateSession) {
-        this.needInvalidateSession = needInvalidateSession;
-    }
-
-    public Set<Cookie> getCookiesValues() {
-        return cookiesValues;
-    }
-
-    public void setCookiesValues(Set<Cookie> cookiesValues) {
-        this.cookiesValues = cookiesValues;
     }
 }

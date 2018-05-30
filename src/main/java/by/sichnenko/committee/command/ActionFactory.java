@@ -1,6 +1,6 @@
 package by.sichnenko.committee.command;
 
-import by.sichnenko.committee.command.impl.ShowMainPageCommand;
+import by.sichnenko.committee.command.impl.common.ShowMainPageCommand;
 
 import javax.servlet.http.HttpServletRequest;
 

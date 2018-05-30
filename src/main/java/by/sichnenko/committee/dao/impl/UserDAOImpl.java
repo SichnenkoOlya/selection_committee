@@ -4,6 +4,7 @@ import by.sichnenko.committee.connection.ConnectionPoolImpl;
 import by.sichnenko.committee.connection.ProxyConnection;
 import by.sichnenko.committee.constant.SQLFieldConstant;
 import by.sichnenko.committee.constant.SQLQueryConstant;
+import by.sichnenko.committee.dao.UserDAO;
 import by.sichnenko.committee.exception.DAOException;
 import by.sichnenko.committee.model.RoleType;
 import by.sichnenko.committee.model.User;
@@ -14,7 +15,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserDAOImpl implements by.sichnenko.committee.dao.UserDAO {
+/**
+ * The UserDAOImpl class. Implementation of interface UserDAO.
+ *
+ * @see UserDAO
+ * @see User
+ */
+public class UserDAOImpl implements UserDAO {
 
     @Override
     public User findUserByLogin(String login) throws DAOException {
@@ -23,10 +30,8 @@ public class UserDAOImpl implements by.sichnenko.committee.dao.UserDAO {
             connection = ConnectionPoolImpl.getInstance().takeConnection();
 
             try (PreparedStatement preparedStatement = connection.prepareStatement(SQLQueryConstant.SELECT_USER_BY_LOGIN)) {
-                //TODO: 1 это нормально?
                 preparedStatement.setString(1, login);
                 ResultSet resultSet = preparedStatement.executeQuery();
-                //TODO: null или optional
                 User user = null;
                 if (resultSet.next()) {
                     user = new User();

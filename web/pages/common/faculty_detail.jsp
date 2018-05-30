@@ -14,6 +14,9 @@
 <fmt:message key="label.ok" var="okTxt"/>
 <fmt:message key="label.end_committee" var="enrollTxt"/>
 <fmt:message key="label.finish_date" var="finishDateTxt"/>
+<fmt:message key="error.image_not_loaded" var="imageNotLoadedTxt"/>
+<fmt:message key="error.incorrect_data" var="incorrectDataTxt"/>
+<fmt:message key="error.make_sure" var="makeSureTxt"/>
 
 <body>
 
@@ -35,6 +38,16 @@
         <div class="row">
 
             <div class="col-md-6">
+                <c:if test="${requestScope.containsKey('imageNotLoaded')}">
+                    ${imageNotLoadedTxt}
+                    ${makeSureTxt}
+                </c:if>
+
+                <c:if test="${requestScope.containsKey('incorrectData')}">
+                    ${incorrectDataTxt}
+                    ${makeSureTxt}
+                </c:if>
+
                 <h2 class="c_title">${faculty.name}</h2>
                 <dl class="info custom-info">
                     <dt>${facultyNameTxt}</dt>
@@ -69,12 +82,10 @@
                     <jsp:useBean id="currentDate" class="java.util.Date"/>
                     <c:if test="${not faculty.isFinish and faculty.finishDate lt currentDate}">
 
-                        <form action="${pageContext.request.contextPath}/mainController" method="post">
-                            <input type="hidden" name="command" value="ENROLL_TO_FACULTY"/>
-                            <input type="hidden" name="facultyId" value="${faculty.facultyId}"/>
-                            <button type="submit"
-                                    class="button btn_lg btn_yellow">${enrollTxt}</button>
-                        </form>
+                        <a href="${pageContext.request.contextPath}/mainController?command=ENROLL_TO_FACULTY&facultyId=${faculty.facultyId}"
+                           class="button btn_lg btn_yellow">
+                            ${enrollTxt}
+                        </a>
 
                     </c:if>
                 </ctg:admin>
@@ -94,7 +105,14 @@
                             <label for="fl_inp" class="custom-file-upload button btn_sm btn_yellow">
                                 <i class="fa fa-cloud-upload"></i>${choosePhotoTxt}
                             </label>
-                            <input id="fl_inp" type="file" name="image"/>
+                            <p id="input-file" class="error display-none"></p>
+                            <input data-validation="true"
+                                   data-type-validation="validateEmpty"
+                                   data-error-area-id="input-file"
+                                   data-error-message="${fileNotSelectedTxt}"
+                                   id="fl_inp"
+                                   type="file"
+                                   name="image"/>
                             <br/>
                             <div id="fl_nm" class="file-not-selected">${fileNotSelectedTxt}</div>
                             <button type="submit" class="button btn_sm btn_yellow button-one-width"><i class="fa fa-check"></i>${okTxt}</button>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="WARN">
     <Properties>
-        <Property name="logPath">/logs</Property>
+        <Property name="logPath">${sys:catalina.home}/logs</Property>
     </Properties>
 
     <Appenders>

@@ -13,6 +13,12 @@ import by.sichnenko.committee.validator.GeneralValidator;
 
 import java.util.List;
 
+/**
+ * The CityServiceImpl class. Implementation of interface CityServiceImpl.
+ *
+ * @see CityService
+ * @see City
+ */
 public class CityServiceImpl implements CityService {
     @Override
     public void addCity(SessionRequestContent sessionRequestContent) throws ServiceException {
@@ -22,10 +28,10 @@ public class CityServiceImpl implements CityService {
         if (GeneralValidator.isPositiveNumber(countryId) && GeneralValidator.isVarExist(cityName)) {
             try {
                 CityDAO cityDAO = new CityDAOImpl();
-                List<City> citiesWithName=cityDAO.findCityByName(cityName[0]);
-                if(!citiesWithName.isEmpty()){
-                    for(City city:citiesWithName){
-                        if(city.getCountryId()==Long.valueOf(countryId[0])){
+                List<City> citiesWithName = cityDAO.findCitiesByName(cityName[0]);
+                if (!citiesWithName.isEmpty()) {
+                    for (City city : citiesWithName) {
+                        if (city.getCountryId() == Long.valueOf(countryId[0])) {
                             sessionRequestContent.getRequestAttributes().put(GeneralConstant.CITY_EXIST, true);
                             throw new ServiceException("City with such name already  exist ");
                         }

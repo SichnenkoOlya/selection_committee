@@ -15,6 +15,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The FacultyDAOImpl class. Implementation of interface FacultyDAO.
+ *
+ * @see FacultyDAO
+ * @see Faculty
+ */
 public class FacultyDAOImpl implements FacultyDAO {
 
     @Override
@@ -105,7 +111,7 @@ public class FacultyDAOImpl implements FacultyDAO {
             try (PreparedStatement preparedStatement = connection.prepareStatement(SQLQueryConstant.CREATE_FACULTY)) {
                 preparedStatement.setString(1, faculty.getName());
                 preparedStatement.setInt(2, faculty.getBudjetPlaceCount());
-                preparedStatement.setInt(3, faculty.getTotalPlaceCount());
+                preparedStatement.setInt(3, faculty.getBudjetPlaceCount() + faculty.getPaidPlaceCount());
                 preparedStatement.setString(4, faculty.getDescription());
                 preparedStatement.setDate(5, new Date(faculty.getFinishDate().getTime()));
                 preparedStatement.execute();
@@ -183,7 +189,6 @@ public class FacultyDAOImpl implements FacultyDAO {
 
     @Override
     public void update(Faculty faculty) {
-        //TODO: нормально ли такое бросать?
         throw new UnsupportedOperationException();
     }
 

@@ -55,12 +55,27 @@
                         <div class="row">
                             <div class="form-group col-md-12 col-sm-12">
                                 <label class="control-label">${cityNameTxt}</label>
-                                <input type="text" class="form-control" name="cityName" placeholder="${cityNameTxt}">
+                                <p id="input-cityName" class="error display-none"></p>
+                                <input data-validation="true"
+                                       data-type-validation="validateEmpty"
+                                       data-error-area-id="input-cityName"
+                                       data-error-message="${incorrectDataTxt}"
+                                       type="text"
+                                       class="form-control"
+                                       name="cityName"
+                                       placeholder="${cityNameTxt}">
                             </div>
 
                             <div class="form-group col-md-12 col-sm-12">
-                                <label for="countries" class="control-label">${countryTxt}</label>
-                                <select id="countries" name="countryId" class="form-control" required>
+                                <label for="countries-add-city" class="control-label">${countryTxt}</label>
+                                <p id="input-countryId" class="error display-none"></p>
+                                <select data-validation="true"
+                                        data-type-validation="validateEmpty"
+                                        data-error-area-id="input-countryId"
+                                        data-error-message="${incorrectDataTxt}"
+                                        id="countries-add-city"
+                                        name="countryId"
+                                        class="form-control">
                                     <option></option>
                                     <c:forEach var="country" items="${countries}">
                                         <option value="${country.countryId}">${country.name}</option>

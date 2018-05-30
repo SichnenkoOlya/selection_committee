@@ -14,6 +14,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The SubjectDAOImpl class. Implementation of interface SubjectDAO.
+ *
+ * @see SubjectDAO
+ * @see Subject
+ */
 public class SubjectDAOImpl implements SubjectDAO {
 
     @Override

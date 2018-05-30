@@ -63,18 +63,40 @@
                     <div class="row">
                         <div class="form-group col-md-12 col-sm-12">
                             <label class="control-label">${oldPasswordTxt}</label>
-                            <input type="password" class="form-control" name="oldPassword"
+                            <p id="input-oldPassword" class="error display-none"></p>
+                            <input data-validation="true"
+                                   data-type-validation="validatePassword"
+                                   data-error-area-id="input-oldPassword"
+                                   data-error-message="${incorrectPasswordTxt}"
+                                   type="password"
+                                   class="form-control"
+                                   name="oldPassword"
                                    placeholder="${oldPasswordTxt}">
                         </div>
 
                         <div class="form-group col-md-12 col-sm-12">
                             <label class="control-label">${passwordTxt}</label>
-                            <input type="password" class="form-control" name="newPassword" placeholder="${passwordTxt}">
+                            <p id="input-newPassword" class="error display-none"></p>
+                            <input data-validation="true"
+                                   data-type-validation="validatePassword"
+                                   data-error-area-id="input-newPassword"
+                                   data-error-message="${incorrectPasswordTxt}"
+                                   type="password"
+                                   class="form-control"
+                                   name="newPassword"
+                                   placeholder="${passwordTxt}">
                         </div>
 
                         <div class="form-group col-md-12 col-sm-12">
                             <label class="control-label">${confirmPasswordTxt}</label>
-                            <input type="password" class="form-control" name="confirmPassword"
+                            <p id="input-confirmPassword" class="error display-none"></p>
+                            <input data-validation="true"
+                                   data-type-validation="validatePassword"
+                                   data-error-area-id="input-confirmPassword"
+                                   data-error-message="${incorrectPasswordTxt}"
+                                   type="password"
+                                   class="form-control"
+                                   name="confirmPassword"
                                    placeholder="${confirmPasswordTxt}">
                         </div>
 

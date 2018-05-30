@@ -1,17 +1,14 @@
 package by.sichnenko.committee.controller;
 
-import by.sichnenko.committee.model.Enrollee;
-import by.sichnenko.committee.model.Faculty;
-import by.sichnenko.committee.util.ExcelGeneratorService;
-
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * The main controller of application
+ */
 @WebServlet(name = "MainController", urlPatterns = {"/mainController"})
 public class MainController extends AbstractController {
 

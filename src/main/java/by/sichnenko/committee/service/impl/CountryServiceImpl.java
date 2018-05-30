@@ -13,6 +13,12 @@ import by.sichnenko.committee.validator.GeneralValidator;
 
 import java.util.List;
 
+/**
+ * The CountryServiceImpl class. Implementation of interface CountryService.
+ *
+ * @see CountryService
+ * @see Country
+ */
 public class CountryServiceImpl implements CountryService {
     @Override
     public List<Country> findAllCountries() throws ServiceException {
@@ -31,8 +37,8 @@ public class CountryServiceImpl implements CountryService {
         if (GeneralValidator.isVarExist(countryName)) {
             try {
                 CountryDAO countryDAO = new CountryDAOImpl();
-                Country existCountry=countryDAO.findCountryByName(countryName[0]);
-                if(existCountry!=null){
+                Country existCountry = countryDAO.findCountryByName(countryName[0]);
+                if (existCountry != null) {
                     sessionRequestContent.getRequestAttributes().put(GeneralConstant.COUNTRY_EXIST, true);
                     throw new ServiceException("Country already exist ");
                 }

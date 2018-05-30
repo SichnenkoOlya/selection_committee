@@ -24,7 +24,12 @@ import java.util.Optional;
 import static by.sichnenko.committee.constant.GeneralConstant.DIRECTORY_USER;
 import static by.sichnenko.committee.constant.RequestNameConstant.IMAGE;
 
-
+/**
+ * The UserServiceImpl class. Implementation of interface UserService.
+ *
+ * @see UserService
+ * @see User
+ */
 public class UserServiceImpl implements UserService {
 
     @Override
@@ -74,7 +79,6 @@ public class UserServiceImpl implements UserService {
         if (!GeneralValidator.isVarExist(login) || !GeneralValidator.isVarExist(password)
                 || !GeneralValidator.isVarExist(email) || !GeneralValidator.isVarExist(confirmPassword)) {
             sessionRequestContent.getRequestAttributes().put(GeneralConstant.INCORRECT_DATA, true);
-            //TODO: можно ли бросать exception?
             throw new ServiceException("Incorrect data ");
         }
         try {
@@ -138,10 +142,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void editProfile(SessionRequestContent sessionRequestContent) throws ServiceException {
+    public User editProfile(SessionRequestContent sessionRequestContent) throws ServiceException {
         String[] newLogin = sessionRequestContent.getRequestParameters().get(RequestNameConstant.NEW_LOGIN);
         String[] email = sessionRequestContent.getRequestParameters().get(RequestNameConstant.EMAIL);
         String[] login = sessionRequestContent.getRequestParameters().get(RequestNameConstant.LOGIN);
+        String[] password = sessionRequestContent.getRequestParameters().get(RequestNameConstant.PASSWORD);
         UserDAO userDAO = new UserDAOImpl();
         User user;
 
@@ -167,19 +172,27 @@ public class UserServiceImpl implements UserService {
                 sessionRequestContent.getRequestAttributes().put(GeneralConstant.INCORRECT_DATA, true);
                 throw new ServiceException("No such user");
             }
-            User userWithNewLogin = userDAO.findUserByLogin(newLogin[0]);
-            if (userWithNewLogin != null) {
-                sessionRequestContent.getRequestAttributes().put(GeneralConstant.SUCH_NAME_EXIST, true);
-                throw new ServiceException("Such user exist");
+
+            if (!user.getHashPassword().equals(MD5Generator.generateHash(password[0]))) {
+                sessionRequestContent.getRequestAttributes().put(GeneralConstant.INCORRECT_PASSWORD, true);
+                throw new ServiceException("Wrong password");
             }
-        } catch (DAOException e) {
+
+            if (!newLogin[0].equals(login[0])) {
+                User userWithNewLogin = userDAO.findUserByLogin(newLogin[0]);
+                if (userWithNewLogin != null) {
+                    sessionRequestContent.getRequestAttributes().put(GeneralConstant.SUCH_NAME_EXIST, true);
+                    throw new ServiceException("Such user exist");
+                }
+            }
+        } catch (DAOException | TechnicalException e) {
             throw new ServiceException("Find user error", e);
         }
-
         try {
             user.setLogin(newLogin[0]);
             user.setEmail(email[0]);
             userDAO.update(user);
+            return userDAO.findUserByLogin(newLogin[0]);
         } catch (DAOException e) {
             throw new ServiceException("Edit profile error", e);
         }

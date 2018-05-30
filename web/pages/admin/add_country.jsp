@@ -54,7 +54,15 @@
                         <div class="row">
                             <div class="form-group col-md-12 col-sm-12">
                                 <label class="control-label">${countryNameTxt}</label>
-                                <input type="text" class="form-control" name="countryName" placeholder="${countryNameTxt}">
+                                <p id="input-countryName" class="error display-none"></p>
+                                <input data-validation="true"
+                                       data-type-validation="validateEmpty"
+                                       data-error-area-id="input-countryName"
+                                       data-error-message="${incorrectDataTxt}"
+                                       type="text"
+                                       class="form-control"
+                                       name="countryName"
+                                       placeholder="${countryNameTxt}">
                             </div>
 
                             <div class="form-group col-md-12">

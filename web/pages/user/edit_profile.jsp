@@ -16,10 +16,12 @@
 <fmt:message key="label.home" var="homeTxt"/>
 <fmt:message key="label.home" var="homeTxt"/>
 <fmt:message key="error.incorrect_password" var="incorrectPasswordTxt"/>
+<fmt:message key="error.wrong_password" var="wrongPasswordTxt"/>
 <fmt:message key="error.incorrect_login" var="incorrectLoginTxt"/>
 <fmt:message key="error.incorrect_email" var="incorrectEmailTxt"/>
 <fmt:message key="error.incorrect_confirm_password" var="incorrectConfirmPassTxt"/>
 <fmt:message key="error.such_name_exist" var="suchNameExistTxt"/>
+<fmt:message key="label.password" var="passwordTxt"/>
 
 <div class="page_title gradient_overlay" style="background: url(/images/page_title_bg.jpg);">
     <div class="container">
@@ -52,6 +54,10 @@
                             ${incorrectLoginTxt}
                             ${makeSureTxt}
                         </c:when>
+                        <c:when test="${requestScope.containsKey('incorrectPassword')}">
+                            ${wrongPasswordTxt}
+                            ${makeSureTxt}
+                        </c:when>
                         <c:when test="${requestScope.containsKey('incorrectEmail')}">
                             ${incorrectEmailTxt}
                             ${makeSureTxt}
@@ -70,14 +76,43 @@
                         <div class="row">
                             <div class="form-group col-md-12 col-sm-12">
                                 <label for="loginInput" class="control-label">${loginTxt}</label>
-                                <input id="loginInput" type="text" class="form-control" name="newLogin"
+                                <p id="input-newLogin" class="error display-none"></p>
+                                <input data-validation="true"
+                                       data-type-validation="validateLogin"
+                                       data-error-area-id="input-newLogin"
+                                       data-error-message="${incorrectLoginTxt}"
+                                       id="loginInput"
+                                       type="text"
+                                       class="form-control"
+                                       name="newLogin"
                                        value="${user.login}">
                             </div>
 
                             <div class="form-group col-md-12 col-sm-12">
                                 <label for="emailInput" class="control-label">${emailTxt}</label>
-                                <input id="emailInput" type="email" class="form-control" name="email"
+                                <p id="input-email" class="error display-none"></p>
+                                <input data-validation="true"
+                                       data-type-validation="validateEmail"
+                                       data-error-area-id="input-email"
+                                       data-error-message="${incorrectEmailTxt}"
+                                       id="emailInput"
+                                       type="email"
+                                       class="form-control"
+                                       name="email"
                                        value="${user.email}">
+                            </div>
+
+                            <div class="form-group col-md-12 col-sm-12">
+                                <label class="control-label">${passwordTxt}</label>
+                                <p id="input-password" class="error display-none"></p>
+                                <input data-validation="true"
+                                       data-type-validation="validatePassword"
+                                       data-error-area-id="input-password"
+                                       data-error-message="${incorrectPasswordTxt}"
+                                       type="password"
+                                       class="form-control"
+                                       name="password"
+                                       placeholder="${passwordTxt}">
                             </div>
 
                             <div class="form-group col-md-12">

@@ -14,6 +14,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The CountryDAOImpl class. Implementation of interface CountryDAO.
+ *
+ * @see CountryDAO
+ * @see Country
+ */
 public class CountryDAOImpl implements CountryDAO {
     @Override
     public List<Country> findAll() throws DAOException {

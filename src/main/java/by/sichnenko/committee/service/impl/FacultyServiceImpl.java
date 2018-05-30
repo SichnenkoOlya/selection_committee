@@ -22,7 +22,12 @@ import java.util.Optional;
 import static by.sichnenko.committee.constant.GeneralConstant.DIRECTORY_FACULTY;
 import static by.sichnenko.committee.constant.RequestNameConstant.IMAGE;
 
-
+/**
+ * The FacultyServiceImpl class. Implementation of interface FacultyService.
+ *
+ * @see FacultyService
+ * @see Faculty
+ */
 public class FacultyServiceImpl implements FacultyService {
 
     @Override
@@ -80,7 +85,7 @@ public class FacultyServiceImpl implements FacultyService {
             try {
                 FacultyDAO facultyDAO = new FacultyDAOImpl();
                 Faculty findFacultyWithSuchName = facultyDAO.findFacultyByName(facultyName[0]);
-                if(findFacultyWithSuchName!=null){
+                if (findFacultyWithSuchName != null) {
                     sessionRequestContent.getRequestAttributes().put(GeneralConstant.FACULTY_EXIST, true);
                     throw new ServiceException("Faculty with such name already exist ");
                 }
@@ -109,7 +114,7 @@ public class FacultyServiceImpl implements FacultyService {
 
 
     @Override
-    public boolean loadImage(SessionRequestContent sessionRequestContent) throws ServiceException {
+    public void loadImage(SessionRequestContent sessionRequestContent) throws ServiceException {
         String[] facultyId = sessionRequestContent.getRequestParameters().get(RequestNameConstant.FACULTY_ID);
         if (GeneralValidator.isPositiveNumber(facultyId)) {
             ImageUploader fileUploader = new ImageUploader();
@@ -118,7 +123,6 @@ public class FacultyServiceImpl implements FacultyService {
                 FacultyDAO facultyDAO = new FacultyDAOImpl();
                 try {
                     facultyDAO.updateImage(Long.valueOf(facultyId[0]), filePath.get());
-                    return true;
                 } catch (DAOException e) {
                     throw new ServiceException("Image load error ", e);
                 }

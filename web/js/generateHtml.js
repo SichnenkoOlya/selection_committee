@@ -12,7 +12,9 @@
                 data: data,
                 dataType: "json",
                 success: function (data, textStatus, jqXHR) {
-                    $('#cities').html(generateCitiesOption(data));
+                    if(data[0] !== null) {
+                        $('#cities').html(generateCitiesOption(data));
+                    }
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     console.log("Something really bad happened " + textStatus);
@@ -32,16 +34,17 @@
                 data: data,
                 dataType: "json",
                 success: function (data, textStatus, jqXHR) {
-                    $('#ajax-subjects').html(generateSubjects(data));
-                    disableInputs();
-
+                    if(data[0] !== null) {
+                        $('#ajax-subjects').html(generateSubjects(data));
+                        disableInputs();
+                    }
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     console.log("Something really bad happened " + textStatus);
 
                 },
                 beforeSend: function (jqXHR) {
-                    $('#ajax-subjects').html('Subjects are loaded...');
+                    $('#ajax-subjects').html('');
                 }
             });
         });
@@ -58,10 +61,16 @@
             var html = '';
             data.forEach(function (value, i) {
 
+                var rand = (Math.random() * 100001);
                 html += '<div class="form-group col-md-12 col-sm-12" id="group-' + value["groupNumber"] + '">' +
                     '<label class="control-label">' + value["name"] + '</label>' +
                     '<input type="hidden" name="idSubject" value="' + value["subjectId"] + '"/>' +
-                    '<input type="number" class="form-control" data-group="group-' + value["groupNumber"] + '" name="countScore"/>' +
+                    '<p id="input-countScore-' + rand + '" class="error display-none"></p>' +
+                    '<input data-validation="true" ' +
+                    'data-type-validation="validateCertificateScore" ' +
+                    'data-error-area-id="input-countScore-' + rand + '" ' +
+                    'data-error-message="${incorrectDataTxt}" ' +
+                    'type="number" class="form-control" data-group="group-' + value["groupNumber"] + '" name="countScore"/>' +
                     '</div>';
             });
             return html;
@@ -153,6 +162,7 @@
             var errorArea = $('#' + element.data("errorAreaId"));
             var errorMessage = element.data("errorMessage");
             var value = element.val();
+            var name = element.attr("name");
 
             var validatePhoneNumber = new RegExp('^(?:\\+|\\d)[\\d\\- ]{9,}\\d$');
             var validateName = new RegExp('^([A-Z][a-z]{1,25})|([А-Я][а-я]{1,25})$');
@@ -161,7 +171,7 @@
             var MIN_VALUE = 100;
 
             var validateEmail = new RegExp('^([a-z0-9_-]+\\.)*[a-z0-9_-]+@[a-z0-9_-]+(\\.[a-z0-9_-]+)*\\.[a-z]{2,6}$');
-            var validateLogin = new RegExp('^(?=.{3,24})[a-z][a-z0-9]*[._-]?[a-z0-9]+$');
+            var validateLogin = new RegExp('^(?:[a-zA-Z][a-zA-Z0-9\\_]{1,22}[a-zA-Z])$');
             var validatePassword = new RegExp('^(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}$');
 
             function validate(Regexp) {
@@ -207,6 +217,34 @@
                     case "validatePassword":
 
                         validate(validatePassword);
+
+                        break;
+                    case "validateEmpty":
+
+                        if ((value === null) || (value.length === 0)) {
+                            error.push(errorMessage);
+                        }
+
+                        break;
+                    case "validateUnsignedNotZero":
+
+                        if ((value.length === 0) || (value < 1)) {
+                            error.push(errorMessage);
+                        }
+
+                        break;
+                    case "validateDate":
+
+                        if((value.length === 0) || (new Date(value) < new Date())) {
+                            error.push(errorMessage);
+                        }
+
+                        break;
+                    case "validateCount":
+
+                        if($('input[name="' + name + '"]:checked').length < 1){
+                            error.push(errorMessage);
+                        }
 
                         break;
                     default:

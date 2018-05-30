@@ -1,6 +1,7 @@
 package by.sichnenko.committee.util;
 
 import by.sichnenko.committee.controller.SessionRequestContent;
+import by.sichnenko.committee.validator.GeneralValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -20,7 +21,7 @@ public class ImageUploader {
      *
      * @param sessionRequestContent Copy of the request
      * @param paramName             parameter of file in request
-     * @param directoryName         Cirectory in which file will be load
+     * @param directoryName         Directory in which file will be load
      * @param fileName              Name of file
      * @return Relative path to the uploaded file or empty value if there were problems loading file
      */
@@ -28,16 +29,12 @@ public class ImageUploader {
         try {
             Part filePart = sessionRequestContent.getParts().get(paramName);
             String submittedfileName = extractFileName(filePart);
-            String extension = getFileExtension(submittedfileName);
+            String extension = defineFileExtension(submittedfileName);
+            if (!GeneralValidator.isImageExtensionValid(extension)) {
+                LOGGER.error("Invalid extension. File wasn't loaded: " + fileName);
+                return Optional.empty();
+            }
             InputStream fileContent = filePart.getInputStream();
-            File folder = new File(IMAGE_DIRECTORY + File.separator + directoryName);
-
-//            if (!folder.exists()) {
-//                if (!folder.mkdir()) {
-//                    LOGGER.error("Error creating directory: " + folder);
-//                    return Optional.empty();
-//                }
-//            }
             String relativePath = IMAGE_DIRECTORY + File.separator + directoryName + File.separator + fileName + extension;
             String filePath = sessionRequestContent.getRealPath() + relativePath;
 
@@ -71,7 +68,7 @@ public class ImageUploader {
      * @param fileName Name of file
      * @return File extension
      */
-    private String getFileExtension(String fileName) {
+    private String defineFileExtension(String fileName) {
         int index = fileName.indexOf('.');
         return index == -1 ? null : fileName.substring(index);
     }

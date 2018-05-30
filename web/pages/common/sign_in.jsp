@@ -72,10 +72,10 @@
                         <div class="row">
                             <div class="form-group col-md-12 col-sm-12">
                                 <label class="control-label">${loginTxt}</label>
-                                <p id="input-name" class="error display-none"></p>
+                                <p id="input-login" class="error display-none"></p>
                                 <input data-validation="true"
-                                       data-type-validation="validateName"
-                                       data-error-area-id="input-name"
+                                       data-type-validation="validateLogin"
+                                       data-error-area-id="input-login"
                                        data-error-message="${incorrectLoginTxt}"
                                        type="text"
                                        class="form-control"
@@ -90,7 +90,9 @@
                                        data-type-validation="validatePassword"
                                        data-error-area-id="input-password"
                                        data-error-message="${incorrectPassTxt}"
-                                        type="password" class="form-control" name="password"
+                                       type="password"
+                                       class="form-control"
+                                       name="password"
                                        placeholder="${passwordTxt}">
                             </div>
 

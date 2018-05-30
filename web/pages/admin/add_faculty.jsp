@@ -61,37 +61,82 @@
                         <div class="row">
                             <div class="form-group col-md-12 col-sm-12">
                                 <label class="control-label">${facultyNameTxt}</label>
-                                <input type="text" class="form-control" name="facultyName"
+                                <p id="input-facultyName" class="error display-none"></p>
+                                <input data-validation="true"
+                                       data-type-validation="validateEmpty"
+                                       data-error-area-id="input-facultyName"
+                                       data-error-message="${incorrectDataTxt}"
+                                       type="text"
+                                       class="form-control"
+                                       name="facultyName"
                                        placeholder="${facultyNameTxt}">
                             </div>
 
                             <div class="form-group col-md-12 col-sm-12">
                                 <label class="control-label">${descriptionTxt}</label>
-                                <input type="text" class="form-control" name="facultyDescription"
+                                <p id="input-facultyDescription" class="error display-none"></p>
+                                <input data-validation="true"
+                                       data-type-validation="validateEmpty"
+                                       data-error-area-id="input-facultyDescription"
+                                       data-error-message="${incorrectDataTxt}"
+                                       type="text"
+                                       class="form-control"
+                                       name="facultyDescription"
                                        placeholder="${descriptionTxt}">
                             </div>
 
                             <div class="form-group col-md-12 col-sm-12">
                                 <label class="control-label">${budjetTxt}</label>
-                                <input type="number" class="form-control" name="budjetCount" placeholder="${budjetTxt}">
+                                <p id="input-budjetCount" class="error display-none"></p>
+                                <input data-validation="true"
+                                       data-type-validation="validateUnsignedNotZero"
+                                       data-error-area-id="input-budjetCount"
+                                       data-error-message="${incorrectDataTxt}"
+                                       type="number"
+                                       class="form-control"
+                                       name="budjetCount"
+                                       placeholder="${budjetTxt}">
                             </div>
 
                             <div class="form-group col-md-12 col-sm-12">
                                 <label class="control-label">${paidTxt}</label>
-                                <input type="text" class="form-control" name="paidCount" placeholder="${paidTxt}">
+                                <p id="input-paidCount" class="error display-none"></p>
+                                <input data-validation="true"
+                                       data-type-validation="validateUnsignedNotZero"
+                                       data-error-area-id="input-paidCount"
+                                       data-error-message="${incorrectDataTxt}"
+                                       type="number"
+                                       class="form-control"
+                                       name="paidCount"
+                                       placeholder="${paidTxt}">
                             </div>
 
                             <div class="form-group col-md-12 col-sm-12">
                                 <label class="control-label">${finishDateTxt}</label>
-                                <input type="date" class="form-control" name="finishDate" placeholder="${finishDateTxt}">
+                                <p id="input-finishDate" class="error display-none"></p>
+                                <input data-validation="true"
+                                       data-type-validation="validateDate"
+                                       data-error-area-id="input-finishDate"
+                                       data-error-message="${incorrectDataTxt}"
+                                       type="date"
+                                       class="form-control"
+                                       name="finishDate"
+                                       placeholder="${finishDateTxt}">
                             </div>
 
                             <div class="form-group col-md-12 col-sm-12">
                                 <label class="control-label">${subjectsTxt}</label>
+                                <p id="input-idSubject" class="error display-none"></p>
                                 <c:forEach var="subject" items="${subjects}">
                                     <br/>
                                     <label for="privileges">
-                                        <input id="privileges" type="checkbox" name="idSubject"
+                                        <input data-validation="true"
+                                               data-type-validation="validateCount"
+                                               data-error-area-id="input-idSubject"
+                                               data-error-message="${incorrectDataTxt}"
+                                               id="privileges"
+                                               type="checkbox"
+                                               name="idSubject"
                                                value="${subject.subjectId}">
                                             ${subject.name}
                                     </label>

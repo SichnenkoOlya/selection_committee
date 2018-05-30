@@ -25,7 +25,6 @@
 <fmt:message key="error.incorrect_confirm_password" var="incorrectConfirmPassTxt"/>
 <fmt:message key="error.such_name_exist" var="suchNameExistTxt"/>
 
-
 <div class="page_title gradient_overlay" style="background: url(/images/page_title_bg.jpg);">
     <div class="container">
         <div class="inner">
@@ -80,24 +79,52 @@
                         <div class="row">
                             <div class="form-group col-md-12 col-sm-12">
                                 <label class="control-label">${loginTxt}</label>
-                                <input type="text" class="form-control" name="login" placeholder="${loginTxt}">
+                                <p id="input-login" class="error display-none"></p>
+                                <input data-validation="true"
+                                       data-type-validation="validateLogin"
+                                       data-error-area-id="input-login"
+                                       data-error-message="${incorrectLoginTxt}"
+                                       type="text"
+                                       class="form-control"
+                                       name="login"
+                                       placeholder="${loginTxt}">
                             </div>
 
                             <div class="form-group col-md-12 col-sm-12">
                                 <label class="control-label">${passwordTxt}</label>
-                                <input type="password" class="form-control" name="password"
+                                <p id="input-password" class="error display-none"></p>
+                                <input data-validation="true"
+                                       data-type-validation="validatePassword"
+                                       data-error-area-id="input-password"
+                                       data-error-message="${incorrectPasswordTxt}"
+                                       type="password"
+                                       class="form-control"
+                                       name="password"
                                        placeholder="${passwordTxt}">
                             </div>
 
                             <div class="form-group col-md-12 col-sm-12">
                                 <label class="control-label">${confirmPasswordTxt}</label>
-                                <input type="password" class="form-control" name="confirmPassword"
+                                <p id="input-confirm-password" class="error display-none"></p>
+                                <input data-validation="true"
+                                       data-type-validation="validatePassword"
+                                       data-error-area-id="input-confirm-password"
+                                       data-error-message="${incorrectPasswordTxt}"
+                                       type="password" class="form-control" name="confirmPassword"
                                        placeholder="${confirmPasswordTxt}">
                             </div>
 
                             <div class="form-group col-md-12 col-sm-12">
                                 <label class="control-label">${emailTxt}</label>
-                                <input type="email" class="form-control" name="email" placeholder="${emailTxt}">
+                                <p id="input-email" class="error display-none"></p>
+                                <input data-validation="true"
+                                       data-type-validation="validateEmail"
+                                       data-error-area-id="input-email"
+                                       data-error-message="${incorrectEmailTxt}"
+                                       type="email"
+                                       class="form-control"
+                                       name="email"
+                                       placeholder="${emailTxt}">
                             </div>
 
                             <div class="form-group col-md-12">

@@ -14,6 +14,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * The CityDAOImpl class. Implementation of interface CityDAO.
+ *
+ * @see CityDAO
+ * @see City
+ */
 public class CityDAOImpl implements CityDAO {
     @Override
     public List<City> findAll() throws DAOException {
@@ -54,7 +61,7 @@ public class CityDAOImpl implements CityDAO {
     }
 
     @Override
-    public List<City> findCityByName(String name) throws DAOException {
+    public List<City> findCitiesByName(String name) throws DAOException {
         ProxyConnection connection = null;
         try {
             connection = ConnectionPoolImpl.getInstance().takeConnection();
@@ -62,15 +69,7 @@ public class CityDAOImpl implements CityDAO {
             try (PreparedStatement preparedStatement = connection.prepareStatement(SQLQueryConstant.SELECT_CITY_BY_NAME)) {
                 preparedStatement.setString(1, name);
                 ResultSet resultSet = preparedStatement.executeQuery();
-                List<City> cities = new ArrayList<>();
-                while(resultSet.next()) {
-                    City city = new City();
-                    city.setCityId(resultSet.getLong(SQLFieldConstant.ID));
-                    city.setName(resultSet.getString(SQLFieldConstant.NAME));
-                    city.setCountryId(resultSet.getLong(SQLFieldConstant.City.COUNTRY_ID));
-                    cities.add(city);
-                }
-                return cities;
+                return extractCities(resultSet);
             } catch (SQLException e) {
                 throw new DAOException("Find city error ", e);
             }

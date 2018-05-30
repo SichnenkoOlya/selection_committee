@@ -44,7 +44,7 @@
             <h1>${findUser.login}</h1>
             <ol class="breadcrumb">
                 <li><a href="${pageContext.request.contextPath}/mainController">${homeTxt}</a></li>
-                <li><a href="${pageContext.request.contextPath}/mainController">${usersTxt}</a></li>
+                <li><a href="${pageContext.request.contextPath}/mainController?command=SHOW_ALL_USERS">${usersTxt}</a></li>
                 <li>${findUser.login}</li>
             </ol>
         </div>
@@ -109,19 +109,20 @@
                     <input type="hidden" name="id" value="${findUser.userId}"/>
                     <input type="hidden" name="lock" value="${not findUser.isBlocked}"/>
                     <div class="form-group col-md-12">
-                        <c:if test="${findUser.isBlocked}">
-                            <button type="submit" class="button btn_lg btn_yellow">${unblockTxt}</button>
-                            <%--<input type="submit" name="commit" value="${unblockTxt}">--%>
-                        </c:if>
-                        <c:if test="${not findUser.isBlocked}">
-                            <button type="submit" class="button btn_lg btn_yellow">${blockTxt}</button>
-                            <%--<input type="submit" name="commit" value="${blockTxt}">--%>
-                        </c:if>
+                        <button class="button btn_lg btn_yellow">
+                            <c:if test="${findUser.isBlocked}">
+                                ${unblockTxt}
+                            </c:if>
+                            <c:if test="${not findUser.isBlocked}">
+                                ${blockTxt}
+                            </c:if>
+                        </button>
                     </div>
                 </form>
 
                 <c:if test="${findUser.role=='USER'}">
-                    <form action="${pageContext.request.contextPath}/mainController" method="post" class="form-detail-user">
+                    <form action="${pageContext.request.contextPath}/mainController" method="post"
+                          class="form-detail-user">
                         <input type="hidden" name="command" value="CHANGE_USER_ROLE"/>
                         <input type="hidden" name="id" value="${findUser.userId}"/>
                         <input type="hidden" name="role" value="ADMIN"/>
@@ -135,7 +136,8 @@
 
                     <c:if test="${findEnrollee.statusId eq documentFillStatus}">
 
-                        <form action="${pageContext.request.contextPath}/mainController" method="post" class="form-detail-user">
+                        <form action="${pageContext.request.contextPath}/mainController" method="post"
+                              class="form-detail-user">
                             <input type="hidden" name="command" value="CHANGE_ENROLLEE_STATUS"/>
                             <input type="hidden" name="newStatusId" value="${acceptedStatus}"/>
 
@@ -146,7 +148,8 @@
                             </div>
                         </form>
 
-                        <form id="reject-document" action="${pageContext.request.contextPath}/mainController" method="post" class="form-detail-user">
+                        <form id="reject-document" action="${pageContext.request.contextPath}/mainController"
+                              method="post" class="form-detail-user">
                             <input type="hidden" name="command" value="CHANGE_ENROLLEE_STATUS"/>
                             <input type="hidden" name="newStatusId" value="${documentRejectedStatus}"/>
                             <input type="hidden" name="userId" value="${findUser.userId}"/>
