@@ -32,6 +32,6 @@ public class LoadImageFacultyCommand implements ActionCommand {
             }
             return new Router(RouterType.ERROR);
         }
-        return new Router(RouterType.REDIRECT, defineLastQuery(sessionRequestContent));
+        return new Router(RouterType.REDIRECT, defineCurrentQuery(sessionRequestContent));
     }
 }

@@ -162,13 +162,13 @@ public class User {
     public int hashCode() {
         int result = 7;
         int prime = 31;
-        result = prime * result + login.hashCode();
-        result = prime * result + hashPassword.hashCode();
-        result = prime * result + email.hashCode();
-        result = prime * result + imagePath.hashCode();
+        result = prime * result + (login != null ? login.hashCode() : 0);
+        result = prime * result + (hashPassword != null ? hashPassword.hashCode() : 0);
+        result = prime * result + (email != null ? email.hashCode() : 0);
+        result = prime * result + (imagePath != null ? imagePath.hashCode() : 0);
         result = prime * result + (int) userId;
         result = prime * result + ((isBlocked) ? 0 : 1);
-        result = prime * result + role.hashCode();
+        result = prime * result + (role != null ? role.hashCode() : 0);
         return result;
     }
 

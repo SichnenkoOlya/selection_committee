@@ -60,7 +60,7 @@ public class Privilege {
     public int hashCode() {
         int result = 7;
         int prime = 31;
-        result = prime * result + name.hashCode();
+        result = prime * result + (name != null ? name.hashCode() : 0);
         result = prime * result + (int) privilegeId;
         return result;
     }

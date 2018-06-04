@@ -266,10 +266,10 @@ public class Faculty {
     public int hashCode() {
         int result = 7;
         int prime = 31;
-        result = prime * result + name.hashCode();
-        result = prime * result + imagePath.hashCode();
-        result = prime * result + description.hashCode();
-        result = prime * result + subjects.hashCode();
+        result = prime * result + (name != null ? name.hashCode() : 0);
+        result = prime * result + (imagePath != null ? imagePath.hashCode() : 0);
+        result = prime * result + (description != null ? description.hashCode() : 0);
+        result = prime * result + (subjects != null ? subjects.hashCode() : 0);
         result = prime * result + ((isFinish) ? 0 : 1);
         result = prime * result + finishDate.hashCode();
         result = prime * result + budjetPlaceCount;

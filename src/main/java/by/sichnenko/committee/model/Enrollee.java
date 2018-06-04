@@ -280,12 +280,12 @@ public class Enrollee {
     public int hashCode() {
         int result = 7;
         int prime = 31;
-        result = prime * result + name.hashCode();
-        result = prime * result + surname.hashCode();
-        result = prime * result + patronymic.hashCode();
-        result = prime * result + phoneNumber.hashCode();
-        result = prime * result + passport.hashCode();
-        result = prime * result + infoMessage.hashCode();
+        result = prime * result + (name != null ? name.hashCode() : 0);
+        result = prime * result + (surname != null ? surname.hashCode() : 0);
+        result = prime * result + (patronymic != null ? patronymic.hashCode() : 0);
+        result = prime * result + (phoneNumber != null ? phoneNumber.hashCode() : 0);
+        result = prime * result + (passport != null ? passport.hashCode() : 0);
+        result = prime * result + (infoMessage != null ? infoMessage.hashCode() : 0);
         result = prime * result + (int) enrolleeId;
         result = prime * result + (int) facultyId;
         result = prime * result + (int) statusId;
